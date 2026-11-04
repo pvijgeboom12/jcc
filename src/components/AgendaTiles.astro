@@ -1,0 +1,120 @@
+---
+import PinIcon from './PinIcon.astro';
+import Eyebrow from './Eyebrow.astro';
+import { t } from '../i18n/ui';
+import { routes, congressPath, type Lang } from '../i18n/routes';
+import { getUpcoming, isLinkable } from '../lib/congresses';
+import { dayRange, monthYearShort } from '../lib/dates';
+
+interface Props {
+  lang: Lang;
+  max?: number;
+}
+const { lang, max = 5 } = Astro.props;
+const s = t(lang).agenda;
+const upcoming = (await getUpcoming(lang)).slice(0, max);
+const years = [...new Set(upcoming.map((c) => c.data.startDate.getUTCFullYear()))];
+const yearLabel = years.length === 1 ? ` · ${years[0]}` : '';
+---
+
+{
+  upcoming.length > 0 && (
+    <section aria-label={`${s.label}${yearLabel}`} class="agenda bg-white">
+      <div class="container agenda__inner">
+        <div class="agenda__head">
+          <Eyebrow class="agenda__eyebrow">
+            {s.eyebrow}
+            {yearLabel}
+          </Eyebrow>
+          <a href={routes.congresses[lang]} class="agenda__all">
+            {s.all}
+          </a>
+        </div>
+        <div class="agenda__grid">
+          {upcoming.map((c, i) => {
+            const d = c.data;
+            const featured = i === 0;
+            const linkable = isLinkable(c);
+            const Tag = linkable ? 'a' : 'div';
+            const tile = d.tile ?? { title: d.title };
+            return (
+              <Tag
+                href={linkable ? congressPath(lang, d.slug) : undefined}
+                class:list={['tile', { 'tile--featured': featured, 'tile--link': linkable }]}
+              >
+                <svg class="tile__ring" aria-hidden="true" viewBox="0 0 24 24">
+                  <g fill="none" stroke-width="3.4" stroke={featured ? '#FFFFFF' : '#8F2748'}>
+                    <path d="M20.5 6.1 A9.5 9.5 0 1 0 20.5 17.9" />
+                    <path d="M15.8 8.5 A4.5 4.5 0 1 0 15.8 15.5" />
+                  </g>
+                </svg>
+                {featured && <span class="tile__badge">{s.next}</span>}
+                <span class="tile__day">{dayRange(d.startDate, d.endDate, lang)}</span>
+                <span class="tile__month">{monthYearShort(d.startDate, d.endDate, lang)}</span>
+                <span class="tile__title">{tile.title}</span>
+                {tile.subtitle && <span class="tile__subtitle">{tile.subtitle}</span>}
+                <span class="tile__place">
+                  <PinIcon color={featured ? '#F6D3DE' : '#8F2748'} />
+                  {d.locationShort ?? d.location}
+                </span>
+                {featured && linkable && <span class="tile__cta">{s.cta}</span>}
+              </Tag>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .agenda__inner { padding-top: 56px; }
+  .agenda__head {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+    gap: 12px; margin: 0 0 20px;
+  }
+  .agenda__head :global(.agenda__eyebrow) { margin: 0; }
+  .agenda__all { font-size: 15px; font-weight: 600; }
+  .agenda__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+
+  .tile {
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; gap: 4px;
+    min-height: 250px; padding: 22px 22px 24px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface); color: var(--color-text); text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-tile-hover); }
+  .tile__ring {
+    position: absolute; right: -46px; bottom: -52px; width: 170px; height: 170px; opacity: 0.09;
+    transition: transform 0.5s ease; transform-origin: 70% 50%;
+  }
+  .tile:hover .tile__ring { transform: rotate(-12deg) scale(1.06); }
+
+  .tile__badge {
+    align-self: flex-start; margin-bottom: 14px;
+    background: #fff; color: var(--color-primary);
+    border-radius: var(--radius-pill); padding: 4px 11px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .tile__day {
+    margin-top: 38px;
+    font-size: 40px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; white-space: nowrap;
+    color: var(--color-primary);
+  }
+  .tile__month { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text); }
+  .tile__title { position: relative; margin-top: auto; padding-top: 18px; font-size: 19px; font-weight: 600; line-height: 1.2; }
+  .tile__subtitle { position: relative; font-size: 15px; font-weight: 400; color: var(--color-text-secondary); }
+  .tile__place { position: relative; display: flex; gap: 6px; font-size: 14px; line-height: 1.4; color: var(--color-text-secondary); }
+  .tile__cta { position: relative; margin-top: 10px; font-size: 14px; font-weight: 600; color: #fff; }
+
+  /* Uitgelicht: eerstvolgende congres */
+  .tile--featured { background: var(--color-primary); color: #fff; }
+  .tile--featured:hover { color: #fff; }
+  .tile--featured .tile__ring { opacity: 0.16; }
+  .tile--featured .tile__day { margin-top: 0; color: #fff; }
+  .tile--featured .tile__month { color: var(--color-primary-tint); }
+  .tile--featured .tile__subtitle,
+  .tile--featured .tile__place { color: var(--color-primary-tint-2); }
+</style>

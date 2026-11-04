@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from './Eyebrow.astro';
+import { alternateFor, type Lang } from '../i18n/routes';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const copy = {
+  nl: {
+    title: 'Privacyverklaring',
+    description: 'Privacyverklaring van JCC Congress Consultancy & Events.',
+    todo: 'TODO: de tekst van de privacyverklaring wordt aangeleverd door JCC.',
+    note: 'Deze pagina wordt binnenkort aangevuld.',
+  },
+  en: {
+    title: 'Privacy statement',
+    description: 'Privacy statement of JCC Congress Consultancy & Events.',
+    todo: 'TODO: the privacy statement text will be supplied by JCC.',
+    note: 'This page will be completed shortly.',
+  },
+}[lang];
+---
+
+<!-- TODO PRIVACYVERKLARING: tekst aanleveren door JCC (Annick). Vervang het blok hieronder. -->
+<BaseLayout lang={lang} title={copy.title} description={copy.description} alternate={alternateFor('privacy')} noindex>
+  <section class="bg-surface">
+    <div class="container wrap">
+      <Eyebrow large>JCC</Eyebrow>
+      <h1 class="h1-page">{copy.title}</h1>
+    </div>
+  </section>
+  <section class="bg-white">
+    <div class="container content">
+      <div class="todo" role="note">
+        <strong>{copy.todo}</strong>
+        <p>{copy.note}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .wrap { padding-top: 80px; padding-bottom: 64px; }
+  .content { padding-top: 64px; padding-bottom: 104px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .todo {
+    border: 2px dashed var(--color-primary); border-radius: var(--radius-md); padding: 28px;
+    background: var(--color-surface); display: flex; flex-direction: column; gap: 8px;
+  }
+  .todo strong { color: var(--color-primary); }
+  .todo p { color: var(--color-text-secondary); }
+</style>

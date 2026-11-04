@@ -1,0 +1,22 @@
+{
+  "name": "jcc-website",
+  "version": "1.0.0",
+  "description": "Website JCC Congress Consultancy & Events (jcc-congressen.nl)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/poppins": "^5.3.0",
+    "astro": "^7.4.5"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

@@ -1,0 +1,76 @@
+---
+// Self-hosted fonts volgens huisstijl (nov 2026): Poppins 600 voor koppen, Inter 400/600 voor tekst.
+// Gebundeld in dist, geen Google Fonts.
+import '@fontsource/poppins/latin-600.css';
+import '@fontsource/poppins/latin-ext-600.css';
+import '@fontsource/poppins/latin-600-italic.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-ext-400.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/inter/latin-ext-600.css';
+import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../lib/site';
+import type { Lang, Alternate } from '../i18n/routes';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  alternate: Alternate;
+  active?: 'congresses';
+  showCta?: boolean;
+  isHome?: boolean;
+  showLinkedIn?: boolean;
+  noindex?: boolean;
+  ogImage?: string;
+}
+
+const {
+  lang, title, description, alternate, active,
+  showCta = true, isHome = false, showLinkedIn = true, noindex = false, ogImage,
+} = Astro.props;
+
+const canonical = new URL(alternate[lang], site.url).href;
+const fullTitle = title.includes('JCC') ? title : `${title} | JCC Congress Consultancy & Events`;
+const skip = lang === 'nl' ? 'Direct naar de inhoud' : 'Skip to content';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="nl" href={new URL(alternate.nl, site.url).href} />
+    <link rel="alternate" hreflang="en" href={new URL(alternate.en, site.url).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(alternate.nl, site.url).href} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#8F2748" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JCC Congress Consultancy & Events" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'nl' ? 'nl_NL' : 'en_GB'} />
+    {ogImage && <meta property="og:image" content={new URL(ogImage, site.url).href} />}
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{skip}</a>
+    <Header lang={lang} alternate={alternate} active={active} showCta={showCta} isHome={isHome} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} showLinkedIn={showLinkedIn} />
+  </body>
+</html>

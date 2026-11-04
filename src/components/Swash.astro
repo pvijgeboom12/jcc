@@ -1,0 +1,30 @@
+---
+/** Accentwoord met handgetekende onderstreping (hero en band). */
+interface Props {
+  variant?: 'primary' | 'white';
+}
+const { variant = 'primary' } = Astro.props;
+---
+
+{
+  variant === 'primary' ? (
+    <em class="accent swash">
+      <slot />
+      <svg aria-hidden="true" viewBox="0 0 200 20" preserveAspectRatio="none">
+        <path d="M 4 15 Q 100 -4 196 10" fill="none" stroke="#8F2748" stroke-opacity="0.35" stroke-width="4" stroke-linecap="round" />
+      </svg>
+    </em>
+  ) : (
+    <em class="swash swash--white">
+      <slot />
+      <svg aria-hidden="true" viewBox="0 0 120 20" preserveAspectRatio="none">
+        <path d="M 3 16 Q 58 -6 117 11" fill="none" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="4" stroke-linecap="round" />
+      </svg>
+    </em>
+  )
+}
+
+<style>
+  .swash--white { font-style: italic; }
+  .swash--white svg { left: -4%; bottom: -12px; width: 108%; height: 16px; }
+</style>

@@ -1,0 +1,13 @@
+---
+import CongressPage from '../../components/CongressPage.astro';
+import { getCongresses } from '../../lib/congresses';
+
+export async function getStaticPaths() {
+  const list = await getCongresses('nl');
+  return list
+    .filter((c) => c.data.status !== 'save-the-date' || c.data.draft)
+    .map((c) => ({ params: { slug: c.data.slug }, props: { congress: c } }));
+}
+const { congress } = Astro.props;
+---
+<CongressPage lang="nl" congress={congress} />

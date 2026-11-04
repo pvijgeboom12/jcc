@@ -1,0 +1,40 @@
+---
+/**
+ * Definitieve JCC-logo (dubbele C, bordeaux en zwart), uit het ontwerp.
+ * withWordmark: toont "CONGRESS / CONSULTANCY / & EVENTS" ernaast.
+ */
+interface Props {
+  height?: number;
+  withWordmark?: boolean;
+}
+const { height = 40, withWordmark = false } = Astro.props;
+---
+
+<span class="logo">
+  <svg viewBox="495 262 610 376" role="img" aria-label="JCC" style={`height:${height}px`} class="logo__mark">
+    <path fill="#151515" d="M694 271 H749 V508 A126 126 0 0 1 497 508 H552 A71 71 0 0 0 694 508 Z"></path>
+    <path fill="#8F2748" d="M1100 337 A184 184 0 1 0 1100 563 L1060 533 A134 134 0 1 1 1060 367 Z"></path>
+    <path fill="#151515" d="M1017 370 A102 102 0 1 0 1017 530 L987 491 A52 52 0 1 1 987 409 Z"></path>
+  </svg>
+  {
+    withWordmark && (
+      <span class="logo__wordmark" aria-hidden="true">
+        <span>CONGRESS</span>
+        <span>CONSULTANCY</span>
+        <span class="logo__amp">&amp; EVENTS</span>
+      </span>
+    )
+  }
+</span>
+
+<style>
+  .logo { display: flex; align-items: center; gap: 14px; }
+  .logo__mark { width: auto; flex: none; }
+  .logo__wordmark {
+    display: flex; flex-direction: column; line-height: 1.35;
+    padding-left: 14px; border-left: 1px solid var(--color-border-strong);
+    font-family: var(--font-wordmark); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; color: var(--color-text-logo);
+  }
+  .logo__amp { color: var(--color-primary); }
+</style>

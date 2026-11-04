@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { alternateFor } from '../i18n/routes';
+---
+<BaseLayout lang="nl" title="Pagina niet gevonden" description="Deze pagina bestaat niet (meer)." alternate={alternateFor('home')} noindex>
+  <section class="bg-surface">
+    <div class="container" style="padding-top:104px;padding-bottom:104px;display:flex;flex-direction:column;gap:24px;align-items:flex-start">
+      <h1 class="h1-page">Deze pagina bestaat niet <em class="accent">(meer)</em></h1>
+      <p class="lead">Page not found. Kijk bij de congressen of ga terug naar de homepage.</p>
+      <div class="btn-row">
+        <a href="/congressen/" class="btn btn--primary">Congressen</a>
+        <a href="/" class="btn btn--outline">Homepage</a>
+        <a href="/en/" class="btn btn--outline" lang="en">English</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+import { home } from '../i18n/home';
+import type { Lang } from '../i18n/routes';
+import { site } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const c = home[lang].contact;
+const endpoint = site.formEndpoint;
+---
+
+<form
+  class="cform"
+  method="post"
+  action={endpoint || `mailto:${site.email}`}
+  data-mailto={endpoint ? undefined : site.email}
+  data-subject={c.mailSubject}
+>
+  <div class="cform__row">
+    <div class="cform__field">
+      <label for="c-name">{c.name}</label>
+      <input id="c-name" name="naam" type="text" autocomplete="name" required />
+    </div>
+    <div class="cform__field">
+      <label for="c-email">{c.email}</label>
+      <input id="c-email" name="email" type="email" autocomplete="email" required />
+    </div>
+  </div>
+  <div class="cform__field">
+    <label for="c-org">{c.org}</label>
+    <input id="c-org" name="organisatie" type="text" autocomplete="organization" />
+  </div>
+  <div class="cform__field">
+    <label for="c-msg">{c.message}</label>
+    <textarea id="c-msg" name="bericht" rows="5" required></textarea>
+  </div>
+  <button type="submit" class="btn btn--primary cform__submit">{c.submit}</button>
+</form>
+
+<script>
+  // Zonder formulier-endpoint: open het mailprogramma met alles ingevuld.
+  document.querySelectorAll<HTMLFormElement>('form[data-mailto]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const labels = [...form.querySelectorAll('label')].map((l) => l.textContent?.trim() ?? '');
+      const values = ['naam', 'email', 'organisatie', 'bericht'].map((k) => String(data.get(k) ?? ''));
+      const body = values.map((v, i) => (i === 3 ? `\n${v}` : `${labels[i]}: ${v}`)).join('\n');
+      const subject = form.dataset.subject ?? '';
+      window.location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  });
+</script>
+
+<style>
+  .cform {
+    flex: 1 1 420px; min-width: 0; background: #fff; color: var(--color-text);
+    border-radius: var(--radius-md); padding: 36px; box-shadow: var(--shadow-form);
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .cform__row { display: flex; flex-wrap: wrap; gap: 18px; }
+  .cform__row .cform__field { flex: 1 1 200px; }
+  .cform__field { display: flex; flex-direction: column; gap: 8px; }
+  label { font-size: 14px; font-weight: 600; }
+  input, textarea {
+    font-family: inherit; font-size: 16px; color: var(--color-text);
+    padding: 13px 16px; min-height: 48px;
+    border: 1.5px solid var(--color-border-strong); border-radius: var(--radius-input); background: #fff;
+  }
+  textarea { resize: vertical; }
+  input:focus, textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(143, 39, 72, 0.15); }
+  .cform__submit { align-self: flex-start; padding-left: 30px; padding-right: 30px; }
+  @media (max-width: 640px) { .cform { padding: 24px; } }
+</style>

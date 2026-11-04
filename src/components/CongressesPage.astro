@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from './Eyebrow.astro';
+import CongressRow from './CongressRow.astro';
+import { t } from '../i18n/ui';
+import { alternateFor, type Lang } from '../i18n/routes';
+import { getUpcoming, getPast } from '../lib/congresses';
+import { site } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const s = t(lang).overview;
+const upcoming = await getUpcoming(lang);
+const past = (await getPast(lang)).slice(0, 6);
+---
+
+<BaseLayout lang={lang} title={s.metaTitle} description={s.metaDescription} alternate={alternateFor('congresses')} active="congresses">
+  <section class="bg-surface clip">
+    <svg class="arc" aria-hidden="true" viewBox="0 0 600 600" style="right:-200px;top:-260px;width:600px;height:600px">
+      <path d="M 120 600 A 420 420 0 0 1 540 180" fill="none" stroke="#8F2748" stroke-opacity="0.12" stroke-width="44"></path>
+    </svg>
+    <div class="container relative intro">
+      <Eyebrow large>{s.eyebrow}</Eyebrow>
+      <h1 class="h1-page intro__heading">{s.heading} <em class="accent">{s.headingAccent}</em></h1>
+      <p class="lead intro__lead">{s.introBefore} <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+
+  <section aria-label={s.listLabel} class="bg-white">
+    <div class="container list">
+      {upcoming.length === 0 && <p class="lead">{s.empty}</p>}
+      {upcoming.map((c) => <CongressRow lang={lang} congress={c} />)}
+
+      {
+        past.length > 0 && (
+          <>
+            <h2 class="past-heading">{s.pastHeading}</h2>
+            {past.map((c) => <CongressRow lang={lang} congress={c} past />)}
+          </>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro { padding-top: 80px; padding-bottom: 72px; }
+  .intro__heading { max-width: 760px; }
+  .intro__lead { margin-top: 24px; max-width: 600px; line-height: 1.65; }
+  .intro__lead a { font-weight: 600; }
+  .list { padding-top: 64px; padding-bottom: 104px; display: flex; flex-direction: column; gap: 20px; }
+  .past-heading { margin-top: 48px; font-size: 22px; font-weight: 600; color: var(--color-text-secondary); }
+  @media (max-width: 640px) {
+    .intro { padding-top: 56px; padding-bottom: 56px; }
+    .list { padding-top: 40px; padding-bottom: 72px; }
+  }
+</style>

@@ -1,0 +1,280 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from './Eyebrow.astro';
+import Swash from './Swash.astro';
+import AgendaTiles from './AgendaTiles.astro';
+import ContactForm from './ContactForm.astro';
+import { home } from '../i18n/home';
+import { alternateFor, type Lang } from '../i18n/routes';
+import { site } from '../lib/site';
+
+import imgHero from '../assets/images/plenaire-zaal.jpg';
+import imgKeynote from '../assets/images/keynote-podium.jpg';
+import imgCourse from '../assets/images/collegezaal-cursus.jpg';
+import imgExpo from '../assets/images/expositie-netwerken.jpg';
+import imgParty from '../assets/images/congresfeest.jpg';
+import imgCloister from '../assets/images/milaan-kloostertuin.jpg';
+import imgDinner from '../assets/images/milaan-diner.jpg';
+import imgBadge from '../assets/images/registratiebalie.jpg';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const h = home[lang];
+const half = '(min-width: 1000px) 560px, 100vw';
+const quarter = '(min-width: 1000px) 280px, 50vw';
+---
+
+<BaseLayout lang={lang} title={h.metaTitle} description={h.metaDescription} alternate={alternateFor('home')} isHome>
+  <!-- HERO -->
+  <section id="top" class="bg-surface clip">
+    <svg class="arc" aria-hidden="true" viewBox="0 0 600 600" style="left:-260px;bottom:-330px;width:640px;height:640px">
+      <path d="M 120 600 A 420 420 0 0 1 540 180" fill="none" stroke="#8F2748" stroke-opacity="0.12" stroke-width="44"></path>
+    </svg>
+    <div class="container relative hero">
+      <div class="hero__text">
+        <h1 class="h1">{h.hero.title} <Swash>{h.hero.accent}</Swash></h1>
+        <p class="lead hero__lead">{h.hero.lead}</p>
+        <div class="btn-row hero__buttons">
+          <a href="#contact" class="btn btn--primary">{h.hero.primary}</a>
+          <a href="#what-we-do" class="btn btn--outline">{h.hero.secondary}</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <Image src={imgHero} alt={h.hero.imageAlt} widths={[480, 760, 1120]} sizes={half} loading="eager" fetchpriority="high" class="img hero__img" />
+      </div>
+    </div>
+  </section>
+
+  <AgendaTiles lang={lang} />
+
+  <!-- OVER JCC -->
+  <section id="about" class="bg-white">
+    <div class="container section split">
+      <div class="about__media">
+        <Image src={imgKeynote} alt={h.about.imageAlts[0]} widths={[360, 560]} sizes={quarter} class="img about__img about__img--a" />
+        <Image src={imgCourse} alt={h.about.imageAlts[1]} widths={[360, 560]} sizes={quarter} class="img about__img about__img--b" />
+      </div>
+      <div class="col">
+        <Eyebrow>{h.about.eyebrow}</Eyebrow>
+        <h2 class="h2 about__heading">{h.about.heading}</h2>
+        <div class="body-lg stack-20">
+          {h.about.paragraphs.map((p) => <p>{p}</p>)}
+          <p class="about__closing">{h.about.closing}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAT WE DOEN -->
+  <section id="what-we-do" class="bg-surface">
+    <div class="container section">
+      <div class="services__head">
+        <div>
+          <Eyebrow>{h.services.eyebrow}</Eyebrow>
+          <h2 class="h2">{h.services.heading}</h2>
+        </div>
+        <p class="services__lead">{h.services.lead}</p>
+      </div>
+      <div class="services__grid">
+        {
+          h.services.groups.map((g, i) => (
+            <div class="service">
+              <div class="service__head">
+                <span class="service__num">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="service__title">{g.title}</h3>
+              </div>
+              <div class="service__items">
+                {g.items.map(([title, text]) => (
+                  <div>
+                    <strong class="item__title">{title}</strong>
+                    <span class="muted">{text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community" class="bg-white">
+    <div class="container section split">
+      <div class="col col--wide">
+        <Eyebrow>{h.community.eyebrow}</Eyebrow>
+        <h2 class="h2">{h.community.heading} <em class="accent">{h.community.accent}</em></h2>
+        <p class="body-lg community__lead">{h.community.lead}</p>
+        <div class="community__grid">
+          {
+            h.community.items.map(([title, text]) => (
+              <div>
+                <strong class="item__title item__title--gap">{title}</strong>
+                <span class="muted">{text}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="col">
+        <Image src={imgExpo} alt={h.community.imageAlt} widths={[480, 760, 1120]} sizes={half} class="img community__img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- MAATWERK-BAND -->
+  <section class="band clip">
+    <svg class="arc" aria-hidden="true" viewBox="0 0 400 400" style="right:-90px;top:-150px;width:420px;height:420px">
+      <path d="M 60 400 A 300 300 0 0 1 360 100" fill="none" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="34"></path>
+    </svg>
+    <div class="container relative band__inner">
+      <h2 class="band__heading">
+        {h.band.headingBefore} <span class="nowrap">{h.band.headingWith} <Swash variant="white">{h.band.accent}</Swash></span>
+      </h2>
+      <p class="band__text">{h.band.text}</p>
+    </div>
+  </section>
+
+  <!-- SOCIAAL PROGRAMMA -->
+  <section aria-label={h.social.label} class="bg-white">
+    <div class="container social">
+      <div class="social__frame">
+        <Image src={imgParty} alt={h.social.imageAlt} widths={[640, 1152, 1600]} sizes="(min-width: 1248px) 1152px, 100vw" class="social__img" />
+        <div class="social__card">
+          <span class="social__eyebrow">{h.social.eyebrow}</span>
+          <span class="social__title">{h.social.title} <em class="accent">{h.social.accent}</em></span>
+          <span class="social__text">{h.social.text}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" class="bg-white">
+    <div class="container section split">
+      <div class="col col--narrow">
+        <Eyebrow>{h.expertise.eyebrow}</Eyebrow>
+        <h2 class="h2">{h.expertise.heading}</h2>
+        <p class="body-lg expertise__lead">{h.expertise.lead}</p>
+        <div class="tags">
+          {h.expertise.tags.map((tag) => <span class="tag">{tag}</span>)}
+        </div>
+      </div>
+      <div class="expertise__media">
+        <Image src={imgCloister} alt={h.expertise.imageAlts[0]} widths={[560, 900, 1200]} sizes="(min-width: 1000px) 620px, 100vw" class="img expertise__wide" />
+        <Image src={imgDinner} alt={h.expertise.imageAlts[1]} widths={[300, 600]} sizes="(min-width: 1000px) 300px, 50vw" class="img expertise__tall expertise__tall--dinner" />
+        <Image src={imgBadge} alt={h.expertise.imageAlts[2]} widths={[300, 600]} sizes="(min-width: 1000px) 300px, 50vw" class="img expertise__tall" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-surface">
+    <div class="container section contact">
+      <div class="contact__text">
+        <h2 class="contact__heading">{h.contact.heading} <em class="accent">{h.contact.accent}</em></h2>
+        <p class="lead contact__lead">{h.contact.lead}</p>
+        <div class="contact__links">
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={site.phoneHref}>{site.phone}</a>
+        </div>
+      </div>
+      <ContactForm lang={lang} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nowrap { white-space: nowrap; }
+  .col { flex: 1 1 420px; min-width: 0; }
+  .col--wide { flex-basis: 440px; }
+  .col--narrow { flex-basis: 380px; }
+  .stack-20 { display: flex; flex-direction: column; gap: 20px; }
+  .item__title { display: block; font-weight: 600; }
+  .item__title--gap { margin-bottom: 4px; }
+
+  /* Hero */
+  .hero { padding-top: 56px; padding-bottom: 64px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
+  .hero__text { flex: 1 1 480px; min-width: 0; }
+  .hero__lead { margin-top: 24px; max-width: 520px; }
+  .hero__buttons { margin-top: 32px; }
+  .hero__media { flex: 1 1 420px; min-width: 0; }
+  .hero__media :global(.hero__img) {
+    aspect-ratio: 4 / 5; max-height: 460px; border-radius: 28px 28px 28px 140px; object-position: 62% center;
+  }
+
+  /* Over */
+  .about__media { flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .about__media :global(.about__img) { aspect-ratio: 3 / 4; border-radius: var(--radius-lg); }
+  .about__media :global(.about__img--a) { object-position: 75% center; background: var(--color-placeholder-2); }
+  .about__media :global(.about__img--b) { object-position: 38% center; margin-top: 48px; }
+  .about__heading { margin-bottom: 28px; }
+  .about__closing { font-weight: 600; color: var(--color-primary); }
+
+  /* Wat we doen */
+  .services__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 52px; }
+  .services__lead { max-width: 420px; font-size: 17px; line-height: 1.6; color: var(--color-text-secondary); }
+  .services__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .service { background: #fff; border-radius: var(--radius-md); padding: 30px 28px; display: flex; flex-direction: column; gap: 22px; }
+  .service__head { display: flex; align-items: center; gap: 12px; }
+  .service__num { font-family: var(--font-heading); font-size: 34px; font-weight: 600; color: var(--color-primary); line-height: 1; }
+  .service__title { font-size: 19px; font-weight: 600; }
+  .service__items { display: flex; flex-direction: column; gap: 16px; font-size: 15px; line-height: 1.5; }
+
+  /* Community */
+  .community__lead { margin-top: 24px; }
+  .community__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 36px; font-size: 15px; line-height: 1.5; }
+  .col :global(.community__img) {
+    aspect-ratio: 4 / 5; object-position: 30% center; border-radius: 140px 28px 28px 28px; background: var(--color-placeholder-2);
+  }
+
+  /* Band */
+  .band { background: var(--color-primary); color: #fff; }
+  .band__inner { padding-top: var(--section-y-sm); padding-bottom: var(--section-y-sm); display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+  .band__heading { flex: 1 1 380px; font-weight: 600; letter-spacing: var(--tracking-tight); font-size: clamp(28px, 3vw, 40px); line-height: 1.1; }
+  .band__text { flex: 1 1 420px; font-size: 19px; line-height: 1.65; color: var(--color-primary-tint-2); }
+
+  /* Sociaal */
+  .social { padding-top: var(--section-y-sm); }
+  .social__frame { position: relative; border-radius: var(--radius-xl); overflow: hidden; background: var(--color-text); }
+  .social__frame :global(.social__img) { width: 100%; height: auto; aspect-ratio: 21 / 9; min-height: 360px; object-fit: cover; object-position: center 40%; }
+  .social__card {
+    position: absolute; left: 24px; bottom: 24px; right: 24px; max-width: 460px;
+    background: #fff; border-radius: var(--radius-sm); padding: 26px 28px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .social__eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); }
+  .social__title { font-family: var(--font-heading); font-size: 30px; font-weight: 600; line-height: 1.15; }
+  .social__text { font-size: 15px; line-height: 1.55; color: var(--color-text-secondary); }
+
+  /* Expertise */
+  .expertise__lead { margin-top: 24px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .tag { background: var(--color-surface); border-radius: var(--radius-pill); padding: 11px 18px; font-size: 14px; font-weight: 600; }
+  .expertise__media { flex: 1 1 480px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .expertise__media :global(.expertise__wide) { grid-column: 1 / -1; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); background: var(--color-placeholder-2); }
+  .expertise__media :global(.expertise__tall) { aspect-ratio: 4 / 5; border-radius: var(--radius-lg); background: var(--color-placeholder-2); }
+  .expertise__media :global(.expertise__tall--dinner) { object-position: center 60%; background: var(--color-placeholder); }
+
+  /* Contact */
+  .contact { display: flex; flex-wrap: wrap; gap: 56px; }
+  .contact__text { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+  .contact__heading { font-weight: 600; letter-spacing: var(--tracking-tight); font-size: var(--fs-h1); line-height: 1.08; }
+  .contact__lead { line-height: 1.65; }
+  .contact__links { display: flex; flex-direction: column; gap: 10px; font-size: 17px; }
+  .contact__links a { color: var(--color-text); font-weight: 600; }
+  .contact__links a:hover { color: var(--color-primary); }
+
+  @media (max-width: 640px) {
+    .section { padding-top: 72px; padding-bottom: 72px; }
+    .hero { padding-top: 40px; gap: 40px; }
+    .hero__media :global(.hero__img) { border-radius: 24px 24px 24px 96px; }
+    .col :global(.community__img) { border-radius: 96px 24px 24px 24px; }
+    .social__frame :global(.social__img) { min-height: 520px; }
+    .social__card { left: 16px; right: 16px; bottom: 16px; padding: 22px; }
+    .social__title { font-size: 26px; }
+  }
+</style>

@@ -1,0 +1,303 @@
+---
+/**
+ * Sjabloon voor één congrespagina. Alle inhoud komt uit de content collection.
+ * Secties zonder inhoud worden automatisch overgeslagen.
+ */
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from './Eyebrow.astro';
+import { t } from '../i18n/ui';
+import { routes, alternateForCongress, type Lang } from '../i18n/routes';
+import { formatPrice, type Congress } from '../lib/congresses';
+import { dayList, monthYearLong } from '../lib/dates';
+
+interface Props {
+  lang: Lang;
+  congress: Congress;
+}
+const { lang, congress } = Astro.props;
+const s = t(lang).congress;
+const d = congress.data;
+const { Content } = await render(congress);
+const hasBody = Boolean(congress.body?.trim());
+
+const heading = d.heading ?? { text: d.title };
+const pageName = heading.accent ? `${heading.text} ${heading.accent}` : heading.text;
+const year = String(d.startDate.getUTCFullYear());
+const crumb = pageName.includes(year) ? pageName : `${pageName} ${year}`;
+const days = dayList(d.startDate, d.endDate, lang);
+const items = d.programme?.items ?? [];
+const hasProgramme = hasBody || items.length > 0;
+const hasRegistration = d.fees.length > 0 || Boolean(d.accreditation);
+const hasPractical = d.practical.length > 0;
+const anyFeeNote = d.fees.some((f) => f.note);
+const secondary = d.programme?.url
+  ? { href: d.programme.url, label: lang === 'nl' ? `Programma op ${new URL(d.programme.url).hostname.replace('www.', '')}` : `Programme on ${new URL(d.programme.url).hostname.replace('www.', '')}` }
+  : hasProgramme
+    ? { href: '#programme', label: s.programme }
+    : null;
+// Registratieknop per categorie: eigen URL > algemene registratie-URL > geen knop
+const feeUrl = (url?: string) => url ?? d.registrationUrl;
+const mainRegister = hasRegistration ? '#register' : d.registrationUrl;
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${pageName} — ${lang === 'nl' ? 'info & registratie' : 'info & registration'}`}
+  description={d.intro}
+  alternate={alternateForCongress(d.slug)}
+  active="congresses"
+  showCta={false}
+  showLinkedIn={false}
+  noindex={d.draft}
+>
+  <!-- HERO -->
+  <section class="bg-surface clip">
+    <svg class="arc" aria-hidden="true" viewBox="0 0 600 600" style="right:-220px;top:-280px;width:640px;height:640px">
+      <path d="M 120 600 A 420 420 0 0 1 540 180" fill="none" stroke="#8F2748" stroke-opacity="0.12" stroke-width="44"></path>
+    </svg>
+    <div class="container relative c-hero">
+      <nav aria-label={s.breadcrumb} class="crumbs">
+        <a href={routes.congresses[lang]}>{t(lang).nav.congresses}</a> <span aria-hidden="true">/</span> <span aria-current="page">{crumb}</span>
+      </nav>
+      <div class="c-hero__grid">
+        <div class="c-hero__text">
+          <Eyebrow large>{d.organisation}</Eyebrow>
+          <h1 class="h1-page">
+            {heading.text}{heading.accent && ' '}{heading.accent && <em class="accent">{heading.accent}</em>}
+          </h1>
+          {d.tagline && <p class="c-hero__tagline">{d.tagline}</p>}
+          <p class="lead c-hero__intro">{d.intro}</p>
+          {
+            (mainRegister || secondary) && (
+              <div class="btn-row c-hero__buttons">
+                {mainRegister && <a href={mainRegister} class="btn btn--primary">{s.register}</a>}
+                {secondary && <a href={secondary.href} class="btn btn--outline">{secondary.label}</a>}
+              </div>
+            )
+          }
+        </div>
+        <aside aria-label={s.dateVenue} class="date-card">
+          <span class="date-card__month">{monthYearLong(d.startDate, lang)}</span>
+          {
+            days.length === 1 ? (
+              <div class="date-card__single">
+                <span class="date-card__num">{days[0].day}</span>
+                <span class="date-card__sub">{days[0].weekday}{d.time && ` · ${d.time}`}</span>
+              </div>
+            ) : (
+              <div class="date-card__multi">
+                {days.map((x) => (
+                  <div class="date-card__day">
+                    <span class="date-card__num date-card__num--sm">{x.day}</span>
+                    <span class="date-card__sub date-card__sub--sm">{x.weekday}</span>
+                  </div>
+                ))}
+              </div>
+            )
+          }
+          <div class="date-card__venue">
+            <span class="date-card__venue-name">{d.venue ?? s.venueTba}</span>
+            <span class="date-card__sub">{d.address ?? d.location}</span>
+          </div>
+          {hasPractical && d.venue && <a href="#practical" class="date-card__link">{s.routeInfo}</a>}
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMMA -->
+  {
+    hasProgramme && (
+      <section id="programme" class="bg-white">
+        <div class="container section-md programme">
+          <div class="programme__intro">
+            <Eyebrow class="eyebrow--tight">{s.programme}</Eyebrow>
+            {d.programme?.heading && <h2 class="h2">{d.programme.heading}</h2>}
+            {hasBody && <div class="prose"><Content /></div>}
+            {d.programme?.note && <p class="programme__note">{d.programme.note}</p>}
+          </div>
+          {items.length > 0 && (
+            <ol class="programme__list">
+              {items.map((item) =>
+                item.break ? (
+                  <li class="slot slot--break">
+                    <span class="slot__time">{item.time}</span>
+                    <span class="slot__title">{item.title}</span>
+                  </li>
+                ) : (
+                  <li class="slot">
+                    <span class="slot__time">{item.time}</span>
+                    <span class="slot__body">
+                      <span class="slot__title">{item.title}</span>
+                      {item.speaker && <span class="slot__speaker">{item.speaker}</span>}
+                    </span>
+                  </li>
+                ),
+              )}
+            </ol>
+          )}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- REGISTRATIE -->
+  {
+    hasRegistration && (
+      <section id="register" class:list={[hasProgramme ? 'bg-surface' : 'bg-white']}>
+        <div class="container section-md">
+          <div class="section-head">
+            <div>
+              <Eyebrow class="eyebrow--tight">{s.registration}</Eyebrow>
+              <h2 class="h2">{anyFeeNote ? s.feesHeading : s.categoriesHeading}</h2>
+            </div>
+            {d.feesIntro && <p class="section-head__aside">{d.feesIntro}</p>}
+          </div>
+          <div class="fees">
+            {d.fees.map((fee) => (
+              <div class:list={['fee', { 'fee--outline': !hasProgramme }]}>
+                <h3 class="fee__cat">{fee.category}</h3>
+                <span class="fee__price">{formatPrice(fee.price, lang)}</span>
+                {fee.note && <span class="fee__note">{fee.note}</span>}
+                {feeUrl(fee.url) && (
+                  <a href={feeUrl(fee.url)} class="btn btn--primary btn--sm fee__btn">{s.register}</a>
+                )}
+              </div>
+            ))}
+            {d.accreditation && (
+              <div class:list={['fee', { 'fee--outline': !hasProgramme }]}>
+                <h3 class="fee__cat">{d.accreditation.title}</h3>
+                <span class="fee__price">{d.accreditation.value}</span>
+                {d.accreditation.note && <span class="fee__note fee__note--last">{d.accreditation.note}</span>}
+              </div>
+            )}
+          </div>
+          {d.feesFooter && <p class="fees__footer" set:html={d.feesFooter} />}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- PRAKTISCH -->
+  {
+    hasPractical && (
+      <section id="practical" aria-label={s.practicalLabel} class:list={[hasProgramme ? 'bg-white' : 'bg-surface']}>
+        <div class="container section-md practical">
+          {d.practicalImage && (
+            <Image
+              src={d.practicalImage}
+              alt={d.practicalImageAlt ?? ''}
+              widths={[480, 760, 1140]}
+              sizes="(min-width: 1000px) 560px, 100vw"
+              class="img practical__img"
+            />
+          )}
+          <div class="practical__grid">
+            {d.practical.map((p) => (
+              <div class:list={['info', { 'info--white': !hasProgramme }]}>
+                <h3 class="info__title">{p.title}</h3>
+                <p class="info__text" set:html={p.text} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- CONTACT -->
+  <section class="contact-strip">
+    <div class="container contact-strip__inner">
+      <p class="contact-strip__q">{d.contactHeading ?? s.questions(heading.text)}</p>
+      <a href={`mailto:${d.contactEmail}`} class="btn btn--white">{d.contactEmail}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-md { padding-top: var(--section-y-md); padding-bottom: var(--section-y-md); }
+  :global(.eyebrow--tight) { margin-bottom: 16px !important; }
+
+  /* Hero */
+  .c-hero { padding-top: 40px; padding-bottom: 88px; }
+  .crumbs { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 40px; }
+  .crumbs a { color: var(--color-text-secondary); }
+  .c-hero__grid { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+  .c-hero__text { flex: 999 1 520px; min-width: 0; }
+  .c-hero__text :global(.eyebrow) { margin-bottom: 16px; }
+  .c-hero__tagline { margin-top: 14px; font-size: 22px; font-weight: 600; }
+  .c-hero__intro { margin-top: 20px; max-width: 560px; }
+  .c-hero__buttons { margin-top: 36px; }
+
+  .date-card {
+    flex: 1 1 320px; max-width: 400px; background: #fff; border-radius: var(--radius-lg); padding: 28px;
+    box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 20px;
+  }
+  .date-card__month { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); }
+  .date-card__single, .date-card__day { display: flex; flex-direction: column; }
+  .date-card__multi { display: flex; gap: 28px; }
+  .date-card__num { font-family: var(--font-heading); font-size: 64px; font-weight: 600; line-height: 1; }
+  .date-card__num--sm { font-size: 52px; }
+  .date-card__sub { font-size: 15px; color: var(--color-text-secondary); }
+  .date-card__sub--sm { font-size: 14px; }
+  .date-card__venue { border-top: 1px solid var(--color-border); padding-top: 18px; display: flex; flex-direction: column; gap: 4px; }
+  .date-card__venue-name { font-weight: 600; font-size: 16px; }
+  .date-card__link { font-size: 15px; font-weight: 600; }
+
+  /* Programma */
+  .programme { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
+  .programme__intro { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+  .programme__intro :global(.eyebrow) { margin-bottom: 0; }
+  .prose { display: flex; flex-direction: column; gap: 18px; }
+  .prose :global(p) { font-size: 17px; line-height: 1.65; color: var(--color-text-lead); }
+  .programme__note { margin-top: 6px; font-size: 14px; line-height: 1.6; color: var(--color-text-secondary); }
+  .programme__list { flex: 1 1 520px; min-width: 0; list-style: none; padding: 0; display: flex; flex-direction: column; }
+  .slot { display: flex; gap: 24px; padding: 16px 0; border-top: 1px solid var(--color-border); }
+  .slot:last-child { border-bottom: 1px solid var(--color-border); }
+  .slot__time { flex: 0 0 64px; font-weight: 600; color: var(--color-primary); font-variant-numeric: tabular-nums; }
+  .slot__body { display: flex; flex-direction: column; gap: 4px; }
+  .slot__title { font-size: 16px; font-weight: 600; }
+  .slot__speaker { font-size: 14px; color: var(--color-text-secondary); }
+  .slot--break { background: var(--color-surface-2); }
+  .slot--break .slot__time { color: var(--color-text-muted); }
+  .slot--break .slot__title { font-weight: 400; color: var(--color-text-secondary); }
+
+  /* Registratie */
+  .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px; }
+  .section-head__aside { max-width: 440px; font-size: 16px; line-height: 1.6; color: var(--color-text-secondary); }
+  .fees { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .fee { background: #fff; border-radius: var(--radius-md); padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+  .fee--outline { border: 1.5px solid var(--color-border); gap: 14px; }
+  .fee__cat { font-size: 19px; font-weight: 600; }
+  .fee__price { font-family: var(--font-heading); font-size: 30px; font-weight: 600; color: var(--color-primary); }
+  .fee__note { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 8px; }
+  .fee__note--last { margin-bottom: 0; }
+  .fee__btn { margin-top: auto; align-self: flex-start; }
+  .fees__footer { margin-top: 20px; font-size: 14px; color: var(--color-text-secondary); }
+
+  /* Praktisch */
+  .practical { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
+  .practical :global(.practical__img) {
+    flex: 1 1 380px; min-width: 0; aspect-ratio: 4 / 3; border-radius: 24px 24px 24px 120px;
+  }
+  .practical__grid { flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .info { background: var(--color-surface); border-radius: var(--radius-sm); padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+  .info--white { background: #fff; }
+  .info__title { font-size: 17px; font-weight: 600; }
+  .info__text { font-size: 15px; line-height: 1.55; color: var(--color-text-secondary); }
+
+  /* Contactstrook */
+  .contact-strip { background: var(--color-primary); color: #fff; }
+  .contact-strip__inner { padding-top: 56px; padding-bottom: 56px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .contact-strip__q { font-family: var(--font-heading); font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; }
+
+  @media (max-width: 640px) {
+    .section-md { padding-top: 64px; padding-bottom: 64px; }
+    .c-hero { padding-bottom: 64px; }
+    .slot { gap: 16px; }
+    .slot__time { flex-basis: 52px; }
+    .practical :global(.practical__img) { border-radius: 24px 24px 24px 72px; }
+  }
+</style>
