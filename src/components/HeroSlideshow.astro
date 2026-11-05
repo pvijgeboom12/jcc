@@ -43,7 +43,7 @@ const caption = (s: (typeof slides)[number]) => `${s.congress} · ${s.label}`;
 <script is:inline>
   (function () {
     try {
-      var v = new URLSearchParams(location.search).get('hero');
+      var v = new URLSearchParams(location.search).get('hero') || (location.hash === '#split' ? 'split' : '');
       if (v === 'split' || v === 'full') document.documentElement.dataset.hero = v;
     } catch (e) {}
   })();
