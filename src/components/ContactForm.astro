@@ -1,12 +1,19 @@
 ---
+/**
+ * Contactformulier v2: zichtbare labels met verplicht/optioneel, hulpteksten,
+ * eigen foutmeldingen in gewone taal (gekoppeld via aria-describedby),
+ * een foutoverzicht bovenaan en een duidelijke bevestiging.
+ * Zonder endpoint opent het mailprogramma; de bevestiging zegt dat eerlijk.
+ */
 import { home } from '../i18n/home';
 import type { Lang } from '../i18n/routes';
 import { site } from '../lib/site';
 
 interface Props {
   lang: Lang;
+  privacyHref: string;
 }
-const { lang } = Astro.props;
+const { lang, privacyHref } = Astro.props;
 const c = home[lang].contact;
 const endpoint = site.formEndpoint;
 ---
@@ -15,62 +22,159 @@ const endpoint = site.formEndpoint;
   class="cform"
   method="post"
   action={endpoint || `mailto:${site.email}`}
+  novalidate
+  data-cform
   data-mailto={endpoint ? undefined : site.email}
   data-subject={c.mailSubject}
+  data-err-name={c.errors.name}
+  data-err-email={c.errors.email}
+  data-err-email-format={c.errors.emailFormat}
+  data-err-message={c.errors.message}
 >
+  <div class="cform__summary" data-summary tabindex="-1" hidden>
+    <p>{c.errors.summary}</p>
+    <ul data-summary-list></ul>
+  </div>
+
   <div class="cform__row">
     <div class="cform__field">
-      <label for="c-name">{c.name}</label>
-      <input id="c-name" name="naam" type="text" autocomplete="name" required />
+      <label for="c-name">{c.name} <span class="cform__req">{c.required}</span></label>
+      <input id="c-name" name="naam" type="text" autocomplete="name" required aria-describedby="c-name-err" />
+      <p class="cform__err" id="c-name-err" hidden></p>
     </div>
     <div class="cform__field">
-      <label for="c-email">{c.email}</label>
-      <input id="c-email" name="email" type="email" autocomplete="email" required />
+      <label for="c-email">{c.email} <span class="cform__req">{c.required}</span></label>
+      <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="c-email-err" />
+      <p class="cform__err" id="c-email-err" hidden></p>
     </div>
   </div>
   <div class="cform__field">
-    <label for="c-org">{c.org}</label>
-    <input id="c-org" name="organisatie" type="text" autocomplete="organization" />
+    <label for="c-org">{c.org} <span class="cform__opt">{c.optional}</span></label>
+    <input id="c-org" name="organisatie" type="text" autocomplete="organization" aria-describedby="c-org-hint" />
+    <p class="cform__hint" id="c-org-hint">{c.orgHint}</p>
   </div>
   <div class="cform__field">
-    <label for="c-msg">{c.message}</label>
-    <textarea id="c-msg" name="bericht" rows="5" required></textarea>
+    <label for="c-msg">{c.message} <span class="cform__req">{c.required}</span></label>
+    <textarea id="c-msg" name="bericht" rows="5" required aria-describedby="c-msg-hint c-msg-err"></textarea>
+    <p class="cform__hint" id="c-msg-hint">{c.messageHint}</p>
+    <p class="cform__err" id="c-msg-err" hidden></p>
   </div>
-  <button type="submit" class="btn btn--primary cform__submit">{c.submit}</button>
+  <button type="submit" class="btn btn--primary cform__submit">
+    {c.submit}
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+  </button>
+  <p class="cform__privacy">{c.privacy} <a href={privacyHref}>{c.privacyLink}</a>.</p>
+
+  <div class="cform__done" data-done tabindex="-1" role="status" hidden>
+    <p class="cform__donetitle">{c.sentTitle}</p>
+    <p>
+      {endpoint ? c.sentEndpoint : (<>{c.sentMailto} <a href={`mailto:${site.email}`}>{site.email}</a>.</>)}
+    </p>
+  </div>
 </form>
 
 <script>
-  // Zonder formulier-endpoint: open het mailprogramma met alles ingevuld.
-  document.querySelectorAll<HTMLFormElement>('form[data-mailto]').forEach((form) => {
+  document.querySelectorAll<HTMLFormElement>('form[data-cform]').forEach((form) => {
+    const ds = form.dataset;
+    const summary = form.querySelector<HTMLElement>('[data-summary]')!;
+    const list = form.querySelector<HTMLElement>('[data-summary-list]')!;
+    const done = form.querySelector<HTMLElement>('[data-done]')!;
+    const fields = {
+      naam: form.querySelector<HTMLInputElement>('#c-name')!,
+      email: form.querySelector<HTMLInputElement>('#c-email')!,
+      bericht: form.querySelector<HTMLTextAreaElement>('#c-msg')!,
+    };
+
+    const check = (el: HTMLInputElement | HTMLTextAreaElement) => {
+      const v = el.value.trim();
+      if (el === fields.naam && !v) return ds.errName;
+      if (el === fields.email && !v) return ds.errEmail;
+      if (el === fields.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return ds.errEmailFormat;
+      if (el === fields.bericht && !v) return ds.errMessage;
+      return '';
+    };
+    const paint = (el: HTMLInputElement | HTMLTextAreaElement, msg = '') => {
+      const err = form.querySelector<HTMLElement>(`#${el.id}-err`)!;
+      err.textContent = msg;
+      err.hidden = !msg;
+      if (msg) el.setAttribute('aria-invalid', 'true');
+      else el.removeAttribute('aria-invalid');
+    };
+    // Na een eerste fout: direct opnieuw controleren bij verlaten van het veld
+    Object.values(fields).forEach((el) =>
+      el.addEventListener('blur', () => { if (el.hasAttribute('aria-invalid')) paint(el, check(el)); }),
+    );
+
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const labels = [...form.querySelectorAll('label')].map((l) => l.textContent?.trim() ?? '');
-      const values = ['naam', 'email', 'organisatie', 'bericht'].map((k) => String(data.get(k) ?? ''));
-      const body = values.map((v, i) => (i === 3 ? `\n${v}` : `${labels[i]}: ${v}`)).join('\n');
-      const subject = form.dataset.subject ?? '';
-      window.location.href = `mailto:${form.dataset.mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const errors = Object.values(fields)
+        .map((el) => ({ el, msg: check(el) ?? '' }))
+        .filter((x) => { paint(x.el, x.msg); return x.msg; });
+      if (errors.length) {
+        e.preventDefault();
+        list.replaceChildren(
+          ...errors.map(({ el, msg }) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `#${el.id}`;
+            a.textContent = msg ?? '';
+            a.addEventListener('click', (ev) => { ev.preventDefault(); el.focus(); });
+            li.append(a);
+            return li;
+          }),
+        );
+        summary.hidden = false;
+        summary.focus();
+        return;
+      }
+      summary.hidden = true;
+      if (ds.mailto) {
+        e.preventDefault();
+        const data = new FormData(form);
+        const labels = [...form.querySelectorAll('label')].map((l) => l.childNodes[0]?.textContent?.trim() ?? '');
+        const values = ['naam', 'email', 'organisatie', 'bericht'].map((k) => String(data.get(k) ?? ''));
+        const body = values.map((v, i) => (i === 3 ? `\n${v}` : `${labels[i]}: ${v}`)).join('\n');
+        window.location.href = `mailto:${ds.mailto}?subject=${encodeURIComponent(ds.subject ?? '')}&body=${encodeURIComponent(body)}`;
+        done.hidden = false;
+        done.focus();
+      }
     });
   });
 </script>
 
 <style>
   .cform {
-    flex: 1 1 420px; min-width: 0; background: #fff; color: var(--color-text);
-    border-radius: var(--radius-md); padding: 36px; box-shadow: var(--shadow-form);
-    display: flex; flex-direction: column; gap: 18px;
+    flex: 1 1 420px; min-width: 0; background: var(--color-surface); color: var(--color-text);
+    border-radius: var(--radius-md); padding: 36px;
+    display: flex; flex-direction: column; gap: 20px;
   }
-  .cform__row { display: flex; flex-wrap: wrap; gap: 18px; }
+  .cform__row { display: flex; flex-wrap: wrap; gap: 20px; }
   .cform__row .cform__field { flex: 1 1 200px; }
-  .cform__field { display: flex; flex-direction: column; gap: 8px; }
-  label { font-size: 14px; font-weight: 600; }
+  .cform__field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  label { font-size: 16px; font-weight: 600; }
+  .cform__req, .cform__opt { font-size: 14px; font-weight: 400; color: var(--color-text-secondary); margin-left: 4px; }
+  .cform__hint { font-size: 14px; color: var(--color-text-secondary); }
   input, textarea {
-    font-family: inherit; font-size: 16px; color: var(--color-text);
-    padding: 13px 16px; min-height: 48px;
-    border: 1.5px solid var(--color-border-strong); border-radius: var(--radius-input); background: #fff;
+    font-family: inherit; font-size: 17px; color: var(--color-text);
+    padding: 13px 16px; min-height: 52px; width: 100%;
+    border: 1.5px solid #8f878c; border-radius: var(--radius-input); background: #fff;
   }
   textarea { resize: vertical; }
-  input:focus, textarea:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(143, 39, 72, 0.15); }
-  .cform__submit { align-self: flex-start; padding-left: 30px; padding-right: 30px; }
-  @media (max-width: 640px) { .cform { padding: 24px; } }
+  input:focus-visible, textarea:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 1px; border-color: var(--color-primary); }
+  [aria-invalid='true'] { border-color: #b3261e; border-width: 2px; }
+  .cform__err {
+    display: flex; gap: 6px; align-items: flex-start;
+    font-size: 15px; font-weight: 600; color: #b3261e;
+  }
+  .cform__err::before { content: '!'; flex: 0 0 18px; height: 18px; border-radius: 50%; background: #b3261e; color: #fff; font-size: 12px; display: grid; place-items: center; margin-top: 2px; }
+  .cform__err[hidden], .cform__summary[hidden], .cform__done[hidden] { display: none; }
+  .cform__summary { border: 2px solid #b3261e; background: #fff; border-radius: var(--radius-input); padding: 16px 18px; color: #b3261e; font-weight: 600; }
+  .cform__summary ul { margin: 8px 0 0; padding-left: 18px; }
+  .cform__summary a { color: #b3261e; }
+  .cform__submit { align-self: flex-start; gap: 10px; padding-left: 30px; padding-right: 26px; font-size: 17px; }
+  .cform__submit svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .cform__privacy { font-size: 14px; color: var(--color-text-secondary); }
+  .cform__privacy a { color: var(--color-text); }
+  .cform__done { border-radius: var(--radius-input); background: #fff; border-left: 4px solid var(--color-primary); padding: 16px 18px; font-size: 16px; }
+  .cform__donetitle { font-weight: 600; color: var(--color-primary); margin-bottom: 4px; }
+  @media (max-width: 640px) { .cform { padding: 22px; } }
 </style>

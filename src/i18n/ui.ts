@@ -34,6 +34,11 @@ export const ui = {
       next: 'Eerstvolgende',
       cta: 'Info & registratie →',
       label: 'Op de agenda',
+      heading: 'Komende congressen',
+      open: 'Registratie open',
+      std: 'Save the date',
+      view: 'Bekijk congres',
+      follows: 'Programma volgt',
     },
     // Congrespagina
     congress: {
@@ -80,6 +85,11 @@ export const ui = {
       next: 'Next up',
       cta: 'Info & registration →',
       label: 'On the agenda',
+      heading: 'Upcoming congresses',
+      open: 'Registration open',
+      std: 'Save the date',
+      view: 'View congress',
+      follows: 'Programme to follow',
     },
     congress: {
       breadcrumb: 'Breadcrumb',

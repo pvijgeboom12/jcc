@@ -1,0 +1,47 @@
+---
+/** Responsive <picture> met AVIF/WebP/JPEG en een aparte mobiele uitsnede. */
+import type { ImageMetadata } from 'astro';
+import { buildPicture } from '../lib/picture';
+
+interface Props {
+  desktop: ImageMetadata;
+  mobile?: ImageMetadata;
+  alt: string;
+  sizes?: string;
+  mobileSizes?: string;
+  desktopWidths?: number[];
+  mobileWidths?: number[];
+  eager?: boolean;
+  class?: string;
+  position?: string;
+}
+const {
+  desktop, mobile, alt, sizes, mobileSizes, desktopWidths, mobileWidths,
+  eager = false, class: cls, position,
+} = Astro.props;
+const set = await buildPicture({ desktop, mobile, sizes, mobileSizes, desktopWidths, mobileWidths });
+---
+
+<picture class="artpic">
+  {set.sources.map((s) => (
+    <source type={s.type} media={s.media} srcset={s.srcset} sizes={s.sizes} width={s.width} height={s.height} />
+  ))}
+  <img
+    src={set.fallback.src}
+    srcset={set.fallback.srcset}
+    sizes={set.fallback.sizes}
+    width={set.fallback.width}
+    height={set.fallback.height}
+    alt={alt}
+    class={cls}
+    style={position ? `object-position:${position}` : undefined}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding={eager ? 'sync' : 'async'}
+  />
+</picture>
+
+<style>
+  .artpic { display: contents; }
+  .artpic source { display: none; }
+</style>

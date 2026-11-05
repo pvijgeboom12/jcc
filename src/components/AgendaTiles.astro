@@ -1,4 +1,9 @@
 ---
+/**
+ * Agenda v2: grotere, beter leesbare congreskaarten.
+ * Elke kaart is één link (hele kaart klikbaar) met datum, naam, locatie, status en actie.
+ * Congressen zonder eigen pagina linken naar het congresoverzicht.
+ */
 import PinIcon from './PinIcon.astro';
 import Eyebrow from './Eyebrow.astro';
 import { t } from '../i18n/ui';
@@ -13,108 +18,106 @@ interface Props {
 const { lang, max = 5 } = Astro.props;
 const s = t(lang).agenda;
 const upcoming = (await getUpcoming(lang)).slice(0, max);
-const years = [...new Set(upcoming.map((c) => c.data.startDate.getUTCFullYear()))];
-const yearLabel = years.length === 1 ? ` · ${years[0]}` : '';
 ---
 
 {
   upcoming.length > 0 && (
-    <section aria-label={`${s.label}${yearLabel}`} class="agenda bg-white">
+    <section id="agenda" aria-labelledby="agenda-heading" class="agenda bg-white">
       <div class="container agenda__inner">
         <div class="agenda__head">
-          <Eyebrow class="agenda__eyebrow">
-            {s.eyebrow}
-            {yearLabel}
-          </Eyebrow>
-          <a href={routes.congresses[lang]} class="agenda__all">
-            {s.all}
-          </a>
+          <div>
+            <Eyebrow>{s.eyebrow}</Eyebrow>
+            <h2 id="agenda-heading" class="agenda__heading">{s.heading}</h2>
+          </div>
+          <a href={routes.congresses[lang]} class="agenda__all">{s.all}</a>
         </div>
-        <div class="agenda__grid">
+        <ul class="agenda__grid">
           {upcoming.map((c, i) => {
             const d = c.data;
             const featured = i === 0;
             const linkable = isLinkable(c);
-            const Tag = linkable ? 'a' : 'div';
+            const href = linkable ? congressPath(lang, d.slug) : routes.congresses[lang];
             const tile = d.tile ?? { title: d.title };
+            const open = d.status === 'registratie-open';
             return (
-              <Tag
-                href={linkable ? congressPath(lang, d.slug) : undefined}
-                class:list={['tile', { 'tile--featured': featured, 'tile--link': linkable }]}
-              >
-                <svg class="tile__ring" aria-hidden="true" viewBox="0 0 24 24">
-                  <g fill="none" stroke-width="3.4" stroke={featured ? '#FFFFFF' : '#8F2748'}>
-                    <path d="M20.5 6.1 A9.5 9.5 0 1 0 20.5 17.9" />
-                    <path d="M15.8 8.5 A4.5 4.5 0 1 0 15.8 15.5" />
-                  </g>
-                </svg>
-                {featured && <span class="tile__badge">{s.next}</span>}
-                <span class="tile__day">{dayRange(d.startDate, d.endDate, lang)}</span>
-                <span class="tile__month">{monthYearShort(d.startDate, d.endDate, lang)}</span>
-                <span class="tile__title">{tile.title}</span>
-                {tile.subtitle && <span class="tile__subtitle">{tile.subtitle}</span>}
-                <span class="tile__place">
+              <li class:list={['tile', { 'tile--featured': featured }]}>
+                <div class="tile__top">
+                  {featured && <span class="tile__badge">{s.next}</span>}
+                  <span class:list={['tile__status', { 'tile__status--open': open }]}>{open ? s.open : s.std}</span>
+                </div>
+                <p class="tile__date">
+                  <span class="tile__day">{dayRange(d.startDate, d.endDate, lang)}</span>
+                  <span class="tile__month">{monthYearShort(d.startDate, d.endDate, lang)}</span>
+                </p>
+                <h3 class="tile__title">
+                  <a href={href} class="tile__link">
+                    {tile.title}
+                    {tile.subtitle && <span class="tile__subtitle">{tile.subtitle}</span>}
+                  </a>
+                </h3>
+                <p class="tile__place">
                   <PinIcon color={featured ? '#F6D3DE' : '#8F2748'} />
                   {d.locationShort ?? d.location}
-                </span>
-                {featured && linkable && <span class="tile__cta">{s.cta}</span>}
-              </Tag>
+                </p>
+                <p class="tile__cta" aria-hidden="true">{linkable ? `${s.view} →` : s.follows}</p>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
     </section>
   )
 }
 
 <style>
-  .agenda__inner { padding-top: 56px; }
-  .agenda__head {
-    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
-    gap: 12px; margin: 0 0 20px;
-  }
-  .agenda__head :global(.agenda__eyebrow) { margin: 0; }
-  .agenda__all { font-size: 15px; font-weight: 600; }
-  .agenda__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+  .agenda__inner { padding-top: 72px; padding-bottom: 8px; }
+  .agenda__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin: 0 0 28px; }
+  .agenda__heading { font-weight: 600; letter-spacing: -0.02em; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; }
+  .agenda__all { font-size: 16px; font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; text-underline-offset: 4px; }
+  .agenda__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
 
   .tile {
-    position: relative; overflow: hidden;
-    display: flex; flex-direction: column; gap: 4px;
-    min-height: 250px; padding: 22px 22px 24px;
-    border-radius: var(--radius-md);
-    background: var(--color-surface); color: var(--color-text); text-decoration: none;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative; display: flex; flex-direction: column; gap: 6px;
+    min-height: 280px; padding: 22px 22px 22px;
+    border-radius: var(--radius-md); border: 1.5px solid var(--color-border);
+    background: var(--color-surface); color: var(--color-text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-tile-hover); }
-  .tile__ring {
-    position: absolute; right: -46px; bottom: -52px; width: 170px; height: 170px; opacity: 0.09;
-    transition: transform 0.5s ease; transform-origin: 70% 50%;
-  }
-  .tile:hover .tile__ring { transform: rotate(-12deg) scale(1.06); }
+  .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-tile-hover); border-color: var(--color-primary-tint); }
+  .tile:focus-within { outline: 3px solid var(--color-primary); outline-offset: 3px; }
+  .tile__link { color: inherit; text-decoration: none; }
+  .tile__link:focus-visible { outline: none; }
+  /* Hele kaart klikbaar via de link in de titel */
+  .tile__link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
 
-  .tile__badge {
-    align-self: flex-start; margin-bottom: 14px;
-    background: #fff; color: var(--color-primary);
-    border-radius: var(--radius-pill); padding: 4px 11px;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  .tile__top { display: flex; flex-wrap: wrap; gap: 6px; min-height: 28px; }
+  .tile__badge, .tile__status {
+    border-radius: var(--radius-pill); padding: 5px 12px;
+    font-size: 13px; font-weight: 600; line-height: 1.3;
   }
-  .tile__day {
-    margin-top: 38px;
-    font-size: 40px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; white-space: nowrap;
-    color: var(--color-primary);
-  }
-  .tile__month { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text); }
-  .tile__title { position: relative; margin-top: auto; padding-top: 18px; font-size: 19px; font-weight: 600; line-height: 1.2; }
-  .tile__subtitle { position: relative; font-size: 15px; font-weight: 400; color: var(--color-text-secondary); }
-  .tile__place { position: relative; display: flex; gap: 6px; font-size: 14px; line-height: 1.4; color: var(--color-text-secondary); }
-  .tile__cta { position: relative; margin-top: 10px; font-size: 14px; font-weight: 600; color: #fff; }
+  .tile__badge { background: #fff; color: var(--color-primary); }
+  .tile__status { background: #fff; color: var(--color-text); border: 1px solid var(--color-border); }
+  .tile__status--open { background: #e6f2ea; color: #1d5a33; border-color: #bcdcc6; }
+
+  .tile__date { margin-top: 18px; display: flex; flex-direction: column; gap: 2px; }
+  .tile__day { font-family: var(--font-heading); font-size: 44px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; white-space: nowrap; color: var(--color-primary); }
+  .tile__month { font-size: 16px; font-weight: 600; color: var(--color-text); }
+  .tile__title { margin-top: auto; padding-top: 16px; font-size: 22px; font-weight: 600; line-height: 1.2; }
+  .tile__subtitle { display: block; font-family: var(--font-body); font-size: 16px; font-weight: 400; color: var(--color-text-secondary); margin-top: 2px; }
+  .tile__place { display: flex; gap: 6px; font-size: 15px; line-height: 1.4; color: var(--color-text-secondary); }
+  .tile__cta { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--color-primary); }
 
   /* Uitgelicht: eerstvolgende congres */
-  .tile--featured { background: var(--color-primary); color: #fff; }
-  .tile--featured:hover { color: #fff; }
-  .tile--featured .tile__ring { opacity: 0.16; }
-  .tile--featured .tile__day { margin-top: 0; color: #fff; }
-  .tile--featured .tile__month { color: var(--color-primary-tint); }
-  .tile--featured .tile__subtitle,
-  .tile--featured .tile__place { color: var(--color-primary-tint-2); }
+  .tile--featured { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+  .tile--featured .tile__day, .tile--featured .tile__month, .tile--featured .tile__title, .tile--featured .tile__cta { color: #fff; }
+  .tile--featured .tile__subtitle, .tile--featured .tile__place { color: var(--color-primary-tint-2); }
+  .tile--featured:focus-within { outline-color: var(--color-text); }
+
+  @media (max-width: 640px) {
+    .agenda__inner { padding-top: 56px; }
+    .tile { min-height: 0; }
+    .tile__date { flex-direction: row; align-items: baseline; gap: 10px; margin-top: 12px; }
+    .tile__day { font-size: 36px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tile:hover { transform: none; } }
 </style>

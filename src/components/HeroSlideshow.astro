@@ -1,0 +1,321 @@
+---
+/**
+ * Hero v2: beeldvullende congresfotografie met rustige fade.
+ * - Eerste beeld laadt direct met hoge prioriteit (LCP). Vervolgbeelden staan in
+ *   een <template> en worden pas geladen vlak voordat ze nodig zijn.
+ * - Geen autoplay bij prefers-reduced-motion en op mobiel (<700px).
+ * - Pauze-, vorige- en volgende-knop; pauzeert ook bij hover en toetsenbordfocus.
+ * - Twee lay-outs om te vergelijken: full-bleed (standaard) en editorial split
+ *   (?hero=split). Keuze wordt vóór de eerste weergave gezet, dus geen layout shift.
+ */
+import ArtPicture from './ArtPicture.astro';
+import { home } from '../i18n/home';
+import type { Lang } from '../i18n/routes';
+
+import plenair from '../assets/images/v2/slaap-plenair.jpg';
+import plenairM from '../assets/images/v2/slaap-plenair-m.jpg';
+import spreker from '../assets/images/v2/slaap-spreker.jpg';
+import sprekerM from '../assets/images/v2/slaap-spreker-m.jpg';
+import netwerken from '../assets/images/v2/slaap-netwerken.jpg';
+import netwerkenM from '../assets/images/v2/slaap-netwerken-m.jpg';
+import feest from '../assets/images/v2/slaap-feest.jpg';
+import feestM from '../assets/images/v2/slaap-feest-m.jpg';
+import milaan from '../assets/images/v2/milaan-kloostertuin.jpg';
+import milaanM from '../assets/images/v2/milaan-kloostertuin-m.jpg';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const h = home[lang].hero;
+
+const images = [
+  { desktop: plenair, mobile: plenairM, position: '42% 55%' },
+  { desktop: spreker, mobile: sprekerM, position: '58% 40%' },
+  { desktop: netwerken, mobile: netwerkenM, position: '55% 40%' },
+  { desktop: feest, mobile: feestM, position: '50% 50%' },
+  { desktop: milaan, mobile: milaanM, position: '50% 45%' },
+];
+const slides = images.map((img, i) => ({ ...img, ...h.slides[i] }));
+const caption = (s: (typeof slides)[number]) => `${s.congress} · ${s.label}`;
+---
+
+<script is:inline>
+  (function () {
+    try {
+      var v = new URLSearchParams(location.search).get('hero');
+      if (v === 'split' || v === 'full') document.documentElement.dataset.hero = v;
+    } catch (e) {}
+  })();
+</script>
+
+<section
+  id="top"
+  class="hero2"
+  data-hero-root
+  aria-roledescription={h.carouselRole}
+  aria-label={h.carouselLabel}
+>
+  <div class="hero2__media">
+    <div class="hero2__slides">
+      {
+        slides.map((s, i) => (
+          <div
+            class:list={['hero2__slide', { 'is-active': i === 0 }]}
+            data-slide={i}
+            data-caption={caption(s)}
+            role="group"
+            aria-roledescription={h.slideRole}
+            aria-label={`${i + 1} / ${slides.length}`}
+            aria-hidden={i === 0 ? undefined : 'true'}
+          >
+            {i === 0 ? (
+              <ArtPicture
+                desktop={s.desktop}
+                mobile={s.mobile}
+                alt={s.alt}
+                eager
+                class="hero2__img"
+                position={s.position}
+                sizes="(min-width: 1000px) 100vw, 100vw"
+              />
+            ) : (
+              <template>
+                <ArtPicture desktop={s.desktop} mobile={s.mobile} alt={s.alt} class="hero2__img" position={s.position} />
+              </template>
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <div class="hero2__scrim" aria-hidden="true"></div>
+
+    <div class="hero2__bar">
+      <p class="hero2__caption" data-caption aria-live="off">
+        <span class="hero2__dot" aria-hidden="true"></span>
+        <span data-caption-text>{caption(slides[0])}</span>
+      </p>
+      <div class="hero2__controls">
+        <button type="button" class="hero2__btn" data-prev aria-label={h.prev}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+        <button type="button" class="hero2__btn" data-toggle aria-label={h.pause} data-label-play={h.play} data-label-pause={h.pause} hidden>
+          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14" /></svg>
+          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" /></svg>
+        </button>
+        <button type="button" class="hero2__btn" data-next aria-label={h.next}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+        <span class="hero2__count" aria-hidden="true"><span data-count>1</span> / {slides.length}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero2__content">
+    <div class="hero2__inner">
+      <h1 class="hero2__title">
+        {h.title} <em class="hero2__accent">{h.accent}</em>
+      </h1>
+      <p class="hero2__lead">{h.lead}</p>
+      <div class="btn-row hero2__buttons">
+        <a href="#contact" class="btn btn--primary">{h.primary}</a>
+        <a href="#agenda" class="btn hero2__secondary">{h.secondary}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-hero-root]');
+  if (root) {
+    const slides = [...root.querySelectorAll<HTMLElement>('.hero2__slide')];
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+    const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
+    const captionBox = root.querySelector<HTMLElement>('[data-caption]')!;
+    const captionText = root.querySelector<HTMLElement>('[data-caption-text]')!;
+    const count = root.querySelector<HTMLElement>('[data-count]')!;
+    const INTERVAL = 7000;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    const wide = matchMedia('(min-width: 700px)');
+    let current = 0;
+    let timer: number | undefined;
+    let userPaused = false;
+    let hoverPaused = false;
+
+    const load = (i: number) => {
+      const tpl = slides[i]?.querySelector('template');
+      if (tpl) slides[i].replaceChildren(tpl.content.cloneNode(true));
+      return slides[i]?.querySelector('img');
+    };
+
+    const show = async (i: number, announce: boolean) => {
+      const n = (i + slides.length) % slides.length;
+      if (n === current) return;
+      const img = load(n);
+      if (img && !img.complete) {
+        img.loading = 'eager';
+        await img.decode().catch(() => {});
+      }
+      slides[current].classList.remove('is-active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      slides[n].classList.add('is-active');
+      slides[n].removeAttribute('aria-hidden');
+      current = n;
+      captionBox.setAttribute('aria-live', announce ? 'polite' : 'off');
+      captionText.textContent = slides[n].dataset.caption ?? '';
+      count.textContent = String(n + 1);
+      // Volgende alvast klaarzetten, pas nu (niet bij paginalading)
+      const idle = (window as any).requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 300));
+      idle(() => load((n + 1) % slides.length));
+    };
+
+    const canAutoplay = () => !reduce.matches && wide.matches;
+    const running = () => timer !== undefined;
+    const stop = () => { clearInterval(timer); timer = undefined; };
+    const start = () => {
+      stop();
+      if (!canAutoplay() || userPaused || hoverPaused || document.hidden) return;
+      timer = window.setInterval(() => show(current + 1, false), INTERVAL);
+    };
+    const syncToggle = () => {
+      toggle.hidden = !canAutoplay();
+      const playing = !userPaused;
+      toggle.classList.toggle('is-paused', !playing);
+      toggle.setAttribute('aria-label', (playing ? toggle.dataset.labelPause : toggle.dataset.labelPlay) ?? '');
+    };
+
+    prev.addEventListener('click', () => { show(current - 1, true); if (running()) start(); });
+    next.addEventListener('click', () => { show(current + 1, true); if (running()) start(); });
+    toggle.addEventListener('click', () => { userPaused = !userPaused; syncToggle(); userPaused ? stop() : start(); });
+    root.addEventListener('keydown', (e) => {
+      if (!(e.target as HTMLElement).closest('.hero2__controls')) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); }
+    });
+    // Pauzeer bij focus in de hero (WCAG 2.2.2), hervat daarna tenzij handmatig gepauzeerd
+    // Hover-pauze alleen op de bediening: de hero is beeldvullend, dus anders speelt hij bijna nooit af
+    const bar = root.querySelector<HTMLElement>('.hero2__bar')!;
+    bar.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hoverPaused = true; stop(); } });
+    bar.addEventListener('pointerleave', () => { hoverPaused = false; start(); });
+    root.addEventListener('focusin', () => { hoverPaused = true; stop(); });
+    root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget as Node)) { hoverPaused = false; start(); } });
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    const onChange = () => { syncToggle(); start(); };
+    reduce.addEventListener('change', onChange);
+    wide.addEventListener('change', onChange);
+
+    syncToggle();
+    // Autoplay pas starten na volledige paginalading; volgende beeld dan pas ophalen
+    const begin = () => {
+      if (canAutoplay()) {
+        const idle = (window as any).requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1200));
+        idle(() => load(1), { timeout: 3000 });
+        start();
+      }
+    };
+    document.readyState === 'complete' ? begin() : addEventListener('load', begin, { once: true });
+  }
+</script>
+
+<style>
+  .hero2 { position: relative; background: var(--color-surface); }
+  .hero2__media { position: relative; overflow: hidden; background: #2a2128; }
+  .hero2__slides { position: absolute; inset: 0; }
+  .hero2__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.4s ease; }
+  .hero2__slide.is-active { opacity: 1; }
+  .hero2__slide :global(.hero2__img) { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (prefers-reduced-motion: reduce) { .hero2__slide { transition: none; } }
+
+  /* Onderbalk met congresnaam en bediening */
+  .hero2__bar {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 16px var(--gutter);
+  }
+  .hero2__caption {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(21, 21, 21, 0.72); color: #fff;
+    padding: 9px 16px; border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 600; line-height: 1.3;
+    backdrop-filter: blur(6px);
+  }
+  .hero2__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary-tint); flex: 0 0 8px; }
+  .hero2__controls { display: flex; align-items: center; gap: 8px; }
+  .hero2__btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+    display: grid; place-items: center;
+    background: #fff; color: var(--color-text);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  }
+  .hero2__btn[hidden] { display: none; }
+  .hero2__btn:hover { background: var(--color-primary-tint-2); }
+  .hero2__btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 6px var(--color-primary); }
+  .hero2__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .hero2__btn .i-play { fill: currentColor; stroke: none; display: none; }
+  .hero2__btn.is-paused .i-play { display: block; }
+  .hero2__btn.is-paused .i-pause { display: none; }
+  .hero2__count {
+    min-width: 52px; text-align: center; color: #fff; font-size: 15px; font-weight: 600;
+    background: rgba(21, 21, 21, 0.72); border-radius: var(--radius-pill); padding: 9px 12px;
+  }
+
+  /* Tekst */
+  .hero2__title {
+    font-weight: 600; letter-spacing: -0.025em; line-height: 1.04;
+    font-size: clamp(36px, 4.6vw, 68px); color: var(--color-text);
+    text-wrap: balance;
+  }
+  .hero2__accent { display: block; font-style: italic; color: var(--color-primary); }
+  .hero2__lead { margin-top: 20px; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--color-text-lead); max-width: 34ch; }
+  .hero2__buttons { margin-top: 32px; }
+  .hero2__secondary { background: #fff; color: var(--color-text); border: 1.5px solid var(--color-border-button); }
+  .hero2__secondary:hover { color: var(--color-text); }
+
+  /* ---------- Mobiel (standaard): beeld boven, tekst eronder ---------- */
+  .hero2__media { height: min(125vw, 72svh); min-height: 320px; }
+  .hero2__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 62%, rgba(21, 21, 21, 0.45)); }
+  .hero2__content { padding: 36px var(--gutter) 56px; }
+  .hero2__inner { max-width: var(--container); margin: 0 auto; }
+  @media (max-width: 419px) {
+    .hero2__bar { padding: 12px 12px; }
+    .hero2__caption { font-size: 14px; padding: 8px 12px; }
+    .hero2__count { display: none; }
+  }
+
+  /* ---------- Full-bleed (standaard vanaf 1000px) ---------- */
+  @media (min-width: 1000px) {
+    :global(html:not([data-hero='split'])) .hero2 { display: grid; }
+    :global(html:not([data-hero='split'])) .hero2 > * { grid-area: 1 / 1; }
+    :global(html:not([data-hero='split'])) .hero2__media { height: clamp(620px, calc(100svh - 84px), 860px); }
+    :global(html:not([data-hero='split'])) .hero2__scrim {
+      background:
+        linear-gradient(90deg, rgba(18, 12, 16, 0.9) 0%, rgba(18, 12, 16, 0.8) 40%, rgba(18, 12, 16, 0.45) 58%, rgba(18, 12, 16, 0.1) 74%, transparent 84%),
+        linear-gradient(0deg, rgba(18, 12, 16, 0.55) 0%, transparent 26%);
+    }
+    :global(html:not([data-hero='split'])) .hero2__content {
+      position: relative; z-index: 1; align-self: center; padding: 0 var(--gutter) 72px; pointer-events: none;
+    }
+    :global(html:not([data-hero='split'])) .hero2__inner > * { pointer-events: auto; max-width: 780px; }
+    :global(html:not([data-hero='split'])) .hero2__title { color: #fff; }
+    :global(html:not([data-hero='split'])) .hero2__inner { text-shadow: 0 1px 18px rgba(0, 0, 0, 0.35); }
+    :global(html:not([data-hero='split'])) .hero2__accent { color: var(--color-primary-tint); }
+    :global(html:not([data-hero='split'])) .hero2__lead { color: #fff; }
+    :global(html:not([data-hero='split'])) .hero2__secondary { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.75); }
+    :global(html:not([data-hero='split'])) .hero2__secondary:hover { background: rgba(255, 255, 255, 0.12); }
+    :global(html:not([data-hero='split'])) .hero2__bar { padding: 24px max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))); }
+    :global(html:not([data-hero='split'])) .hero2 :focus-visible { outline-color: #fff; }
+  }
+
+  /* ---------- Editorial split (?hero=split) vanaf 1000px ---------- */
+  @media (min-width: 1000px) {
+    :global(html[data-hero='split']) .hero2 {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); align-items: center; gap: 56px;
+      padding: 48px max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter))) 64px;
+    }
+    :global(html[data-hero='split']) .hero2__bar { padding-left: 132px; }
+    :global(html[data-hero='split']) .hero2__title { font-size: clamp(36px, 4vw, 58px); }
+    :global(html[data-hero='split']) .hero2__media { order: 2; height: 640px; border-radius: 28px 28px 28px 160px; }
+    :global(html[data-hero='split']) .hero2__content { order: 1; padding: 0; }
+  }
+</style>
