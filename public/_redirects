@@ -1,0 +1,5 @@
+# Oude Wix-URL's → nieuwe site (bron: JCC-redirects_v01, regels 2, 3 en 5)
+# De www → zonder-www-redirect (regel 1) gaat via een Cloudflare Redirect Rule bij livegang.
+/privacy-statement   /privacyverklaring/   301
+/privacy-statement/  /privacyverklaring/   301
+/sitemap.xml         /sitemap-index.xml    301

@@ -77,6 +77,18 @@ De tekst onder de frontmatter is de inleiding bij het programma.
 | Logo en favicons (uit het huisstijlpakket) | `src/components/Logo.astro`, `public/brand/`, `public/favicon.*` |
 | Privacyverklaring | `src/components/PrivacyPage.astro` |
 
+## Analytics en cookies
+
+Cloudflare Web Analytics via de handmatige beacon, met `defer` geladen zodat het de LCP niet raakt.
+Het token staat in `src/lib/site.ts` (`cfAnalyticsToken`); leeg maken zet analytics uit.
+De beacon wordt alleen in productiebuilds geladen. Hij zet geen cookies, dus er is geen cookiebanner nodig.
+Geen Google Analytics.
+
+## Redirects
+
+`public/_redirects` vangt oude Wix-URL's op (`/privacy-statement` en `/sitemap.xml`).
+De redirect van www naar zonder www gaat via een Cloudflare Redirect Rule op domeinniveau.
+
 ## Deploy
 
 Cloudflare Workers-project `jcc`, gekoppeld aan deze repo.
@@ -94,6 +106,5 @@ Zet een dagelijkse rebuild aan (deploy hook + scheduled trigger), dan verdwijnen
 - Privacyverklaring: tekst aanleveren (staat nu als TODO, met `noindex`).
 - WEACADEMY: link naar het registratieplatform (`registrationUrl`).
 - NVMKA Najaarscongres: prijzen, registratiedatum, locatie, diner- en annuleringsinfo.
-- LinkedIn: echte bedrijfspagina invullen in `src/lib/site.ts`.
 - Contactformulier: opent nu het mailprogramma van de bezoeker. Voor direct versturen een endpoint invullen in `src/lib/site.ts`.
-- Redirects van oude Wix-URL's: toevoegen in `public/_redirects` zodra de oude URL's bekend zijn.
+- Bij livegang: Cloudflare Redirect Rule `www.jcc-congressen.nl/*` → `https://jcc-congressen.nl/${1}` (301), en de nieuwe sitemap indienen in Search Console.

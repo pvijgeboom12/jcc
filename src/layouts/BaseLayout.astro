@@ -64,6 +64,16 @@ const skip = lang === 'nl' ? 'Direct naar de inhoud' : 'Skip to content';
     <meta property="og:locale" content={lang === 'nl' ? 'nl_NL' : 'en_GB'} />
     {ogImage && <meta property="og:image" content={new URL(ogImage, site.url).href} />}
     <slot name="head" />
+    {
+      import.meta.env.PROD && site.cfAnalyticsToken && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: site.cfAnalyticsToken })}
+        />
+      )
+    }
   </head>
   <body>
     <a class="skip-link" href="#main">{skip}</a>
