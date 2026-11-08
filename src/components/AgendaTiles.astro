@@ -24,14 +24,14 @@ const upcoming = (await getUpcoming(lang)).slice(0, max);
   upcoming.length > 0 && (
     <section id="agenda" aria-labelledby="agenda-heading" class="agenda bg-white">
       <div class="container agenda__inner">
-        <div class="agenda__head">
+        <div class="agenda__head" data-reveal>
           <div>
             <Eyebrow>{s.eyebrow}</Eyebrow>
             <h2 id="agenda-heading" class="agenda__heading">{s.heading}</h2>
           </div>
           <a href={routes.congresses[lang]} class="agenda__all">{s.all}</a>
         </div>
-        <ul class="agenda__grid">
+        <ul class="agenda__grid" data-reveal-stagger>
           {upcoming.map((c, i) => {
             const d = c.data;
             const featured = i === 0;

@@ -42,6 +42,16 @@ const skip = lang === 'nl' ? 'Direct naar de inhoud' : 'Skip to content';
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
+    <!-- Scroll-animaties: verberg te animeren blokken vóór de eerste paint (niet bij "minder beweging").
+         Vangnet: laadt het script niet binnen 3,5 s, dan wordt alles gewoon getoond. -->
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        d.classList.add('js-motion');
+        setTimeout(function () { if (!window.__motionReady) d.classList.remove('js-motion'); }, 3500);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -82,5 +92,13 @@ const skip = lang === 'nl' ? 'Direct naar de inhoud' : 'Skip to content';
       <slot />
     </main>
     <Footer lang={lang} showLinkedIn={showLinkedIn} />
+    <script>
+      // GSAP alleen laden op pagina's die animaties gebruiken
+      if (document.querySelector('[data-reveal],[data-reveal-stagger],[data-parallax]')) {
+        import('../scripts/motion');
+      } else {
+        (window as unknown as { __motionReady: boolean }).__motionReady = true;
+      }
+    </script>
   </body>
 </html>

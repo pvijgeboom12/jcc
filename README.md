@@ -77,6 +77,19 @@ De tekst onder de frontmatter is de inleiding bij het programma.
 | Logo en favicons (uit het huisstijlpakket) | `src/components/Logo.astro`, `public/brand/`, `public/favicon.*` |
 | Privacyverklaring | `src/components/PrivacyPage.astro` |
 
+## Scroll-animaties
+
+GSAP + ScrollTrigger, gebundeld in de build (geen externe CDN) en alleen geladen op pagina's die het gebruiken.
+Werkt met data-attributen, zonder extra code per pagina:
+
+- `data-reveal`: blok schuift zacht omhoog en vervaagt in beeld.
+- `data-reveal-stagger`: de directe kinderen komen één voor één binnen.
+- `data-parallax="40"`: beeld beweegt met de scroll mee, in px (mag negatief). Op `ArtPicture` via `parallax={40}`.
+
+Een blok start zodra de bovenkant op 70% van het scherm staat (30% in beeld). Instellen in `src/scripts/motion.ts`.
+Reveals spelen één keer. Parallax alleen vanaf 768 px breed. Bij "minder beweging" in de systeeminstellingen staat alles direct stil in beeld.
+De hero animeert bewust niet mee, zodat de LCP gelijk blijft.
+
 ## Analytics en cookies
 
 Cloudflare Web Analytics via de handmatige beacon, met `defer` geladen zodat het de LCP niet raakt.

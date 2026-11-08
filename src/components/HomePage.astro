@@ -44,7 +44,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   <!-- OVER JCC -->
   <section id="about" class="bg-white">
     <div class="container section about">
-      <div class="about__text">
+      <div class="about__text" data-reveal>
         <Eyebrow>{h.about.eyebrow}</Eyebrow>
         <h2 class="h2-xl">{h.about.heading}</h2>
         <div class="body-lg stack-20 about__body">
@@ -52,9 +52,9 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         </div>
         <p class="about__promise">{h.about.promise}</p>
       </div>
-      <div class="about__media">
-        <ArtPicture desktop={imgSpeaker} alt={h.about.imageAlts[0]} class="img about__img about__img--a" sizes="(min-width: 1000px) 360px, 60vw" desktopWidths={[480, 720, 1000]} position="55% 40%" />
-        <ArtPicture desktop={imgApplause} alt={h.about.imageAlts[1]} class="img about__img about__img--b" sizes="(min-width: 1000px) 300px, 45vw" desktopWidths={[400, 640, 900]} />
+      <div class="about__media" data-reveal-stagger>
+        <ArtPicture desktop={imgSpeaker} alt={h.about.imageAlts[0]} class="img about__img about__img--a" parallax={-30} sizes="(min-width: 1000px) 360px, 60vw" desktopWidths={[480, 720, 1000]} position="55% 40%" />
+        <ArtPicture desktop={imgApplause} alt={h.about.imageAlts[1]} class="img about__img about__img--b" parallax={45} sizes="(min-width: 1000px) 300px, 45vw" desktopWidths={[400, 640, 900]} />
       </div>
     </div>
     {
@@ -72,14 +72,14 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   <!-- WAT WE DOEN: vier stappen -->
   <section id="what-we-do" class="bg-surface">
     <div class="container section">
-      <div class="services__head">
+      <div class="services__head" data-reveal>
         <div>
           <Eyebrow>{h.services.eyebrow}</Eyebrow>
           <h2 class="h2-xl">{h.services.heading}</h2>
         </div>
         <p class="services__lead">{h.services.lead}</p>
       </div>
-      <ol class="steps">
+      <ol class="steps" data-reveal-stagger>
         {
           h.services.steps.map((s, i) => (
             <li class="step">
@@ -107,11 +107,11 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   <!-- COMMUNITY -->
   <section id="community" class="bg-white">
     <div class="container section community">
-      <div class="community__media">
+      <div class="community__media" data-reveal-stagger>
         <ArtPicture desktop={imgCorridor} mobile={imgCorridorM} alt={h.community.imageAlts[0]} class="img community__img" sizes="(min-width: 1000px) 560px, 100vw" desktopWidths={[640, 960, 1280]} mobileWidths={[400, 600, 900]} position="40% 50%" />
-        <ArtPicture desktop={imgPosters} alt={h.community.imageAlts[1]} class="img community__img2" sizes="(min-width: 1000px) 220px, 40vw" desktopWidths={[300, 480, 700]} />
+        <ArtPicture desktop={imgPosters} alt={h.community.imageAlts[1]} class="img community__img2" parallax={50} sizes="(min-width: 1000px) 220px, 40vw" desktopWidths={[300, 480, 700]} />
       </div>
-      <div class="community__text">
+      <div class="community__text" data-reveal>
         <Eyebrow>{h.community.eyebrow}</Eyebrow>
         <h2 class="community__heading">{h.community.heading} <em class="accent">{h.community.accent}</em></h2>
         <p class="body-lg community__lead">{h.community.lead}</p>
@@ -131,10 +131,10 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
 
   <!-- MAATWERK-BAND -->
   <section class="band clip" aria-labelledby="band-heading">
-    <svg class="arc" aria-hidden="true" viewBox="0 0 400 400" style="right:-90px;top:-150px;width:520px;height:520px">
+    <svg class="arc" data-parallax="60" aria-hidden="true" viewBox="0 0 400 400" style="right:-90px;top:-150px;width:520px;height:520px">
       <path d="M 60 400 A 300 300 0 0 1 360 100" fill="none" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="34"></path>
     </svg>
-    <div class="container relative band__inner">
+    <div class="container relative band__inner" data-reveal-stagger>
       <h2 id="band-heading" class="band__heading">
         <span class="band__line">{h.band.headingBefore}</span>
         <span class="band__line">{h.band.headingWith} <Swash variant="white">{h.band.accent}</Swash></span>
@@ -146,7 +146,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   <!-- SOCIAAL PROGRAMMA -->
   <section class="bg-white" aria-labelledby="social-heading">
     <div class="container section social">
-      <div class="social__text">
+      <div class="social__text" data-reveal>
         <Eyebrow>{h.social.eyebrow}</Eyebrow>
         <h2 id="social-heading" class="h2-xl">{h.social.title} <em class="accent">{h.social.accent}</em></h2>
         <p class="body-lg social__lead">{h.social.text}</p>
@@ -154,11 +154,11 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
           {h.social.points.map((p) => <li>{p}</li>)}
         </ul>
       </div>
-      <figure class="social__mosaic">
+      <figure class="social__mosaic" data-reveal-stagger>
         <ArtPicture desktop={imgParty} mobile={imgPartyM} alt={h.social.imageAlts[0]} class="img social__main" sizes="(min-width: 1000px) 640px, 100vw" desktopWidths={[640, 960, 1280]} mobileWidths={[400, 600, 900]} />
         <ArtPicture desktop={imgDinner} alt={h.social.imageAlts[1]} class="img social__a" sizes="(min-width: 1000px) 320px, 50vw" desktopWidths={[400, 640, 900]} position="35% 50%" />
-        <ArtPicture desktop={imgBand} alt={h.social.imageAlts[2]} class="img social__b" sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
-        <ArtPicture desktop={imgDrinks} alt={h.social.imageAlts[3]} class="img social__c" sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
+        <ArtPicture desktop={imgBand} alt={h.social.imageAlts[2]} class="img social__b" parallax={35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
+        <ArtPicture desktop={imgDrinks} alt={h.social.imageAlts[3]} class="img social__c" parallax={-35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
         <figcaption class="social__caption">{h.social.caption}</figcaption>
       </figure>
     </div>
@@ -167,7 +167,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   <!-- VOOR WIE -->
   <section id="expertise" class="bg-surface">
     <div class="container section split">
-      <div class="col col--narrow">
+      <div class="col col--narrow" data-reveal>
         <Eyebrow>{h.expertise.eyebrow}</Eyebrow>
         <h2 class="h2-xl">{h.expertise.heading}</h2>
         <p class="body-lg expertise__lead">{h.expertise.lead}</p>
@@ -175,7 +175,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
           {h.expertise.tags.map((tag) => <li class="tag">{tag}</li>)}
         </ul>
       </div>
-      <div class="expertise__media">
+      <div class="expertise__media" data-reveal-stagger>
         <ArtPicture desktop={imgCloister} alt={h.expertise.imageAlts[0]} class="img expertise__wide" sizes="(min-width: 1000px) 620px, 100vw" desktopWidths={[560, 900, 1200]} />
         <ArtPicture desktop={imgMilanDinner} alt={h.expertise.imageAlts[1]} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} position="center 60%" />
         <ArtPicture desktop={imgBadge} alt={h.expertise.imageAlts[2]} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
@@ -185,7 +185,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
 
   <!-- CONTACT -->
   <section id="contact" class="bg-white">
-    <div class="container section contact">
+    <div class="container section contact" data-reveal-stagger>
       <div class="contact__text">
         <h2 class="contact__heading">{h.contact.heading} <em class="accent">{h.contact.accent}</em></h2>
         <p class="lead contact__lead">{h.contact.lead}</p>

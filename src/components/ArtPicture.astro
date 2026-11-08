@@ -14,10 +14,12 @@ interface Props {
   eager?: boolean;
   class?: string;
   position?: string;
+  /** Parallax in px (alleen tablet en groter), bijv. 40 of -30 */
+  parallax?: number;
 }
 const {
   desktop, mobile, alt, sizes, mobileSizes, desktopWidths, mobileWidths,
-  eager = false, class: cls, position,
+  eager = false, class: cls, position, parallax,
 } = Astro.props;
 const set = await buildPicture({ desktop, mobile, sizes, mobileSizes, desktopWidths, mobileWidths });
 ---
@@ -34,6 +36,7 @@ const set = await buildPicture({ desktop, mobile, sizes, mobileSizes, desktopWid
     height={set.fallback.height}
     alt={alt}
     class={cls}
+    data-parallax={parallax}
     style={position ? `object-position:${position}` : undefined}
     loading={eager ? 'eager' : 'lazy'}
     fetchpriority={eager ? 'high' : 'auto'}

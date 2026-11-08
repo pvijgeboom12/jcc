@@ -179,3 +179,19 @@ a:hover { color: var(--color-primary-hover); }
 
 /* ---------- Decoratieve boog ---------- */
 .arc { position: absolute; pointer-events: none; }
+
+/* ---------- Scroll-animaties (zie src/scripts/motion.ts) ---------- */
+/* Niet-overervend, zodat een geneste animatie nooit dubbel verschuift */
+@property --reveal-y { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --parallax-y { syntax: '<length>'; inherits: false; initial-value: 0px; }
+
+.js-motion [data-reveal],
+.js-motion [data-reveal-stagger] > *:not(picture, script, style, template),
+.js-motion [data-reveal-stagger] > picture > img { opacity: 0; }
+
+/* Via de losse `translate`-eigenschap: botst niet met hover-effecten op `transform` */
+[data-reveal],
+[data-reveal-stagger] > *,
+[data-reveal-stagger] > picture > img,
+[data-parallax] { translate: 0 calc(var(--parallax-y) + var(--reveal-y)); }
+[data-parallax] { will-change: translate; }
