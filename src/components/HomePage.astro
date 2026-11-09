@@ -24,6 +24,7 @@ import imgDrinks from '../assets/images/v2/slaap-borrel-m.jpg';
 import imgCloister from '../assets/images/milaan-kloostertuin.jpg';
 import imgMilanDinner from '../assets/images/milaan-diner.jpg';
 import imgBadge from '../assets/images/registratiebalie.jpg';
+import imgAnnick from '../assets/images/v2/annick-portret.jpg';
 
 interface Props {
   lang: Lang;
@@ -67,6 +68,30 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         </div>
       )
     }
+  </section>
+
+  <!-- ANNICK: de persoon achter JCC -->
+  <section id="annick" class="bg-white" aria-labelledby="annick-heading">
+    <div class="container annick-wrap">
+      <div class="annick">
+        <div class="annick__media" data-reveal>
+          <ArtPicture desktop={imgAnnick} alt={h.annick.imageAlt} class="img annick__img" parallax={-25} sizes="(min-width: 1000px) 440px, 90vw" desktopWidths={[400, 640, 880, 1100]} position="50% 25%" />
+        </div>
+        <div class="annick__text" data-reveal>
+          <Eyebrow>{h.annick.eyebrow}</Eyebrow>
+          <h2 id="annick-heading" class="h2-xl">{h.annick.heading} <em class="accent">{h.annick.accent}</em></h2>
+          <div class="annick__body stack-20">
+            {h.annick.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+          <p class="annick__closing">{h.annick.closing}</p>
+          <p class="annick__sign">
+            <span class="annick__signature" aria-hidden="true">{h.annick.signature}</span>
+            <span class="annick__role">{h.annick.role}</span>
+          </p>
+          <a href="#contact" class="btn btn--primary annick__cta">{h.annick.cta}</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- WAT WE DOEN: vier stappen -->
@@ -115,6 +140,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         <Eyebrow>{h.community.eyebrow}</Eyebrow>
         <h2 class="community__heading">{h.community.heading} <em class="accent">{h.community.accent}</em></h2>
         <p class="body-lg community__lead">{h.community.lead}</p>
+        <p class="community__closing">{h.community.closing}</p>
         <ul class="community__grid">
           {
             h.community.items.map(([title, text]) => (
@@ -139,7 +165,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         <span class="band__line">{h.band.headingBefore}</span>
         <span class="band__line">{h.band.headingWith} <Swash variant="white">{h.band.accent}</Swash></span>
       </h2>
-      <p class="band__text">{h.band.text}</p>
+      <p class="band__text"><strong class="band__intro">{h.band.intro}</strong> {h.band.text}</p>
     </div>
   </section>
 
@@ -169,7 +195,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     <div class="container section split">
       <div class="col col--narrow" data-reveal>
         <Eyebrow>{h.expertise.eyebrow}</Eyebrow>
-        <h2 class="h2-xl">{h.expertise.heading}</h2>
+        <h2 class="h2-xl">{h.expertise.heading} <em class="accent">{h.expertise.accent}</em></h2>
         <p class="body-lg expertise__lead">{h.expertise.lead}</p>
         <ul class="tags">
           {h.expertise.tags.map((tag) => <li class="tag">{tag}</li>)}
@@ -272,6 +298,10 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   }
   .community__heading .accent { display: block; }
   .community__lead { margin-top: 24px; max-width: 56ch; }
+  .community__closing {
+    margin-top: 20px; font-family: var(--font-heading); font-weight: 600;
+    font-size: clamp(19px, 1.7vw, 22px); line-height: 1.35; color: var(--color-primary);
+  }
   .community__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 28px; margin-top: 36px; font-size: 16px; line-height: 1.5; }
   .community__grid li { border-top: 2px solid var(--color-primary-tint); padding-top: 14px; }
   .community__item { display: block; font-weight: 600; color: var(--color-text); margin-bottom: 4px; font-size: 17px; }
@@ -282,6 +312,26 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   .band__heading { color: #fff; font-weight: 600; letter-spacing: -0.03em; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.02; }
   .band__line { display: block; }
   .band__text { font-size: 20px; line-height: 1.6; color: var(--color-primary-tint-2); max-width: 46ch; }
+  .band__intro { display: block; margin-bottom: 10px; font-family: var(--font-heading); font-weight: 600; font-size: clamp(22px, 2vw, 26px); line-height: 1.3; color: #fff; }
+
+  /* Annick */
+  .annick-wrap { padding-top: 24px; padding-bottom: var(--section-y); }
+  .annick {
+    display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 72px; align-items: start;
+    background: var(--color-surface); border-radius: var(--radius-xl); padding: 56px;
+  }
+  /* Portret blijft naast de lange tekst in beeld */
+  .annick__media { position: sticky; top: 96px; }
+  .annick__media :global(.annick__img) { aspect-ratio: 4 / 5; border-radius: 28px 28px 28px 120px; }
+  .annick__body { margin-top: 24px; font-size: 18px; line-height: 1.7; color: var(--color-text-body); max-width: 58ch; }
+  .annick__closing { margin-top: 24px; font-size: 18px; font-weight: 600; color: var(--color-text); }
+  .annick__sign { margin-top: 18px; display: flex; flex-direction: column; gap: 2px; }
+  .annick__signature {
+    font-family: var(--font-heading); font-style: italic; font-weight: 600;
+    font-size: clamp(30px, 3vw, 40px); line-height: 1; color: var(--color-primary);
+  }
+  .annick__role { font-size: 14px; color: var(--color-text-secondary); }
+  .annick__cta { margin-top: 28px; }
 
   /* Sociaal programma */
   .social { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 64px; align-items: center; }
@@ -317,7 +367,9 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   .contact__direct a:hover { color: var(--color-primary); }
 
   @media (max-width: 999px) {
-    .about, .community, .social, .band__inner { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .about, .community, .social, .band__inner, .annick { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .annick { padding: 40px; }
+    .annick__media { position: static; max-width: 440px; }
     .community__media { order: 2; max-width: 560px; }
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .step::after { display: none; }
@@ -330,6 +382,10 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     .community__media :global(.community__img) { border-radius: 96px 24px 24px 24px; }
     .community__media :global(.community__img2) { right: -8px; }
     .band__inner { padding-top: 72px; padding-bottom: 72px; }
+    .annick-wrap { padding-bottom: 72px; padding-left: 16px; padding-right: 16px; }
+    .annick { padding: 28px 20px 36px; gap: 32px; }
+    .annick__media :global(.annick__img) { border-radius: 24px 24px 24px 88px; }
+    .annick__body { font-size: 17px; }
     .social__mosaic { grid-template-columns: 1fr 1fr; }
     .social__mosaic :global(.social__main) { aspect-ratio: 4 / 5; }
     .social__mosaic :global(.social__a) { grid-column: 1 / -1; aspect-ratio: 16 / 9; }

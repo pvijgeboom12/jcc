@@ -14,7 +14,7 @@ export const home = {
       title: 'Sterke congressen.',
       accent: 'Bijzondere ontmoetingen.',
       lead: 'Van eerste idee tot een congres dat mensen bijblijft.',
-      primary: 'Plan een kennismaking',
+      primary: 'Bespreek je congres',
       secondary: 'Bekijk de agenda',
       carouselLabel: 'Foto’s van congressen van JCC',
       carouselRole: 'diavoorstelling',
@@ -35,8 +35,8 @@ export const home = {
       eyebrow: 'Over JCC',
       heading: 'Een congres is meer dan een programma en een zaal',
       paragraphs: [
-        'Het is hét moment waarop onderzoekers, artsen en vakgenoten elkaar echt ontmoeten. Wij zorgen dat dat moment klopt.',
-        'We organiseren wetenschappelijke en medische congressen. Met hart voor de inhoud en oog voor elk detail. Wij regelen programma, sprekers, budget, locatie en logistiek. Zo kun jij je richten op de wetenschap.',
+        'Een goed congres brengt mensen verder. Nieuwe inzichten, waardevolle gesprekken en ontmoetingen die ook na afloop iets opleveren.',
+        'Bij JCC zorgen we dat alles klopt. Van programma en sprekers tot locatie, registratie en de kleinste details. Zodat jij je kunt richten op wat echt belangrijk is: de mensen en de inhoud.',
       ],
       promise: 'Rust in de organisatie, ruimte voor ontmoeting.',
       trustLabel: 'Op de agenda voor onder meer',
@@ -45,10 +45,27 @@ export const home = {
         'Het publiek applaudisseert in een volle zaal tijdens SLAAP2025',
       ],
     },
+    annick: {
+      eyebrow: 'Wie zit er achter JCC',
+      heading: 'Hoi, ik ben',
+      accent: 'Annick!',
+      // Tekst van Annick zelf (9 nov 2026), letterlijk overgenomen
+      paragraphs: [
+        'Congressen organiseren zit inmiddels behoorlijk in mijn bloed. Ik werkte jarenlang bij het Amsterdams Congres Bureau, onderdeel van I amsterdam. Daarna koos ik voor een heel ander uitzicht: als stewardess bij KLM vloog ik de wereld over.',
+        'Maar de congressen heb ik nooit losgelaten. Ook tussen mijn intercontinentale vluchten door bleef ik ze organiseren. En dat werden er steeds meer!',
+        'Op een gegeven moment paste het simpelweg niet meer naast mijn werk in de lucht. Tijd om te kiezen dus. Inmiddels kan ik me helemaal richten op JCC.',
+        'En dat is precies waar ik blij van word: mensen samenbrengen, alles tot in de puntjes regelen en zorgen dat een congres niet alleen goed verloopt, maar ook echt iets losmaakt.',
+      ],
+      closing: 'Leuk om kennis te maken!',
+      signature: 'Annick',
+      role: 'Annick Goijarts · JCC Congress Consultancy & Events',
+      cta: 'Maak kennis met Annick',
+      imageAlt: 'Portret van Annick Goijarts, glimlachend, in een zwart jasje',
+    },
     services: {
       eyebrow: 'Wat we doen',
-      heading: 'Van eerste idee tot eindrapport',
-      lead: 'We doen de complete organisatie, of alleen de onderdelen waar jij hulp bij wilt.',
+      heading: 'Van eerste idee tot laatste applaus',
+      lead: 'Wij regelen wat nodig is. Van de eerste planning tot de evaluatie achteraf.',
       more: 'Wat we regelen',
       steps: [
         {
@@ -63,7 +80,7 @@ export const home = {
         },
         {
           title: 'Programma maken',
-          core: 'Sprekers, abstracts en accreditatie, zodat de inhoud klopt.',
+          core: 'Sprekers, ingezonden onderzoek en accreditatie, zodat de inhoud klopt.',
           items: [
             ['Abstracts', 'Een abstract is een korte samenvatting van onderzoek. Wij regelen de richtlijnen, inzendingen en het contact'],
             ['Sprekers en voorzitters', 'Uitnodigingen, bio’s, deadlines en hulp op de dag zelf'],
@@ -94,7 +111,8 @@ export const home = {
       eyebrow: 'Community',
       heading: 'Het congres eindigt.',
       accent: 'De community niet.',
-      lead: 'Een sterk vakgebied bouw je het hele jaar. Niet alleen tijdens een paar congresdagen. Wij helpen verenigingen en onderzoeksnetwerken hun leden betrokken te houden. Zo komen ze graag terug.',
+      lead: 'Een congres brengt mensen bij elkaar. Maar waarom zou die verbinding na één dag stoppen? JCC helpt verenigingen en organisaties om het contact levend te houden. Met nieuwsbrieven, bijeenkomsten en nieuwe manieren om kennis te delen.',
+      closing: 'Zo wordt één congres het begin van meer.',
       items: [
         ['Het hele jaar contact', 'Nieuwsbrieven, updates en social media tussen de congressen door'],
         ['Kleinere bijeenkomsten', 'Webinars, symposia en academiedagen'],
@@ -110,13 +128,14 @@ export const home = {
       headingBefore: 'Maatwerk,',
       headingWith: 'uitgevoerd met',
       accent: 'flair',
-      text: 'Geen standaardpakket. Wel een congres dat past bij jouw doelen en jouw vakgebied. We werken open, denken mee en laten niets aan het toeval over.',
+      intro: 'Geen congres is hetzelfde. Gelukkig maar.',
+      text: 'Een klein symposium of een groot internationaal congres: elk evenement vraagt om een eigen aanpak. We denken mee, houden de lijnen kort en zorgen dat alles goed geregeld is. Met aandacht voor de inhoud én de mensen.',
     },
     social: {
       eyebrow: 'Sociaal programma',
       title: 'Overdag wetenschap,',
       accent: '’s avonds de dansvloer',
-      text: 'De beste gesprekken beginnen vaak na de laatste sessie. Daarom regelen we ook het diner, de borrel en de muziek.',
+      text: 'De mooiste gesprekken ontstaan niet altijd in de congreszaal. Daarom organiseren we ook het programma eromheen. Van een ontspannen borrel tot een feest waar nog lang over wordt nagepraat.',
       points: ['Congresdiner op een bijzondere plek', 'Borrel en netwerkmomenten', 'Livemuziek en feest'],
       caption: 'Sociaal programma van SLAAP2025',
       imageAlts: [
@@ -128,8 +147,10 @@ export const home = {
     },
     expertise: {
       eyebrow: 'Voor wie',
-      heading: 'Wetenschappelijke congressen, in Nederland en daarbuiten',
-      lead: 'Van het jaarcongres van een Nederlandse vereniging tot een internationaal congres in het buitenland. We spreken de taal van de wetenschap én van gastvrijheid.',
+      // TODO Annick: ervaring en internationale dienstverlening bevestigen
+      heading: 'Jouw vakgebied.',
+      accent: 'Onze ervaring.',
+      lead: 'Van medische verenigingen en wetenschappelijke organisaties tot internationale congressen. JCC kent de wereld van wetenschappelijke bijeenkomsten en weet wat erbij komt kijken. Van de eerste aanmelding tot de laatste spreker.',
       tags: ['Medische verenigingen', 'Wetenschappelijke genootschappen', 'Internationale congressen', 'Academies en cursussen'],
       imageAlts: [
         'Congresdeelnemers lunchen in de kloostertuin van de Universiteit van Milaan',
@@ -140,7 +161,7 @@ export const home = {
     contact: {
       heading: 'Laten we het hebben over',
       accent: 'jouw congres',
-      lead: 'Plannen voor een congres in 2027 of later? Of heb je een vraag? Vertel kort wat je in gedachten hebt, dan nemen we contact met je op.',
+      lead: 'Een congres op de planning? Of gewoon benieuwd wat we voor je kunnen betekenen? Vertel ons je idee. We denken graag met je mee.',
       direct: 'Liever direct contact?',
       name: 'Naam',
       email: 'E-mailadres',
@@ -150,7 +171,7 @@ export const home = {
       messageHint: 'Bijvoorbeeld het soort congres, het aantal deelnemers of de periode',
       required: 'verplicht',
       optional: 'optioneel',
-      submit: 'Verstuur je bericht',
+      submit: 'Verstuur mijn bericht',
       mailSubject: 'Bericht via jcc-congressen.nl',
       errors: {
         summary: 'Controleer de velden hieronder.',
@@ -174,7 +195,7 @@ export const home = {
       title: 'Strong congresses.',
       accent: 'Memorable encounters.',
       lead: 'From first idea to a congress people remember.',
-      primary: 'Book an introduction',
+      primary: 'Discuss your congress',
       secondary: 'See the agenda',
       carouselLabel: 'Photos of congresses organised by JCC',
       carouselRole: 'slideshow',
@@ -195,8 +216,8 @@ export const home = {
       eyebrow: 'About JCC',
       heading: 'A congress is more than a programme and a room',
       paragraphs: [
-        'It’s the moment researchers, clinicians and peers truly connect. We make sure that moment counts.',
-        'We organise scientific and medical congresses, with a heart for the content and an eye for every detail. Programme, speakers, budget, venue and logistics: we take care of it, so you can focus on the science.',
+        'A good congress moves people forward. New insights, valuable conversations and connections that keep paying off long after.',
+        'At JCC we make sure everything is right. From programme and speakers to venue, registration and the smallest details. So you can focus on what really matters: the people and the content.',
       ],
       promise: 'Calm organisation, room to connect.',
       trustLabel: 'On the agenda for, among others',
@@ -205,10 +226,27 @@ export const home = {
         'The audience applauding in a full hall at SLAAP2025',
       ],
     },
+    annick: {
+      eyebrow: 'The person behind JCC',
+      heading: 'Hi, I’m',
+      accent: 'Annick!',
+      // Vertaling van Annicks tekst (9 nov 2026); laten nalezen door Annick
+      paragraphs: [
+        'Organising congresses is pretty much in my blood by now. For years I worked at the Amsterdam Congress Bureau, part of I amsterdam. Then I chose a very different view: as a KLM flight attendant, I flew all over the world.',
+        'But I never let go of congresses. Even between my intercontinental flights, I kept organising them. And there were more and more!',
+        'At some point it simply no longer fitted alongside my work in the air. Time to choose. Now I can focus entirely on JCC.',
+        'And that’s exactly what makes me happy: bringing people together, arranging everything down to the last detail and making sure a congress doesn’t just run smoothly, but really makes an impact.',
+      ],
+      closing: 'Nice to meet you!',
+      signature: 'Annick',
+      role: 'Annick Goijarts · JCC Congress Consultancy & Events',
+      cta: 'Get to know Annick',
+      imageAlt: 'Portrait of Annick Goijarts, smiling, in a black jacket',
+    },
     services: {
       eyebrow: 'What we do',
-      heading: 'From first idea to final report',
-      lead: 'We handle the complete organisation, or just the parts you want help with.',
+      heading: 'From first idea to final applause',
+      lead: 'We take care of whatever is needed. From the first planning to the evaluation afterwards.',
       more: 'What we take care of',
       steps: [
         {
@@ -223,7 +261,7 @@ export const home = {
         },
         {
           title: 'Build the programme',
-          core: 'Speakers, abstracts and accreditation, so the content is right.',
+          core: 'Speakers, submitted research and accreditation, so the content is right.',
           items: [
             ['Abstracts', 'An abstract is a short summary of research. We handle guidelines, submissions and presenters'],
             ['Speakers and chairs', 'Invitations, bios, deadlines and a helping hand on the day'],
@@ -254,7 +292,8 @@ export const home = {
       eyebrow: 'Community',
       heading: 'The congress ends.',
       accent: 'The community doesn’t.',
-      lead: 'A strong field is built all year round, not just during a few congress days. We help associations and research networks keep their members involved, so they’re keen to come back.',
+      lead: 'A congress brings people together. But why should that connection stop after one day? JCC helps associations and organisations keep the conversation going. With newsletters, meetings and new ways to share knowledge.',
+      closing: 'That way, one congress becomes the start of something more.',
       items: [
         ['Year-round contact', 'Newsletters, updates and social media between congresses'],
         ['Smaller meetings', 'Webinars, symposia and academy days'],
@@ -270,13 +309,14 @@ export const home = {
       headingBefore: 'Tailor-made,',
       headingWith: 'delivered with',
       accent: 'flair',
-      text: 'No off-the-shelf package, but a congress built around your goals and your field. We work transparently, think along and leave nothing to chance.',
+      intro: 'No two congresses are the same. Luckily.',
+      text: 'A small symposium or a large international congress: every event needs its own approach. We think along, keep the lines short and make sure everything is well arranged. With care for both the content and the people.',
     },
     social: {
       eyebrow: 'Social programme',
       title: 'Science by day,',
       accent: 'dance floor by night',
-      text: 'The best conversations often start after the last session. That’s why we also arrange the dinner, the drinks and the music.',
+      text: 'The best conversations don’t always happen in the congress hall. That’s why we also organise the programme around it. From relaxed drinks to a party people talk about for a long time.',
       points: ['Congress dinner at a special venue', 'Drinks and networking moments', 'Live music and a party'],
       caption: 'Social programme at SLAAP2025',
       imageAlts: [
@@ -288,8 +328,9 @@ export const home = {
     },
     expertise: {
       eyebrow: 'Who we work for',
-      heading: 'Science congresses, Dutch and international',
-      lead: 'From a national association’s annual meeting to an international congress abroad. We speak the language of science and of hospitality.',
+      heading: 'Your field.',
+      accent: 'Our experience.',
+      lead: 'From medical associations and scientific organisations to international congresses. JCC knows the world of scientific meetings and what it takes. From the first registration to the last speaker.',
       tags: ['Medical associations', 'Scientific societies', 'International congresses', 'Academies and courses'],
       imageAlts: [
         'Congress participants having lunch in the cloister courtyard of the University of Milan',
@@ -300,7 +341,7 @@ export const home = {
     contact: {
       heading: 'Let’s talk about',
       accent: 'your congress',
-      lead: 'Planning a congress for 2027 or beyond? Or do you have a question? Tell us briefly what you have in mind, and we’ll get back to you.',
+      lead: 'A congress in the pipeline? Or just curious what we can do for you? Tell us your idea. We’re happy to think along.',
       direct: 'Prefer direct contact?',
       name: 'Name',
       email: 'Email address',
@@ -310,7 +351,7 @@ export const home = {
       messageHint: 'For example the type of congress, number of participants or timing',
       required: 'required',
       optional: 'optional',
-      submit: 'Send your message',
+      submit: 'Send my message',
       mailSubject: 'Message via jcc-congressen.nl',
       errors: {
         summary: 'Please check the fields below.',
