@@ -105,30 +105,6 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     </div>
   </section>
 
-  <!-- ANNICK: de persoon achter JCC -->
-  <section id="annick" class="bg-white" aria-labelledby="annick-heading">
-    <div class="container annick-wrap">
-      <div class="annick">
-        <div class="annick__media" data-reveal>
-          <ArtPicture desktop={imgAnnick} alt={h.annick.imageAlt} class="img annick__img" parallax={-25} sizes="(min-width: 1000px) 440px, 90vw" desktopWidths={[400, 640, 880, 1100]} position="50% 25%" />
-        </div>
-        <div class="annick__text" data-reveal>
-          <Eyebrow>{h.annick.eyebrow}</Eyebrow>
-          <h2 id="annick-heading" class="h2-xl">{h.annick.heading} <em class="accent">{h.annick.accent}</em></h2>
-          <div class="annick__body stack-20">
-            {h.annick.paragraphs.map((p) => <p>{p}</p>)}
-          </div>
-          <p class="annick__closing">{h.annick.closing}</p>
-          <p class="annick__sign">
-            <span class="annick__signature" aria-hidden="true">{h.annick.signature}</span>
-            <span class="annick__role">{h.annick.role}</span>
-          </p>
-          <a href="#contact" class="btn btn--primary annick__cta">{h.annick.cta}</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- COMMUNITY -->
   <section id="community" class="bg-white">
     <div class="container section community">
@@ -151,6 +127,30 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
             ))
           }
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANNICK: de persoon achter JCC -->
+  <section id="annick" class="bg-white" aria-labelledby="annick-heading">
+    <div class="container annick-wrap">
+      <div class="annick">
+        <div class="annick__media" data-reveal>
+          <ArtPicture desktop={imgAnnick} alt={h.annick.imageAlt} class="img annick__img" parallax={-25} sizes="(min-width: 1000px) 440px, 90vw" desktopWidths={[400, 640, 880, 1100]} position="50% 25%" />
+        </div>
+        <div class="annick__text" data-reveal>
+          <Eyebrow>{h.annick.eyebrow}</Eyebrow>
+          <h2 id="annick-heading" class="h2-xl">{h.annick.heading} <em class="accent">{h.annick.accent}</em></h2>
+          <div class="annick__body stack-20">
+            {h.annick.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+          <p class="annick__closing">{h.annick.closing}</p>
+          <p class="annick__sign">
+            <span class="annick__signature" aria-hidden="true">{h.annick.signature}</span>
+            <span class="annick__role">{h.annick.role}</span>
+          </p>
+          <a href="#contact" class="btn btn--primary annick__cta">{h.annick.cta}</a>
+        </div>
       </div>
     </div>
   </section>
@@ -315,14 +315,16 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   .band__intro { display: block; margin-bottom: 10px; font-family: var(--font-heading); font-weight: 600; font-size: clamp(22px, 2vw, 26px); line-height: 1.3; color: #fff; }
 
   /* Annick */
-  .annick-wrap { padding-top: var(--section-y); padding-bottom: 0; }
+  /* Volgt op de witte Community-sectie, gaat over in de bordeaux band */
+  .annick-wrap { padding-top: 0; padding-bottom: var(--section-y); }
   .annick {
-    display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 72px; align-items: start;
+    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 72px; align-items: start;
     background: var(--color-surface); border-radius: var(--radius-xl); padding: 56px;
   }
   /* Portret blijft naast de lange tekst in beeld */
-  .annick__media { position: sticky; top: 96px; }
-  .annick__media :global(.annick__img) { aspect-ratio: 4 / 5; border-radius: 28px 28px 28px 120px; }
+  /* Tekst links, foto rechts (op mobiel staat de foto boven) */
+  .annick__media { position: sticky; top: 96px; order: 2; }
+  .annick__media :global(.annick__img) { aspect-ratio: 4 / 5; border-radius: 28px 28px 120px 28px; }
   .annick__body { margin-top: 24px; font-size: 18px; line-height: 1.7; color: var(--color-text-body); max-width: 58ch; }
   .annick__closing { margin-top: 24px; font-size: 18px; font-weight: 600; color: var(--color-text); }
   .annick__sign { margin-top: 18px; display: flex; flex-direction: column; gap: 2px; }
@@ -369,7 +371,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   @media (max-width: 999px) {
     .about, .community, .social, .band__inner, .annick { grid-template-columns: minmax(0, 1fr); gap: 48px; }
     .annick { padding: 40px; }
-    .annick__media { position: static; max-width: 440px; }
+    .annick__media { position: static; max-width: 440px; order: 0; }
     .community__media { order: 2; max-width: 560px; }
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .step::after { display: none; }
@@ -382,9 +384,9 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     .community__media :global(.community__img) { border-radius: 96px 24px 24px 24px; }
     .community__media :global(.community__img2) { right: -8px; }
     .band__inner { padding-top: 72px; padding-bottom: 72px; }
-    .annick-wrap { padding-top: 72px; padding-bottom: 0; padding-left: 16px; padding-right: 16px; }
+    .annick-wrap { padding-top: 0; padding-bottom: 72px; padding-left: 16px; padding-right: 16px; }
     .annick { padding: 28px 20px 36px; gap: 32px; }
-    .annick__media :global(.annick__img) { border-radius: 24px 24px 24px 88px; }
+    .annick__media :global(.annick__img) { border-radius: 24px 24px 88px 24px; }
     .annick__body { font-size: 17px; }
     .social__mosaic { grid-template-columns: 1fr 1fr; }
     .social__mosaic :global(.social__main) { aspect-ratio: 4 / 5; }
