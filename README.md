@@ -32,7 +32,7 @@ Een congres verdwijnt van de homepage zodra de laatste dag voorbij is.
 
 | Veld | Verplicht | Uitleg |
 |---|---|---|
-| `lang` | ja | `nl` of `en` |
+| `lang` | nee | Niet meer nodig: de map (`nl/` of `en/`) bepaalt de taal |
 | `slug` | ja | Deel van de URL, bijv. `weacademy-2027`. In beide talen gelijk. |
 | `title` | ja | Naam in het overzicht, bijv. `NVMKA Voorjaarscongres` |
 | `heading` | nee | Kop op de congrespagina: `text` + `accent` (accent = schuin, bordeaux) |
@@ -49,11 +49,11 @@ Een congres verdwijnt van de homepage zodra de laatste dag voorbij is.
 | `draft` | nee | `true` = pagina bestaat maar wordt niet gelinkt of geïndexeerd |
 | `registrationUrl` | nee | Link naar het registratieplatform. Zonder link geen registratieknoppen per tarief. |
 | `programme` | nee | `heading`, `note`, `url` (extern programma) en `items` (tijd, titel, spreker, `break: true` voor pauzes) |
-| `fees` | nee | Lijst met `category`, `price` (getal, of `null` = "Volgt"), `note`, `url` |
+| `fees` | nee | Lijst met `category`, `price` (getal; leeg of `null` = "Volgt"), `note`, `url` |
 | `feesIntro` / `feesFooter` | nee | Tekst naast en onder de tarieven. Footer mag een link (`<a>`) bevatten. |
 | `accreditation` | nee | Extra kaart bij de tarieven: `title`, `value`, `note` |
 | `practical` | nee | Kaarten met praktische info: `title` + `text` |
-| `practicalImage` / `practicalImageAlt` | nee | Beeld naast de praktische info, uit `src/assets/images/` |
+| `practicalImage` / `practicalImageAlt` | nee | Beeld naast de praktische info, als `/src/assets/images/<bestand>` |
 | `contactEmail` | nee | Standaard `info@jcc-congressen.nl` |
 | `contactHeading` | nee | Tekst in de contactstrook, standaard "Vragen over …?" |
 
@@ -65,15 +65,31 @@ De tekst onder de frontmatter is de inleiding bij het programma.
 - `save-the-date`: alleen in het overzicht en op de homepage, nog geen pagina.
 - `draft: true`: pagina wordt gebouwd maar niet gelinkt, `noindex`, niet in de sitemap. Handig om te laten zien.
 
+## Inhoud beheren met Pages CMS
+
+Teksten, foto's en congressen zijn te bewerken op [app.pagescms.org](https://app.pagescms.org) (inloggen met GitHub).
+De configuratie staat in `.pages.yml`. Elke opslag is een commit; op `main` staat de wijziging na een paar minuten live.
+
+- **Homepage (NL/EN)**: alle teksten en foto's per blok, inclusief de diavoorstelling.
+- **Congressen (NL/EN)**: één item per congres. De taal volgt uit de map (`nl/` of `en/`), het veld `lang` is niet meer nodig.
+- **Bedrijfsgegevens**: e-mail, telefoon, LinkedIn en KvK.
+- **Media**: uploads gaan naar `src/assets/images/`. Beelden worden opgeslagen als `/src/assets/images/…` en via `src/lib/images.ts` door Astro geoptimaliseerd. Bestaat een pad niet, dan stopt de build met een duidelijke melding.
+
+Let op: Pages CMS schrijft alleen de velden die in `.pages.yml` staan. Voeg je een veld toe aan een content-bestand of het schema, zet het dan ook in `.pages.yml`.
+
 ## Waar staat wat
 
 | Wat | Bestand |
 |---|---|
 | Kleuren, fonts, ruimtes (design tokens, volgens JCC_huisstijl.pdf nov 2026) | `src/styles/global.css` |
-| Homepage-teksten NL/EN | `src/i18n/home.ts` |
+| Homepage-teksten en -foto's NL/EN (Pages CMS) | `src/content/home/nl.json`, `en.json` |
+| Schermlezer- en formulierlabels homepage | `src/i18n/home.ts` |
 | Vaste interfaceteksten | `src/i18n/ui.ts` |
 | URL's per taal | `src/i18n/routes.ts` |
-| E-mail, telefoon, KvK, LinkedIn, formulier | `src/lib/site.ts` |
+| E-mail, telefoon, KvK, LinkedIn (Pages CMS) | `src/content/site.json` |
+| Formulier, analytics, site-URL | `src/lib/site.ts` |
+| Beelden opzoeken op pad | `src/lib/images.ts` |
+| Pages CMS-configuratie | `.pages.yml` |
 | Logo en favicons (uit het huisstijlpakket) | `src/components/Logo.astro`, `public/brand/`, `public/favicon.*` |
 | Privacyverklaring | `src/components/PrivacyPage.astro` |
 

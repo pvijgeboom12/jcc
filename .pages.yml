@@ -1,0 +1,388 @@
+# Pages CMS-configuratie voor jcc-congress.com
+# Beheer: https://app.pagescms.org  (inloggen met GitHub, repo pvijgeboom12/jcc)
+# Elke opslag is een commit op de gekozen branch. Op main gaat de wijziging na
+# 2 à 4 minuten live via Cloudflare. Op een andere branch krijg je eerst een preview.
+
+media:
+  input: src/assets/images
+  output: /src/assets/images
+  categories: [image]
+  rename: safe
+
+content:
+  - name: congressen-nl
+    label: Congressen (Nederlands)
+    type: collection
+    path: src/content/congresses/nl
+    format: yaml-frontmatter
+    filename: "{fields.slug}.md"
+    view:
+      fields: [title, status, startDate]
+      primary: title
+      default: { sort: startDate, order: asc }
+    fields: &congressFields
+      - name: title
+        label: Naam in het overzicht
+        type: string
+        required: true
+      - name: slug
+        label: Webadres (slug)
+        description: Deel van de URL, bijv. weacademy-2027. Alleen kleine letters, cijfers en streepjes. In NL en EN hetzelfde.
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: Alleen kleine letters, cijfers en streepjes
+      - name: status
+        label: Status
+        description: "Registratie open = eigen pagina. Save the date = alleen in het overzicht. Afgelopen = verdwijnt van de agenda."
+        type: select
+        required: true
+        options:
+          values:
+            - { value: registratie-open, label: Registratie open }
+            - { value: save-the-date, label: Save the date }
+            - { value: afgelopen, label: Afgelopen }
+      - name: draft
+        label: Concept (nog niet tonen)
+        description: Aan = de pagina bestaat wel, maar staat niet in menu's, overzicht en Google.
+        type: boolean
+        default: false
+      - name: organisation
+        label: Organiserende vereniging
+        type: string
+        required: true
+      - name: heading
+        label: Kop op de congrespagina
+        type: object
+        fields:
+          - { name: text, label: Kop, type: string }
+          - { name: accent, label: Accent (schuin, bordeaux), type: string }
+      - name: tile
+        label: Tegel op de homepage
+        type: object
+        fields:
+          - { name: title, label: Titel, type: string }
+          - { name: subtitle, label: Ondertitel, type: string }
+      - name: tagline
+        label: Ondertitel onder de kop
+        type: string
+      - name: intro
+        label: Korte intro
+        description: Ook de beschrijving in Google. Twee à drie zinnen.
+        type: text
+        required: true
+      - name: startDate
+        label: Eerste dag
+        type: date
+        required: true
+      - name: endDate
+        label: Laatste dag (bij meerdaags)
+        type: date
+      - name: time
+        label: Tijden
+        description: Bijv. 08.30–16.15
+        type: string
+      - name: location
+        label: Locatie in het overzicht
+        description: Bijv. Mauritskazerne, Ede
+        type: string
+        required: true
+      - name: locationShort
+        label: Locatie kort (homepagetegel)
+        type: string
+      - name: venue
+        label: Naam locatie
+        description: Leeg = "Locatie volgt"
+        type: string
+      - name: address
+        label: Adres
+        type: string
+      - name: registrationUrl
+        label: Link naar registratie
+        description: Zonder link zijn er geen inschrijfknoppen.
+        type: string
+      - name: programme
+        label: Programma
+        type: object
+        fields:
+          - { name: heading, label: Kop, type: string }
+          - { name: note, label: Toelichting, type: text }
+          - { name: url, label: Link naar extern programma, type: string }
+          - name: items
+            label: Onderdelen
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{time} {title}"
+            fields:
+              - { name: time, label: Tijd, type: string, required: true }
+              - { name: title, label: Titel, type: string, required: true }
+              - { name: speaker, label: Spreker, type: string }
+              - { name: break, label: Pauze of inloop, type: boolean, default: false }
+      - name: feesIntro
+        label: Tekst bij de tarieven
+        type: text
+      - name: fees
+        label: Tarieven
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{category}"
+        fields:
+          - { name: category, label: Categorie, type: string, required: true }
+          - name: price
+            label: Prijs in euro
+            description: Alleen het getal, bijv. 325. Leeg = "Volgt".
+            type: number
+          - { name: note, label: Toelichting, type: string }
+          - { name: url, label: Eigen registratielink (optioneel), type: string }
+      - name: feesFooter
+        label: Tekst onder de tarieven
+        description: 'Een link maak je zo: <a href="mailto:naam@jcc-congress.com">naam@jcc-congress.com</a>'
+        type: text
+      - name: accreditation
+        label: Accreditatie
+        type: object
+        fields:
+          - { name: title, label: Titel, type: string }
+          - { name: value, label: Waarde, description: "Bijv. 5 punten", type: string }
+          - { name: note, label: Toelichting, type: string }
+      - name: practical
+        label: Praktische info
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - { name: title, label: Titel, type: string, required: true }
+          - { name: text, label: Tekst, type: text, required: true }
+      - name: practicalImage
+        label: Foto bij praktische info
+        type: image
+      - name: practicalImageAlt
+        label: Beschrijving van die foto
+        type: string
+      - name: contactEmail
+        label: E-mailadres voor vragen
+        type: string
+      - name: contactHeading
+        label: Tekst in de contactstrook
+        description: Leeg = "Vragen over …?"
+        type: string
+      - name: body
+        label: Inleiding bij het programma
+        description: Gewone tekst. Een lege regel begint een nieuwe alinea.
+        type: text
+
+  - name: congressen-en
+    label: Congressen (Engels)
+    type: collection
+    path: src/content/congresses/en
+    format: yaml-frontmatter
+    filename: "{fields.slug}.md"
+    view:
+      fields: [title, status, startDate]
+      primary: title
+      default: { sort: startDate, order: asc }
+    fields: *congressFields
+
+  - name: home-nl
+    label: Homepage (Nederlands)
+    type: file
+    path: src/content/home/nl.json
+    format: json
+    fields: &homeFields
+      - name: metaTitle
+        label: Titel in Google
+        type: string
+      - name: metaDescription
+        label: Beschrijving in Google
+        type: text
+      - name: hero
+        label: Bovenaan (foto's en kop)
+        type: object
+        fields:
+          - { name: title, label: Kop, type: string }
+          - { name: accent, label: Accent (schuin), type: string }
+          - { name: lead, label: Zin onder de kop, type: string }
+          - { name: primary, label: Knop 1, type: string }
+          - { name: secondary, label: Knop 2, type: string }
+          - name: slides
+            label: Foto's in de diavoorstelling
+            type: object
+            list:
+              min: 1
+              max: 8
+              collapsible:
+                collapsed: true
+                summary: "{congress} · {label}"
+            fields:
+              - { name: image, label: Foto (liggend), type: image, required: true }
+              - { name: imageMobile, label: Foto op mobiel (staand), description: Leeg = dezelfde foto, type: image }
+              - { name: congress, label: Congres, description: Bijv. SLAAP2025, type: string }
+              - { name: label, label: Onderschrift, description: Bijv. Keynote, type: string }
+              - { name: alt, label: Beschrijving voor schermlezers, type: string, required: true }
+              - { name: position, label: Uitsnede (optioneel), description: "Bijv. 50% 40%. Leeg = midden.", type: string }
+      - name: about
+        label: Over JCC
+        type: object
+        fields:
+          - { name: eyebrow, label: Label boven de kop, type: string }
+          - { name: heading, label: Kop, type: string }
+          - { name: paragraphs, label: Alinea's, type: text, list: true }
+          - { name: promise, label: Belofte (dikgedrukte zin), type: string }
+          - { name: trustLabel, label: Tekst boven de verenigingen, type: string }
+          - name: images
+            label: Foto's (2)
+            type: object
+            list: { min: 2, max: 2 }
+            fields: &imageFields
+                - name: image
+                  label: Foto
+                  type: image
+                  required: true
+                - name: imageMobile
+                  label: Foto op mobiel (optioneel)
+                  description: Staande uitsnede voor telefoons. Leeg = dezelfde foto als hierboven.
+                  type: image
+                - name: alt
+                  label: Beschrijving voor schermlezers
+                  description: Wat staat er op de foto? Eén korte zin.
+                  type: string
+                  required: true
+                - name: position
+                  label: Uitsnede (optioneel)
+                  description: "Welk deel van de foto blijft zichtbaar. Bijvoorbeeld 50% 30% = midden, iets naar boven. Leeg = midden."
+                  type: string
+      - name: annick
+        label: Over Annick
+        type: object
+        fields:
+          - { name: eyebrow, label: Label boven de kop, type: string }
+          - { name: heading, label: Kop, type: string }
+          - { name: accent, label: Accent (schuin), type: string }
+          - { name: paragraphs, label: Alinea's, type: text, list: true }
+          - { name: closing, label: Slotzin, type: string }
+          - { name: signature, label: Handtekening, type: string }
+          - { name: role, label: Naam en functie, type: string }
+          - { name: cta, label: Knop, type: string }
+          - name: image
+            label: Portret
+            type: object
+            fields: *imageFields
+      - name: services
+        label: Wat we doen
+        type: object
+        fields:
+          - { name: eyebrow, label: Label boven de kop, type: string }
+          - { name: heading, label: Kop, type: string }
+          - { name: lead, label: Inleiding, type: text }
+          - { name: more, label: Tekst uitklapknop, type: string }
+          - name: steps
+            label: Stappen
+            type: object
+            list:
+              min: 1
+              max: 4
+              collapsible: { collapsed: true, summary: "{title}" }
+            fields:
+              - { name: title, label: Titel, type: string }
+              - { name: core, label: Samenvatting, type: text }
+              - name: items
+                label: Onderdelen
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: Titel, type: string }
+                  - { name: text, label: Tekst, type: text }
+      - name: community
+        label: Community
+        type: object
+        fields:
+          - { name: eyebrow, label: Label boven de kop, type: string }
+          - { name: heading, label: Kop, type: string }
+          - { name: accent, label: Accent (schuin), type: string }
+          - { name: lead, label: Inleiding, type: text }
+          - { name: closing, label: Slotzin, type: string }
+          - name: items
+            label: Punten
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Titel, type: string }
+              - { name: text, label: Tekst, type: text }
+          - name: images
+            label: Foto's (2)
+            type: object
+            list: { min: 2, max: 2 }
+            fields: *imageFields
+      - name: band
+        label: Bordeaux balk (maatwerk)
+        type: object
+        fields:
+          - { name: headingBefore, label: Regel 1, type: string }
+          - { name: headingWith, label: Regel 2, type: string }
+          - { name: accent, label: Accentwoord, type: string }
+          - { name: intro, label: Dikgedrukte zin, type: string }
+          - { name: text, label: Tekst, type: text }
+      - name: social
+        label: Sociaal programma
+        type: object
+        fields:
+          - { name: eyebrow, label: Label boven de kop, type: string }
+          - { name: title, label: Kop, type: string }
+          - { name: accent, label: Accent (schuin), type: string }
+          - { name: text, label: Tekst, type: text }
+          - { name: points, label: Punten, type: string, list: true }
+          - { name: caption, label: Onderschrift, type: string }
+          - name: images
+            label: Foto's (4)
+            description: "1 = groot beeld, 2 = diner, 3 en 4 = kleine foto's"
+            type: object
+            list: { min: 4, max: 4 }
+            fields: *imageFields
+      - name: expertise
+        label: Voor wie
+        type: object
+        fields:
+          - { name: eyebrow, label: Label boven de kop, type: string }
+          - { name: heading, label: Kop, type: string }
+          - { name: accent, label: Accent (schuin), type: string }
+          - { name: lead, label: Inleiding, type: text }
+          - { name: tags, label: Labels, type: string, list: true }
+          - name: images
+            label: Foto's (3)
+            description: "1 = breed, 2 en 3 = staand"
+            type: object
+            list: { min: 3, max: 3 }
+            fields: *imageFields
+      - name: contact
+        label: Contact
+        type: object
+        fields:
+          - { name: heading, label: Kop, type: string }
+          - { name: accent, label: Accent (schuin), type: string }
+          - { name: lead, label: Inleiding, type: text }
+          - { name: direct, label: Tekst boven mail en telefoon, type: string }
+
+  - name: home-en
+    label: Homepage (Engels)
+    type: file
+    path: src/content/home/en.json
+    format: json
+    fields: *homeFields
+
+  - name: bedrijfsgegevens
+    label: Bedrijfsgegevens
+    type: file
+    path: src/content/site.json
+    format: json
+    fields:
+      - { name: email, label: E-mailadres, type: string, required: true }
+      - { name: phone, label: Telefoon, description: "Zo schrijven: +31 (0)6 1234 5678", type: string, required: true }
+      - { name: linkedin, label: LinkedIn-pagina, type: string }
+      - { name: kvk, label: KvK-nummer, type: string }

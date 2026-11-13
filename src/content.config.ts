@@ -17,9 +17,8 @@ const congresses = defineCollection({
     base: './src/content/congresses',
     generateId: ({ entry }) => entry.replace(/\.md$/, ''),
   }),
-  schema: ({ image }) =>
-    z.object({
-      lang: z.enum(['nl', 'en']),
+  schema: z.object({
+      lang: z.enum(['nl', 'en']).optional(), // niet meer nodig: de map bepaalt de taal
       slug: z.string().regex(/^[a-z0-9-]+$/, 'Alleen kleine letters, cijfers en streepjes'),
       title: z.string(),
       heading: z
@@ -64,7 +63,7 @@ const congresses = defineCollection({
         .array(
           z.object({
             category: z.string(),
-            price: z.number().nullable(),
+            price: z.number().nullable().default(null), // leeg = "Volgt"
             note: z.string().optional(),
             url: z.string().optional(),
           }),
@@ -78,7 +77,8 @@ const congresses = defineCollection({
         .optional(),
 
       practical: z.array(z.object({ title: z.string(), text: z.string() })).default([]),
-      practicalImage: image().optional(),
+      // Pad zoals Pages CMS het opslaat: /src/assets/images/…  (opgezocht via src/lib/images.ts)
+      practicalImage: z.string().optional(),
       practicalImageAlt: z.string().optional(),
 
       registrationUrl: z.string().optional(),

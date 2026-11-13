@@ -11,17 +11,8 @@
 import ArtPicture from './ArtPicture.astro';
 import { home } from '../i18n/home';
 import type { Lang } from '../i18n/routes';
+import { pic } from '../lib/images';
 
-import plenair from '../assets/images/v2/slaap-plenair.jpg';
-import plenairM from '../assets/images/v2/slaap-plenair-m.jpg';
-import spreker from '../assets/images/v2/slaap-spreker.jpg';
-import sprekerM from '../assets/images/v2/slaap-spreker-m.jpg';
-import netwerken from '../assets/images/v2/slaap-netwerken.jpg';
-import netwerkenM from '../assets/images/v2/slaap-netwerken-m.jpg';
-import feest from '../assets/images/v2/slaap-feest.jpg';
-import feestM from '../assets/images/v2/slaap-feest-m.jpg';
-import milaan from '../assets/images/v2/milaan-kloostertuin.jpg';
-import milaanM from '../assets/images/v2/milaan-kloostertuin-m.jpg';
 
 interface Props {
   lang: Lang;
@@ -29,14 +20,8 @@ interface Props {
 const { lang } = Astro.props;
 const h = home[lang].hero;
 
-const images = [
-  { desktop: plenair, mobile: plenairM, position: '42% 55%' },
-  { desktop: spreker, mobile: sprekerM, position: '58% 40%' },
-  { desktop: netwerken, mobile: netwerkenM, position: '55% 40%' },
-  { desktop: feest, mobile: feestM, position: '50% 50%' },
-  { desktop: milaan, mobile: milaanM, position: '50% 45%' },
-];
-const slides = images.map((img, i) => ({ ...img, ...h.slides[i] }));
+// Foto's, volgorde en teksten komen uit src/content/home/<taal>.json (Pages CMS)
+const slides = h.slides.map((sl) => ({ ...sl, ...pic(sl, '50% 50%') }));
 const caption = (s: (typeof slides)[number]) => `${s.congress} · ${s.label}`;
 ---
 

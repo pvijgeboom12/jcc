@@ -52,7 +52,7 @@ accreditation:
   note: Voor de NVMKA aangevraagd
 feesFooter: 'Groepsregistratie of een factuur op naam van je instelling? Mail <a href="mailto:agoijarts@jcc-congressen.nl">agoijarts@jcc-congressen.nl</a>.'
 
-practicalImage: ../../../assets/images/collegezaal-cursus.jpg
+practicalImage: /src/assets/images/collegezaal-cursus.jpg
 practicalImageAlt: Deelnemers in een collegezaal tijdens een wetenschappelijke cursus
 practical:
   - { title: Locatie & route, text: "Mauritskazerne, Frisopark 2, 6711 WZ Ede. Op 2 minuten lopen van station Ede-Wageningen." }

@@ -1,11 +1,16 @@
-/** Vaste bedrijfsgegevens. Eén plek om ze aan te passen. */
+import contact from '../content/site.json';
+
+/**
+ * Vaste bedrijfsgegevens.
+ * E-mail, telefoon, LinkedIn en KvK staan in src/content/site.json
+ * (bewerkbaar in Pages CMS onder "Bedrijfsgegevens"). De rest is techniek.
+ */
+const phoneHref = `tel:${contact.phone.replace(/\(0\)/, '').replace(/[^+\d]/g, '')}`;
+
 export const site = {
   url: 'https://jcc-congressen.nl',
-  email: 'info@jcc-congressen.nl',
-  phone: '+31 (0)6 1667 1881',
-  phoneHref: 'tel:+31616671881',
-  linkedin: 'https://www.linkedin.com/company/jcc-congress-consultancy-events/',
-  kvk: '62440756',
+  ...contact,
+  phoneHref,
   /**
    * Cloudflare Web Analytics (handmatige beacon). Cookieloos, dus geen cookiebanner nodig.
    * Leeg = geen analytics. Wordt alleen in productiebuilds geladen, niet in `npm run dev`.

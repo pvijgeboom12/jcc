@@ -29,7 +29,7 @@ fees:
   - { category: Associate member with student card, price: null }
   - { category: Non-member with student card, price: null }
 feesFooter: 'Not a member? See membership at <a href="https://www.nvmka.nl/">nvmka.nl</a>. Group registration or an invoice in your institution''s name? Email <a href="mailto:info@jcc-congressen.nl">info@jcc-congressen.nl</a>.'
-practicalImage: ../../../assets/images/keynote-podium.jpg
+practicalImage: /src/assets/images/keynote-podium.jpg
 practicalImageAlt: Full congress hall during a plenary session
 practical:
   - { title: Accreditation, text: "Accreditation has been applied for. The number of points will follow." }

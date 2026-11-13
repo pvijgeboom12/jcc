@@ -10,21 +10,8 @@ import { home } from '../i18n/home';
 import { alternateFor, type Lang } from '../i18n/routes';
 import { site } from '../lib/site';
 import { getUpcoming } from '../lib/congresses';
+import { pic } from '../lib/images';
 
-import imgSpeaker from '../assets/images/v2/slaap-spreker.jpg';
-import imgApplause from '../assets/images/v2/slaap-applaus-m.jpg';
-import imgCorridor from '../assets/images/v2/slaap-gang.jpg';
-import imgCorridorM from '../assets/images/v2/slaap-gang-m.jpg';
-import imgPosters from '../assets/images/v2/slaap-posters-m.jpg';
-import imgParty from '../assets/images/v2/slaap-feest.jpg';
-import imgPartyM from '../assets/images/v2/slaap-feest-m.jpg';
-import imgDinner from '../assets/images/v2/slaap-diner.jpg';
-import imgBand from '../assets/images/v2/slaap-band-m.jpg';
-import imgDrinks from '../assets/images/v2/slaap-borrel-m.jpg';
-import imgCloister from '../assets/images/milaan-kloostertuin.jpg';
-import imgMilanDinner from '../assets/images/milaan-diner.jpg';
-import imgBadge from '../assets/images/registratiebalie.jpg';
-import imgAnnick from '../assets/images/v2/annick-portret.jpg';
 
 interface Props {
   lang: Lang;
@@ -54,8 +41,8 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         <p class="about__promise">{h.about.promise}</p>
       </div>
       <div class="about__media" data-reveal-stagger>
-        <ArtPicture desktop={imgSpeaker} alt={h.about.imageAlts[0]} class="img about__img about__img--a" parallax={-30} sizes="(min-width: 1000px) 360px, 60vw" desktopWidths={[480, 720, 1000]} position="55% 40%" />
-        <ArtPicture desktop={imgApplause} alt={h.about.imageAlts[1]} class="img about__img about__img--b" parallax={45} sizes="(min-width: 1000px) 300px, 45vw" desktopWidths={[400, 640, 900]} />
+        <ArtPicture {...pic(h.about.images[0])} class="img about__img about__img--a" parallax={-30} sizes="(min-width: 1000px) 360px, 60vw" desktopWidths={[480, 720, 1000]} />
+        <ArtPicture {...pic(h.about.images[1])} class="img about__img about__img--b" parallax={45} sizes="(min-width: 1000px) 300px, 45vw" desktopWidths={[400, 640, 900]} />
       </div>
     </div>
     {
@@ -90,7 +77,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
               <details class="step__more">
                 <summary>{h.services.more}</summary>
                 <ul>
-                  {s.items.map(([title, text]) => (
+                  {s.items.map(({ title, text }) => (
                     <li>
                       <span class="step__item">{title}</span>
                       <span class="muted">{text}</span>
@@ -109,8 +96,8 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   <section id="community" class="bg-white">
     <div class="container section community">
       <div class="community__media" data-reveal-stagger>
-        <ArtPicture desktop={imgCorridor} mobile={imgCorridorM} alt={h.community.imageAlts[0]} class="img community__img" sizes="(min-width: 1000px) 560px, 100vw" desktopWidths={[640, 960, 1280]} mobileWidths={[400, 600, 900]} position="40% 50%" />
-        <ArtPicture desktop={imgPosters} alt={h.community.imageAlts[1]} class="img community__img2" parallax={50} sizes="(min-width: 1000px) 220px, 40vw" desktopWidths={[300, 480, 700]} />
+        <ArtPicture {...pic(h.community.images[0])} class="img community__img" sizes="(min-width: 1000px) 560px, 100vw" desktopWidths={[640, 960, 1280]} mobileWidths={[400, 600, 900]} />
+        <ArtPicture {...pic(h.community.images[1])} class="img community__img2" parallax={50} sizes="(min-width: 1000px) 220px, 40vw" desktopWidths={[300, 480, 700]} />
       </div>
       <div class="community__text" data-reveal>
         <Eyebrow>{h.community.eyebrow}</Eyebrow>
@@ -119,7 +106,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         <p class="community__closing">{h.community.closing}</p>
         <ul class="community__grid">
           {
-            h.community.items.map(([title, text]) => (
+            h.community.items.map(({ title, text }) => (
               <li>
                 <span class="community__item">{title}</span>
                 <span class="muted">{text}</span>
@@ -136,7 +123,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     <div class="container annick-wrap">
       <div class="annick">
         <div class="annick__media" data-reveal>
-          <ArtPicture desktop={imgAnnick} alt={h.annick.imageAlt} class="img annick__img" parallax={-25} sizes="(min-width: 1000px) 440px, 90vw" desktopWidths={[400, 640, 880, 1100]} position="50% 25%" />
+          <ArtPicture {...pic(h.annick.image)} class="img annick__img" parallax={-25} sizes="(min-width: 1000px) 440px, 90vw" desktopWidths={[400, 640, 880, 1100]} />
         </div>
         <div class="annick__text" data-reveal>
           <Eyebrow>{h.annick.eyebrow}</Eyebrow>
@@ -181,10 +168,10 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         </ul>
       </div>
       <figure class="social__mosaic" data-reveal-stagger>
-        <ArtPicture desktop={imgParty} mobile={imgPartyM} alt={h.social.imageAlts[0]} class="img social__main" sizes="(min-width: 1000px) 640px, 100vw" desktopWidths={[640, 960, 1280]} mobileWidths={[400, 600, 900]} />
-        <ArtPicture desktop={imgDinner} alt={h.social.imageAlts[1]} class="img social__a" sizes="(min-width: 1000px) 320px, 50vw" desktopWidths={[400, 640, 900]} position="35% 50%" />
-        <ArtPicture desktop={imgBand} alt={h.social.imageAlts[2]} class="img social__b" parallax={35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
-        <ArtPicture desktop={imgDrinks} alt={h.social.imageAlts[3]} class="img social__c" parallax={-35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
+        <ArtPicture {...pic(h.social.images[0])} class="img social__main" sizes="(min-width: 1000px) 640px, 100vw" desktopWidths={[640, 960, 1280]} mobileWidths={[400, 600, 900]} />
+        <ArtPicture {...pic(h.social.images[1])} class="img social__a" sizes="(min-width: 1000px) 320px, 50vw" desktopWidths={[400, 640, 900]} />
+        <ArtPicture {...pic(h.social.images[2])} class="img social__b" parallax={35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
+        <ArtPicture {...pic(h.social.images[3])} class="img social__c" parallax={-35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
         <figcaption class="social__caption">{h.social.caption}</figcaption>
       </figure>
     </div>
@@ -202,9 +189,9 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         </ul>
       </div>
       <div class="expertise__media" data-reveal-stagger>
-        <ArtPicture desktop={imgCloister} alt={h.expertise.imageAlts[0]} class="img expertise__wide" sizes="(min-width: 1000px) 620px, 100vw" desktopWidths={[560, 900, 1200]} />
-        <ArtPicture desktop={imgMilanDinner} alt={h.expertise.imageAlts[1]} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} position="center 60%" />
-        <ArtPicture desktop={imgBadge} alt={h.expertise.imageAlts[2]} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
+        <ArtPicture {...pic(h.expertise.images[0])} class="img expertise__wide" sizes="(min-width: 1000px) 620px, 100vw" desktopWidths={[560, 900, 1200]} />
+        <ArtPicture {...pic(h.expertise.images[1])} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
+        <ArtPicture {...pic(h.expertise.images[2])} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
       </div>
     </div>
   </section>

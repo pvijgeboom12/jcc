@@ -21,7 +21,7 @@ export function isLinkable(c: Congress) {
 }
 
 export async function getCongresses(lang: Lang) {
-  const all = await getCollection('congresses', (c) => c.data.lang === lang);
+  const all = await getCollection('congresses', (c) => c.id.startsWith(`${lang}/`)) // taal = map (nl/ of en/);
   return all.sort((a, b) => +a.data.startDate - +b.data.startDate);
 }
 

@@ -4,6 +4,7 @@
  * Secties zonder inhoud worden automatisch overgeslagen.
  */
 import { Image } from 'astro:assets';
+import { img } from '../lib/images';
 import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from './Eyebrow.astro';
@@ -187,7 +188,7 @@ const mainRegister = hasRegistration ? '#register' : d.registrationUrl;
         <div class="container section-md practical">
           {d.practicalImage && (
             <Image
-              src={d.practicalImage}
+              src={img(d.practicalImage)}
               alt={d.practicalImageAlt ?? ''}
               widths={[480, 760, 1140]}
               sizes="(min-width: 1000px) 560px, 100vw"

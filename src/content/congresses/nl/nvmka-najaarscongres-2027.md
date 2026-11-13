@@ -34,7 +34,7 @@ fees:
   - { category: Buitengewoon lid met studentenkaart, price: null }
   - { category: Niet-lid met studentenkaart, price: null }
 feesFooter: 'Geen lid? Bekijk het lidmaatschap op <a href="https://www.nvmka.nl/">nvmka.nl</a>. Groepsregistratie of een factuur op naam van je instelling? Mail <a href="mailto:info@jcc-congressen.nl">info@jcc-congressen.nl</a>.'
-practicalImage: ../../../assets/images/keynote-podium.jpg
+practicalImage: /src/assets/images/keynote-podium.jpg
 practicalImageAlt: Volle congreszaal tijdens een plenaire sessie
 practical:
   - { title: Accreditatie, text: "Accreditatie wordt aangevraagd. Het aantal punten volgt." }
