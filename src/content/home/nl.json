@@ -4,49 +4,49 @@
   "hero": {
     "title": "Sterke congressen.",
     "accent": "Bijzondere ontmoetingen.",
-    "lead": "Van eerste idee tot een congres dat mensen bijblijft.",
+    "lead": "Van het eerste idee tot een congres dat mensen bijblijft.",
     "primary": "Bespreek je congres",
     "secondary": "Bekijk de agenda",
     "slides": [
       {
         "image": "/src/assets/images/v2/slaap-plenair.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-plenair-m.jpg",
-        "position": "42% 55%",
         "congress": "SLAAP2025",
         "label": "Plenaire sessie",
-        "alt": "Een volle congreszaal met gekleurd licht luistert naar een presentatie"
+        "alt": "Een volle congreszaal met gekleurd licht luistert naar een presentatie",
+        "position": "42% 55%"
       },
       {
         "image": "/src/assets/images/v2/slaap-spreker.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-spreker-m.jpg",
-        "position": "58% 40%",
         "congress": "SLAAP2025",
         "label": "Keynote",
-        "alt": "Een spreker geeft een keynote achter het podium"
+        "alt": "Een spreker geeft een keynote achter het podium",
+        "position": "58% 40%"
       },
       {
         "image": "/src/assets/images/v2/slaap-netwerken.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-netwerken-m.jpg",
-        "position": "55% 40%",
         "congress": "SLAAP2025",
         "label": "Netwerkborrel",
-        "alt": "Deelnemers praten met elkaar tijdens de borrel, met een glas in de hand"
+        "alt": "Deelnemers praten met elkaar tijdens de borrel, met een glas in de hand",
+        "position": "55% 40%"
       },
       {
         "image": "/src/assets/images/v2/slaap-feest.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-feest-m.jpg",
-        "position": "50% 50%",
         "congress": "SLAAP2025",
         "label": "Congresfeest",
-        "alt": "Gasten dansen op een verlichte dansvloer terwijl een liveband speelt"
+        "alt": "Gasten dansen op een verlichte dansvloer terwijl een liveband speelt",
+        "position": "50% 50%"
       },
       {
         "image": "/src/assets/images/v2/milaan-kloostertuin.jpg",
         "imageMobile": "/src/assets/images/v2/milaan-kloostertuin-m.jpg",
-        "position": "50% 45%",
         "congress": "Internationaal congres",
         "label": "Milaan",
-        "alt": "Deelnemers lunchen in de kloostertuin van de Universiteit van Milaan"
+        "alt": "Deelnemers lunchen in de kloostertuin van de Universiteit van Milaan",
+        "position": "50% 45%"
       }
     ]
   },
