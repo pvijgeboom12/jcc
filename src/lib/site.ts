@@ -8,7 +8,7 @@ import contact from '../content/site.json';
 const phoneHref = `tel:${contact.phone.replace(/\(0\)/, '').replace(/[^+\d]/g, '')}`;
 
 export const site = {
-  url: 'https://jcc-congressen.nl',
+  url: 'https://jcc-congress.com',
   ...contact,
   phoneHref,
   /**

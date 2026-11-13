@@ -82,7 +82,7 @@ const congresses = defineCollection({
       practicalImageAlt: z.string().optional(),
 
       registrationUrl: z.string().optional(),
-      contactEmail: z.string().email().default('info@jcc-congressen.nl'),
+      contactEmail: z.string().email().default('info@jcc-congress.com'),
       contactHeading: z.string().optional(),
     }),
 });

@@ -2,8 +2,8 @@
   "metaTitle": "JCC Congress Consultancy & Events",
   "metaDescription": "JCC organises scientific and medical congresses, from first idea to final evaluation. In the Netherlands and abroad.",
   "hero": {
-    "title": "Strong congresses.",
-    "accent": "Memorable encounters.",
+    "title": "Strong congresses",
+    "accent": "Memorable encounters",
     "lead": "From first idea to a congress people remember.",
     "primary": "Discuss your congress",
     "secondary": "See the agenda",
@@ -51,14 +51,14 @@
     ]
   },
   "about": {
-    "eyebrow": "About JCC",
-    "heading": "A congress is more than a programme and a room",
+    "eyebrow": "About JCC Congress Consultancy & Events",
+    "heading": "A good congress moves people forward",
     "paragraphs": [
-      "A good congress moves people forward. New insights, valuable conversations and connections that keep paying off long after.",
-      "At JCC we make sure everything is right. From programme and speakers to venue, registration and the smallest details. So you can focus on what really matters: the people and the content."
+      "New insights, valuable conversations and connections that keep paying off long after.",
+      "At JCC we make sure everything is right. Programme, speakers, venue, registration, budget and everything in between. So you can focus on what really matters: the people and the content."
     ],
     "promise": "Calm organisation, room to connect.",
-    "trustLabel": "On the agenda for, among others",
+    "trustLabel": "We organise for, among others",
     "images": [
       {
         "image": "/src/assets/images/v2/slaap-spreker.jpg",
@@ -69,16 +69,22 @@
         "image": "/src/assets/images/v2/slaap-applaus-m.jpg",
         "alt": "The audience applauding in a full hall at SLAAP2025"
       }
+    ],
+    "clients": [
+      "Slaapgeneeskunde Vereniging Nederland (SVNL)",
+      "Nederlandse Slaap Waak Organisatie (NSWO)",
+      "Society for Light, Rhythms, and Circadian Health (SLRCH)",
+      "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)"
     ]
   },
   "annick": {
     "eyebrow": "The person behind JCC",
-    "heading": "Hi, I’m",
-    "accent": "Annick!",
+    "heading": "Bringing people",
+    "accent": "together",
     "paragraphs": [
-      "Organising congresses is pretty much in my blood by now. For years I worked at the Amsterdam Congress Bureau, part of I amsterdam. Then I chose a very different view: as a KLM flight attendant, I flew all over the world.",
+      "I’m Annick Goijarts and I’ve been working in the congress industry for more than twenty years. For years I worked at the Amsterdam Convention Board, part of I amsterdam. Then I looked for a very different view: as a KLM flight attendant, I flew all over the world.",
       "But I never let go of congresses. Even between my intercontinental flights, I kept organising them. And there were more and more!",
-      "At some point it simply no longer fitted alongside my work in the air. Time to choose. Now I can focus entirely on JCC.",
+      "At some point it simply no longer fitted alongside my work in the air. Time for a choice. I chose congresses: today I focus entirely on JCC.",
       "And that’s exactly what makes me happy: bringing people together, arranging everything down to the last detail and making sure a congress doesn’t just run smoothly, but really makes an impact."
     ],
     "closing": "Nice to meet you!",
@@ -94,12 +100,12 @@
   "services": {
     "eyebrow": "What we do",
     "heading": "From first idea to final applause",
-    "lead": "We take care of whatever is needed. From the first planning to the evaluation afterwards.",
+    "lead": "We take care of everything that’s needed, from planning beforehand to evaluation afterwards.",
     "more": "What we take care of",
     "steps": [
       {
-        "title": "Prepare",
-        "core": "Planning, budget and arrangements with venue, hotels and sponsors.",
+        "title": "Preparation",
+        "core": "Concept, budget, venue, hotels and sponsors.",
         "items": [
           {
             "title": "Planning",
@@ -120,8 +126,8 @@
         ]
       },
       {
-        "title": "Build the programme",
-        "core": "Speakers, submitted research and accreditation, so the content is right.",
+        "title": "Programme",
+        "core": "Speakers, abstracts and accreditation, in collaboration with the board.",
         "items": [
           {
             "title": "Abstracts",
@@ -134,17 +140,17 @@
           {
             "title": "Accreditation",
             "text": "So participants earn CME points. We submit the application"
-          },
-          {
-            "title": "Communication",
-            "text": "Invitations, updates and the online programme"
           }
         ]
       },
       {
-        "title": "Welcome participants",
-        "core": "Registration, the congress app and a social programme people remember.",
+        "title": "Communication and registration",
+        "core": "Website, newsletters, registration and the congress app.",
         "items": [
+          {
+            "title": "Communication",
+            "text": "Website, newsletters, invitations and the online programme"
+          },
           {
             "title": "Registration",
             "text": "Registrations, attendee lists and certificates"
@@ -152,16 +158,12 @@
           {
             "title": "Congress app",
             "text": "Advice on the right app, and we load the content"
-          },
-          {
-            "title": "Social programme",
-            "text": "Dinner, music and transport"
           }
         ]
       },
       {
-        "title": "Deliver and evaluate",
-        "core": "We’re there from set-up to wrap-up, followed by a clear final report.",
+        "title": "Delivery and wrap-up",
+        "core": "We’re there from set-up to wrap-up. Afterwards you receive a clear final report and the financial settlement.",
         "items": [
           {
             "title": "On site",
@@ -170,6 +172,10 @@
           {
             "title": "Evaluation",
             "text": "We analyse the feedback and write the final report"
+          },
+          {
+            "title": "Financial wrap-up",
+            "text": "Final settlement and financial report of the congress"
           }
         ]
       }
@@ -177,9 +183,9 @@
   },
   "community": {
     "eyebrow": "Community",
-    "heading": "The congress ends.",
-    "accent": "The community doesn’t.",
-    "lead": "A congress brings people together. But why should that connection stop after one day? JCC helps associations and organisations keep the conversation going. With newsletters, meetings and new ways to share knowledge.",
+    "heading": "The congress ends",
+    "accent": "The community doesn’t",
+    "lead": "A congress brings people together. But why should that connection stop when it’s over? JCC helps associations and organisations keep the conversation going. With newsletters, social media and support for smaller meetings.",
     "closing": "That way, one congress becomes the start of something more.",
     "items": [
       {
@@ -196,7 +202,7 @@
       },
       {
         "title": "Association support",
-        "text": "A steady hand for boards and committees"
+        "text": "Support for boards and committees, with one fixed point of contact"
       }
     ],
     "images": [
@@ -217,12 +223,12 @@
     "headingWith": "delivered with",
     "accent": "flair",
     "intro": "No two congresses are the same. Luckily.",
-    "text": "A small symposium or a large international congress: every event needs its own approach. We think along, keep the lines short and make sure everything is well arranged. With care for both the content and the people."
+    "text": "A small symposium or a large international congress: every event needs its own approach. We think along, keep the lines short and make sure everything is well arranged. With an eye for both content and atmosphere."
   },
   "social": {
     "eyebrow": "Social programme",
-    "title": "Science by day,",
-    "accent": "dance floor by night",
+    "title": "Not on the agenda,",
+    "accent": "but the highlight",
     "text": "The best conversations don’t always happen in the congress hall. That’s why we also organise the programme around it. From relaxed drinks to a party people talk about for a long time.",
     "points": [
       "Congress dinner at a special venue",
@@ -248,29 +254,29 @@
       {
         "image": "/src/assets/images/v2/slaap-borrel-m.jpg",
         "alt": "Participants raising a glass during drinks"
-      }
-    ]
-  },
-  "expertise": {
-    "eyebrow": "Who we work for",
-    "heading": "Your field.",
-    "accent": "Our experience.",
-    "lead": "From medical associations and scientific organisations to international congresses. JCC knows the world of scientific meetings and what it takes. From the first registration to the last speaker.",
-    "tags": [
-      "Medical associations",
-      "Scientific societies",
-      "International congresses",
-      "Academies and courses"
-    ],
-    "images": [
-      {
-        "image": "/src/assets/images/milaan-kloostertuin.jpg",
-        "alt": "Congress participants having lunch in the cloister courtyard of the University of Milan"
       },
       {
         "image": "/src/assets/images/milaan-diner.jpg",
         "alt": "Congress dinner in a historic hall in Milan, seen from the balcony",
         "position": "center 60%"
+      }
+    ]
+  },
+  "expertise": {
+    "eyebrow": "Who we work for",
+    "heading": "Content and organisation,",
+    "accent": "hand in hand",
+    "lead": "JCC knows the world of scientific meetings. We know what it takes, and what speakers and participants expect.",
+    "tags": [
+      "Medical associations",
+      "Scientific societies",
+      "International organisations",
+      "Universities and institutes"
+    ],
+    "images": [
+      {
+        "image": "/src/assets/images/milaan-kloostertuin.jpg",
+        "alt": "Congress participants having lunch in the cloister courtyard of the University of Milan"
       },
       {
         "image": "/src/assets/images/registratiebalie.jpg",
@@ -279,9 +285,9 @@
     ]
   },
   "contact": {
-    "heading": "Let’s talk about",
-    "accent": "your congress",
-    "lead": "A congress in the pipeline? Or just curious what we can do for you? Tell us your idea. We’re happy to think along.",
+    "heading": "A congress",
+    "accent": "in the pipeline?",
+    "lead": "Or just curious what we can do? Share your idea and we’ll get back to you soon.",
     "direct": "Prefer direct contact?"
   }
 }

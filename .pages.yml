@@ -223,8 +223,8 @@ content:
             fields:
               - { name: image, label: Foto (liggend), type: image, required: true }
               - { name: imageMobile, label: Foto op mobiel (staand), description: Leeg = dezelfde foto, type: image }
-              - { name: congress, label: Congres, description: Bijv. SLAAP2025, type: string }
-              - { name: label, label: Onderschrift, description: Bijv. Keynote, type: string }
+              - { name: congress, label: Congres (intern), description: Wordt niet meer op de site getoond, type: string }
+              - { name: label, label: Onderschrift (intern), description: Wordt niet meer op de site getoond. De omschrijving voor schermlezers en Google staat bij Alt-tekst., type: string }
               - { name: alt, label: Beschrijving voor schermlezers, type: string, required: true }
               - { name: position, label: Uitsnede (optioneel), description: "Bijv. 50% 40%. Leeg = midden.", type: string }
       - name: about
@@ -236,6 +236,7 @@ content:
           - { name: paragraphs, label: Alinea's, type: text, list: true }
           - { name: promise, label: Belofte (dikgedrukte zin), type: string }
           - { name: trustLabel, label: Tekst boven de verenigingen, type: string }
+          - { name: clients, label: Verenigingen en organisaties, description: Eén naam per regel. Leeg = de organisaties van de komende congressen., type: string, list: true }
           - name: images
             label: Foto's (2)
             type: object
@@ -340,10 +341,10 @@ content:
           - { name: points, label: Punten, type: string, list: true }
           - { name: caption, label: Onderschrift, type: string }
           - name: images
-            label: Foto's (4)
+            label: Foto's (4 of 5)
             description: "1 = groot beeld, 2 = diner, 3 en 4 = kleine foto's"
             type: object
-            list: { min: 4, max: 4 }
+            list: { min: 4, max: 5 }
             fields: *imageFields
       - name: expertise
         label: Voor wie
@@ -355,10 +356,10 @@ content:
           - { name: lead, label: Inleiding, type: text }
           - { name: tags, label: Labels, type: string, list: true }
           - name: images
-            label: Foto's (3)
+            label: Foto's (2 of 3)
             description: "1 = breed, 2 en 3 = staand"
             type: object
-            list: { min: 3, max: 3 }
+            list: { min: 2, max: 3 }
             fields: *imageFields
       - name: contact
         label: Contact
@@ -386,3 +387,15 @@ content:
       - { name: phone, label: Telefoon, description: "Zo schrijven: +31 (0)6 1234 5678", type: string, required: true }
       - { name: linkedin, label: LinkedIn-pagina, type: string }
       - { name: kvk, label: KvK-nummer, type: string }
+
+  - name: algemene-voorwaarden
+    label: Algemene voorwaarden
+    type: file
+    path: src/content/legal/algemene-voorwaarden.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Titel, type: string, required: true }
+      - { name: version, label: Versie, description: "Bijv. Versie november 2026 · vervangt de versie van januari 2025", type: string }
+      - { name: address, label: Adres en KvK, type: string }
+      - { name: pdf, label: Pdf om te downloaden, description: Pad naar de pdf in public/downloads, type: string }
+      - { name: body, label: Tekst, type: rich-text }

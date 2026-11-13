@@ -20,7 +20,9 @@ const { lang } = Astro.props;
 const h = home[lang];
 
 // Bewijs uit eigen data: organisaties van congressen op de agenda (geen verzonnen klanten)
-const orgs = [...new Set((await getUpcoming(lang)).map((c) => c.data.organisation))];
+// Klantenlijst uit het CMS; valt terug op de organisaties van de komende congressen
+const clients: string[] = (h.about as { clients?: string[] }).clients ?? [];
+const orgs = clients.length ? clients : [...new Set((await getUpcoming(lang)).map((c) => c.data.organisation))];
 const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
 ---
 
@@ -33,7 +35,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   <section id="about" class="bg-white">
     <div class="container section about">
       <div class="about__text" data-reveal>
-        <Eyebrow>{h.about.eyebrow}</Eyebrow>
+        <Eyebrow class="eyebrow--long">{h.about.eyebrow}</Eyebrow>
         <h2 class="h2-xl">{h.about.heading}</h2>
         <div class="body-lg stack-20 about__body">
           {h.about.paragraphs.map((p) => <p>{p}</p>)}
@@ -172,6 +174,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         <ArtPicture {...pic(h.social.images[1])} class="img social__a" sizes="(min-width: 1000px) 320px, 50vw" desktopWidths={[400, 640, 900]} />
         <ArtPicture {...pic(h.social.images[2])} class="img social__b" parallax={35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
         <ArtPicture {...pic(h.social.images[3])} class="img social__c" parallax={-35} sizes="(min-width: 1000px) 200px, 25vw" desktopWidths={[300, 480]} />
+        {h.social.images[4] && <ArtPicture {...pic(h.social.images[4])} class="img social__d" sizes="(min-width: 1000px) 260px, 100vw" desktopWidths={[300, 480, 700]} />}
         <figcaption class="social__caption">{h.social.caption}</figcaption>
       </figure>
     </div>
@@ -188,10 +191,20 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
           {h.expertise.tags.map((tag) => <li class="tag">{tag}</li>)}
         </ul>
       </div>
-      <div class="expertise__media" data-reveal-stagger>
-        <ArtPicture {...pic(h.expertise.images[0])} class="img expertise__wide" sizes="(min-width: 1000px) 620px, 100vw" desktopWidths={[560, 900, 1200]} />
-        <ArtPicture {...pic(h.expertise.images[1])} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
-        <ArtPicture {...pic(h.expertise.images[2])} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
+      <div class:list={['expertise__media', `expertise__media--${h.expertise.images.length}`]} data-reveal-stagger>
+        {
+          h.expertise.images.length >= 3 ? (
+            <>
+              <ArtPicture {...pic(h.expertise.images[0])} class="img expertise__wide" sizes="(min-width: 1000px) 620px, 100vw" desktopWidths={[560, 900, 1200]} />
+              <ArtPicture {...pic(h.expertise.images[1])} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
+              <ArtPicture {...pic(h.expertise.images[2])} class="img expertise__tall" sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600]} />
+            </>
+          ) : (
+            h.expertise.images.map((im, i) => (
+              <ArtPicture {...pic(im)} class:list={['img', 'expertise__tall', { 'expertise__tall--offset': i === 1 }]} parallax={i === 1 ? 30 : undefined} sizes="(min-width: 1000px) 300px, 50vw" desktopWidths={[300, 600, 900]} />
+            ))
+          )
+        }
       </div>
     </div>
   </section>
@@ -283,6 +296,15 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     font-weight: 600; letter-spacing: -0.025em; line-height: 1.02;
     font-size: clamp(36px, 4.6vw, 64px);
   }
+  /* Zonder punten: elke zin op een eigen regel */
+  .community__heading .accent { display: block; }
+  /* Lang label (volledige bedrijfsnaam): op mobiel op één regel houden */
+  @media (max-width: 480px) {
+    :global(.eyebrow--long) { font-size: 10.5px; letter-spacing: 0.05em; white-space: nowrap; }
+  }
+  @media (max-width: 359px) {
+    :global(.eyebrow--long) { white-space: normal; }
+  }
   .community__heading .accent { display: block; }
   .community__lead { margin-top: 24px; max-width: 56ch; }
   .community__closing {
@@ -305,7 +327,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   /* Volgt op de witte Community-sectie, gaat over in de bordeaux band */
   .annick-wrap { padding-top: 0; padding-bottom: var(--section-y); }
   .annick {
-    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 72px; align-items: start;
+    display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: 64px; align-items: start;
     background: var(--color-surface); border-radius: var(--radius-xl); padding: 56px;
   }
   /* Portret blijft naast de lange tekst in beeld */
@@ -332,6 +354,9 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     margin: 0; display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: auto auto auto; gap: 12px;
   }
   .social__mosaic :global(.social__main) { grid-column: 1 / -1; aspect-ratio: 16 / 9; border-radius: var(--radius-xl); }
+  /* Vijfde foto: naast de hoofdfoto, even hoog */
+  .social__mosaic:has(:global(.social__d)) :global(.social__main) { grid-column: 1 / 3; }
+  .social__mosaic :global(.social__d) { grid-column: 3; grid-row: 1; height: 100%; aspect-ratio: auto; border-radius: var(--radius-lg); }
   .social__mosaic :global(.social__a) { aspect-ratio: 4 / 3; border-radius: var(--radius-lg); height: 100%; }
   .social__mosaic :global(.social__b),
   .social__mosaic :global(.social__c) { aspect-ratio: 4 / 5; border-radius: var(--radius-lg); height: 100%; }
@@ -344,6 +369,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   .expertise__media { flex: 1 1 480px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .expertise__media :global(.expertise__wide) { grid-column: 1 / -1; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); }
   .expertise__media :global(.expertise__tall) { aspect-ratio: 4 / 5; border-radius: var(--radius-lg); }
+  .expertise__media :global(.expertise__tall--offset) { margin-top: 48px; }
 
   /* Contact */
   .contact { display: flex; flex-wrap: wrap; gap: 56px; }
@@ -358,7 +384,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   @media (max-width: 999px) {
     .about, .community, .social, .band__inner, .annick { grid-template-columns: minmax(0, 1fr); gap: 48px; }
     .annick { padding: 40px; }
-    .annick__media { position: static; max-width: 440px; order: 0; }
+    .annick__media { position: static; max-width: 340px; order: 0; }
     .community__media { order: 2; max-width: 560px; }
     .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .step::after { display: none; }
@@ -378,5 +404,6 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     .social__mosaic { grid-template-columns: 1fr 1fr; }
     .social__mosaic :global(.social__main) { aspect-ratio: 4 / 5; }
     .social__mosaic :global(.social__a) { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+    .social__mosaic :global(.social__d) { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; }
   }
 </style>

@@ -50,17 +50,16 @@ accreditation:
   title: NVMKA-accreditatie
   value: 5 punten
   note: Voor de NVMKA aangevraagd
-feesFooter: 'Groepsregistratie of een factuur op naam van je instelling? Mail <a href="mailto:agoijarts@jcc-congressen.nl">agoijarts@jcc-congressen.nl</a>.'
+feesFooter: 'Groepsregistratie of een factuur op naam van je instelling? Mail <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.'
 
-practicalImage: /src/assets/images/collegezaal-cursus.jpg
-practicalImageAlt: Deelnemers in een collegezaal tijdens een wetenschappelijke cursus
+# TODO: foto van de Mauritskazerne (aan te leveren). De zaalfoto van het slaapcongres is weggehaald.
 practical:
   - { title: Locatie & route, text: "Mauritskazerne, Frisopark 2, 6711 WZ Ede. Op 2 minuten lopen van station Ede-Wageningen." }
   - { title: Accreditatie, text: "5 accreditatiepunten NVMKA." }
   - { title: Taal, text: "De voertaal is Nederlands." }
   - { title: Voor wie, text: "MKA-chirurgen, dermatologen, KNO-artsen, plastisch chirurgen en andere geïnteresseerden." }
 
-contactEmail: agoijarts@jcc-congressen.nl
+contactEmail: info@jcc-congress.com
 ---
 
 Aangezichtschirurgie begint met kijken, analyseren en zorgvuldig omgaan met weefsel. Anatomie, weefsellagen, littekenvorming, vorm, volume en symmetrie bepalen steeds het resultaat, of je nu een defect herstelt, een posttraumatische asymmetrie corrigeert of een esthetische wens behandelt.

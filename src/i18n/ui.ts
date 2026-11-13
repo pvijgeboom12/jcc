@@ -10,6 +10,7 @@ export const ui = {
     cta: 'Neem contact op',
     langLabel: 'Taal',
     privacy: 'Privacyverklaring',
+    terms: 'Algemene voorwaarden',
     kvk: 'KvK 62440756',
     // Congresoverzicht
     overview: {
@@ -35,7 +36,7 @@ export const ui = {
       cta: 'Info & registratie →',
       label: 'Op de agenda',
       heading: 'Komende congressen',
-      open: 'Registratie open',
+      open: 'Inschrijving open',
       std: 'Save the date',
       view: 'Bekijk congres',
       follows: 'Programma volgt',
@@ -63,6 +64,7 @@ export const ui = {
     cta: "Let's talk",
     langLabel: 'Language',
     privacy: 'Privacy statement',
+    terms: 'Terms and conditions',
     kvk: 'KvK 62440756',
     overview: {
       metaTitle: 'Congresses',

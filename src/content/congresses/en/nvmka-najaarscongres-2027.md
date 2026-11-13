@@ -28,7 +28,7 @@ fees:
   - { category: Associate member, price: null }
   - { category: Associate member with student card, price: null }
   - { category: Non-member with student card, price: null }
-feesFooter: 'Not a member? See membership at <a href="https://www.nvmka.nl/">nvmka.nl</a>. Group registration or an invoice in your institution''s name? Email <a href="mailto:info@jcc-congressen.nl">info@jcc-congressen.nl</a>.'
+feesFooter: 'Not a member? See membership at <a href="https://www.nvmka.nl/">nvmka.nl</a>. Group registration or an invoice in your institution''s name? Email <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.'
 practicalImage: /src/assets/images/keynote-podium.jpg
 practicalImageAlt: Full congress hall during a plenary session
 practical:
@@ -36,6 +36,6 @@ practical:
   - { title: Venue & route, text: "The congress takes place in Amsterdam. Venue, route and parking details will follow as soon as possible." }
   - { title: Congress dinner, text: "[INFO ABOUT THE DINNER OR SOCIAL PROGRAMME]" }
   - { title: Cancellation, text: "[CANCELLATION TERMS]" }
-contactEmail: info@jcc-congressen.nl
+contactEmail: info@jcc-congress.com
 contactHeading: Questions about registering?
 ---

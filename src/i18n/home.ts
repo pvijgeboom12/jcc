@@ -25,13 +25,13 @@ const ui = {
       "name": "Naam",
       "email": "E-mailadres",
       "org": "Organisatie",
-      "orgHint": "Bijvoorbeeld je vereniging of instituut",
+      "orgHint": "",
       "message": "Waarmee kunnen we je helpen?",
-      "messageHint": "Bijvoorbeeld het soort congres, het aantal deelnemers of de periode",
+      "messageHint": "",
       "required": "verplicht",
       "optional": "optioneel",
       "submit": "Verstuur mijn bericht",
-      "mailSubject": "Bericht via jcc-congressen.nl",
+      "mailSubject": "Bericht via jcc-congress.com",
       "errors": {
         "summary": "Controleer de velden hieronder.",
         "name": "Vul je naam in.",
@@ -42,7 +42,7 @@ const ui = {
       "sentTitle": "Bijna klaar",
       "sentMailto": "Je mailprogramma opent nu met je bericht. Klik daar op verzenden. Opent er niets? Mail dan naar",
       "sentEndpoint": "Dank je wel. We hebben je bericht ontvangen en nemen contact met je op.",
-      "privacy": "We gebruiken je gegevens alleen om te reageren.",
+      "privacy": "We gebruiken je gegevens alleen om op je bericht te reageren.",
       "privacyLink": "Lees onze privacyverklaring"
     }
   },
@@ -60,13 +60,13 @@ const ui = {
       "name": "Name",
       "email": "Email address",
       "org": "Organisation",
-      "orgHint": "For example your association or institute",
+      "orgHint": "",
       "message": "How can we help?",
-      "messageHint": "For example the type of congress, number of participants or timing",
+      "messageHint": "",
       "required": "required",
       "optional": "optional",
       "submit": "Send my message",
-      "mailSubject": "Message via jcc-congressen.nl",
+      "mailSubject": "Message via jcc-congress.com",
       "errors": {
         "summary": "Please check the fields below.",
         "name": "Please enter your name.",
@@ -77,7 +77,7 @@ const ui = {
       "sentTitle": "Almost done",
       "sentMailto": "Your email program is opening with your message. Click send there. Nothing opens? Email us at",
       "sentEndpoint": "Thank you. We’ve received your message and will get back to you.",
-      "privacy": "We only use your details to reply.",
+      "privacy": "We only use your details to reply to your message.",
       "privacyLink": "Read our privacy statement"
     }
   },

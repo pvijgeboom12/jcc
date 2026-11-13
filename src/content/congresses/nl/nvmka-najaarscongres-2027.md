@@ -33,7 +33,7 @@ fees:
   - { category: Buitengewoon lid, price: null }
   - { category: Buitengewoon lid met studentenkaart, price: null }
   - { category: Niet-lid met studentenkaart, price: null }
-feesFooter: 'Geen lid? Bekijk het lidmaatschap op <a href="https://www.nvmka.nl/">nvmka.nl</a>. Groepsregistratie of een factuur op naam van je instelling? Mail <a href="mailto:info@jcc-congressen.nl">info@jcc-congressen.nl</a>.'
+feesFooter: 'Geen lid? Bekijk het lidmaatschap op <a href="https://www.nvmka.nl/">nvmka.nl</a>. Groepsregistratie of een factuur op naam van je instelling? Mail <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.'
 practicalImage: /src/assets/images/keynote-podium.jpg
 practicalImageAlt: Volle congreszaal tijdens een plenaire sessie
 practical:
@@ -41,6 +41,6 @@ practical:
   - { title: Locatie & route, text: "Het congres vindt plaats in Amsterdam. De locatie, route en parkeerinformatie maken we zo snel mogelijk bekend." }
   - { title: Congresdiner, text: "[INFO OVER HET DINER OF SOCIALE PROGRAMMA]" }
   - { title: Annulering, text: "[ANNULERINGSVOORWAARDEN]" }
-contactEmail: info@jcc-congressen.nl
+contactEmail: info@jcc-congress.com
 contactHeading: Vragen over je registratie?
 ---

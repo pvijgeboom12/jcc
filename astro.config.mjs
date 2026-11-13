@@ -16,7 +16,7 @@ const draftSlugs = ['nl', 'en'].flatMap((lang) => {
 });
 
 export default defineConfig({
-  site: 'https://jcc-congressen.nl',
+  site: 'https://jcc-congress.com',
   output: 'static',
   trailingSlash: 'ignore',
   build: { format: 'directory' },

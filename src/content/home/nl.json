@@ -2,8 +2,8 @@
   "metaTitle": "JCC Congress Consultancy & Events",
   "metaDescription": "JCC organiseert wetenschappelijke en medische congressen, van eerste idee tot laatste evaluatie. In Nederland en daarbuiten.",
   "hero": {
-    "title": "Sterke congressen.",
-    "accent": "Bijzondere ontmoetingen.",
+    "title": "Sterke congressen",
+    "accent": "Bijzondere ontmoetingen",
     "lead": "Van het eerste idee tot een congres dat mensen bijblijft.",
     "primary": "Bespreek je congres",
     "secondary": "Bekijk de agenda",
@@ -51,14 +51,14 @@
     ]
   },
   "about": {
-    "eyebrow": "Over JCC",
-    "heading": "Een congres is meer dan een programma en een zaal",
+    "eyebrow": "Over JCC Congress Consultancy & Events",
+    "heading": "Een goed congres brengt mensen verder",
     "paragraphs": [
-      "Een goed congres brengt mensen verder. Nieuwe inzichten, waardevolle gesprekken en ontmoetingen die ook na afloop iets opleveren.",
-      "Bij JCC zorgen we dat alles klopt. Van programma en sprekers tot locatie, registratie en de kleinste details. Zodat jij je kunt richten op wat echt belangrijk is: de mensen en de inhoud."
+      "Nieuwe inzichten, waardevolle gesprekken en ontmoetingen die ook na afloop iets opleveren.",
+      "Bij JCC zorgen we ervoor dat alles klopt. Programma, sprekers, locatie, inschrijving, budget en alles daartussen. Zodat jij je kunt richten op wat echt belangrijk is: de mensen en de inhoud."
     ],
     "promise": "Rust in de organisatie, ruimte voor ontmoeting.",
-    "trustLabel": "Op de agenda voor onder meer",
+    "trustLabel": "Wij organiseren onder meer voor",
     "images": [
       {
         "image": "/src/assets/images/v2/slaap-spreker.jpg",
@@ -69,16 +69,22 @@
         "image": "/src/assets/images/v2/slaap-applaus-m.jpg",
         "alt": "Het publiek applaudisseert in een volle zaal tijdens SLAAP2025"
       }
+    ],
+    "clients": [
+      "Slaapgeneeskunde Vereniging Nederland (SVNL)",
+      "Nederlandse Slaap Waak Organisatie (NSWO)",
+      "Society for Light, Rhythms, and Circadian Health (SLRCH)",
+      "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)"
     ]
   },
   "annick": {
     "eyebrow": "Wie zit er achter JCC",
-    "heading": "Hoi, ik ben",
-    "accent": "Annick!",
+    "heading": "Mensen",
+    "accent": "samenbrengen",
     "paragraphs": [
-      "Congressen organiseren zit inmiddels behoorlijk in mijn bloed. Ik werkte jarenlang bij het Amsterdams Congres Bureau, onderdeel van I amsterdam. Daarna koos ik voor een heel ander uitzicht: als stewardess bij KLM vloog ik de wereld over.",
+      "Ik ben Annick Goijarts en ruim twintig jaar actief in de congresbranche. Ik werkte jarenlang bij het Amsterdams Congres Bureau, onderdeel van I amsterdam. Daarna zocht ik een heel ander uitzicht: als stewardess bij KLM vloog ik de wereld over.",
       "Maar de congressen heb ik nooit losgelaten. Ook tussen mijn intercontinentale vluchten door bleef ik ze organiseren. En dat werden er steeds meer!",
-      "Op een gegeven moment paste het simpelweg niet meer naast mijn werk in de lucht. Tijd om te kiezen dus. Inmiddels kan ik me helemaal richten op JCC.",
+      "Op een gegeven moment paste het simpelweg niet meer naast mijn werk in de lucht. Tijd voor een keuze. Die viel op de congressen: inmiddels richt ik me volledig op JCC.",
       "En dat is precies waar ik blij van word: mensen samenbrengen, alles tot in de puntjes regelen en zorgen dat een congres niet alleen goed verloopt, maar ook echt iets losmaakt."
     ],
     "closing": "Leuk om kennis te maken!",
@@ -94,12 +100,12 @@
   "services": {
     "eyebrow": "Wat we doen",
     "heading": "Van eerste idee tot laatste applaus",
-    "lead": "Wij regelen wat nodig is. Van de eerste planning tot de evaluatie achteraf.",
+    "lead": "We regelen alles wat nodig is, van de planning vooraf tot de evaluatie achteraf.",
     "more": "Wat we regelen",
     "steps": [
       {
-        "title": "Voorbereiden",
-        "core": "Planning, budget en afspraken met locatie, hotels en sponsors.",
+        "title": "Voorbereiding",
+        "core": "Concept, budget, locatie, hotels en sponsors.",
         "items": [
           {
             "title": "Planning",
@@ -120,8 +126,8 @@
         ]
       },
       {
-        "title": "Programma maken",
-        "core": "Sprekers, ingezonden onderzoek en accreditatie, zodat de inhoud klopt.",
+        "title": "Programma",
+        "core": "Sprekers, abstracts en accreditatie, in samenwerking met het bestuur.",
         "items": [
           {
             "title": "Abstracts",
@@ -134,17 +140,17 @@
           {
             "title": "Accreditatie",
             "text": "Zo krijgen deelnemers nascholingspunten. Wij dienen de aanvraag in"
-          },
-          {
-            "title": "Communicatie",
-            "text": "Uitnodigingen, updates en het online programma"
           }
         ]
       },
       {
-        "title": "Deelnemers ontvangen",
-        "core": "Inschrijven, de congres-app en een sociaal programma dat bijblijft.",
+        "title": "Communicatie en inschrijving",
+        "core": "Website, nieuwsbrieven, registratie en de congresapp.",
         "items": [
+          {
+            "title": "Communicatie",
+            "text": "Website, nieuwsbrieven, uitnodigingen en het online programma"
+          },
           {
             "title": "Registratie",
             "text": "Inschrijvingen, deelnemerslijsten en certificaten"
@@ -152,16 +158,12 @@
           {
             "title": "Congres-app",
             "text": "Advies over de juiste app, en wij vullen hem"
-          },
-          {
-            "title": "Sociaal programma",
-            "text": "Diner, muziek en vervoer"
           }
         ]
       },
       {
-        "title": "Uitvoeren en evalueren",
-        "core": "Wij zijn er van opbouw tot afbouw. Daarna krijg je een helder eindrapport.",
+        "title": "Uitvoering en afronding",
+        "core": "We zijn er van opbouw tot afbouw. Na afloop volgen een helder eindrapport en de financiële afrekening.",
         "items": [
           {
             "title": "Op locatie",
@@ -170,6 +172,10 @@
           {
             "title": "Evaluatie",
             "text": "We verwerken de feedback en schrijven het eindrapport"
+          },
+          {
+            "title": "Financiële afronding",
+            "text": "Eindafrekening en financieel verslag van het congres"
           }
         ]
       }
@@ -177,9 +183,9 @@
   },
   "community": {
     "eyebrow": "Community",
-    "heading": "Het congres eindigt.",
-    "accent": "De community niet.",
-    "lead": "Een congres brengt mensen bij elkaar. Maar waarom zou die verbinding na één dag stoppen? JCC helpt verenigingen en organisaties om het contact levend te houden. Met nieuwsbrieven, bijeenkomsten en nieuwe manieren om kennis te delen.",
+    "heading": "Het congres eindigt",
+    "accent": "De community niet",
+    "lead": "Een congres brengt mensen bij elkaar. Maar waarom zou die verbinding na afloop stoppen? JCC helpt verenigingen en organisaties om het contact levend te houden. Met nieuwsbrieven, social media en ondersteuning bij kleinere bijeenkomsten.",
     "closing": "Zo wordt één congres het begin van meer.",
     "items": [
       {
@@ -196,7 +202,7 @@
       },
       {
         "title": "Steun voor verenigingen",
-        "text": "Een vaste kracht voor bestuur en commissies"
+        "text": "Ondersteuning van bestuur en commissies, met één vast aanspreekpunt"
       }
     ],
     "images": [
@@ -217,12 +223,12 @@
     "headingWith": "uitgevoerd met",
     "accent": "flair",
     "intro": "Geen congres is hetzelfde. Gelukkig maar.",
-    "text": "Een klein symposium of een groot internationaal congres: elk evenement vraagt om een eigen aanpak. We denken mee, houden de lijnen kort en zorgen dat alles goed geregeld is. Met aandacht voor de inhoud én de mensen."
+    "text": "Een klein symposium of een groot internationaal congres: elk evenement vraagt om een eigen aanpak. We denken mee, houden de lijnen kort en zorgen dat alles goed geregeld is. Met oog voor inhoud én sfeer."
   },
   "social": {
     "eyebrow": "Sociaal programma",
-    "title": "Overdag wetenschap,",
-    "accent": "’s avonds de dansvloer",
+    "title": "Geen agendapunt,",
+    "accent": "wel het hoogtepunt",
     "text": "De mooiste gesprekken ontstaan niet altijd in de congreszaal. Daarom organiseren we ook het programma eromheen. Van een ontspannen borrel tot een feest waar nog lang over wordt nagepraat.",
     "points": [
       "Congresdiner op een bijzondere plek",
@@ -248,29 +254,29 @@
       {
         "image": "/src/assets/images/v2/slaap-borrel-m.jpg",
         "alt": "Deelnemers proosten tijdens de borrel"
-      }
-    ]
-  },
-  "expertise": {
-    "eyebrow": "Voor wie",
-    "heading": "Jouw vakgebied.",
-    "accent": "Onze ervaring.",
-    "lead": "Van medische verenigingen en wetenschappelijke organisaties tot internationale congressen. JCC kent de wereld van wetenschappelijke bijeenkomsten en weet wat erbij komt kijken. Van de eerste aanmelding tot de laatste spreker.",
-    "tags": [
-      "Medische verenigingen",
-      "Wetenschappelijke genootschappen",
-      "Internationale congressen",
-      "Academies en cursussen"
-    ],
-    "images": [
-      {
-        "image": "/src/assets/images/milaan-kloostertuin.jpg",
-        "alt": "Congresdeelnemers lunchen in de kloostertuin van de Universiteit van Milaan"
       },
       {
         "image": "/src/assets/images/milaan-diner.jpg",
         "alt": "Congresdiner in een historische zaal in Milaan, gezien vanaf het balkon",
         "position": "center 60%"
+      }
+    ]
+  },
+  "expertise": {
+    "eyebrow": "Voor wie",
+    "heading": "Inhoud en organisatie,",
+    "accent": "hand in hand",
+    "lead": "JCC kent de wereld van wetenschappelijke bijeenkomsten. We weten wat erbij komt kijken, en wat sprekers en deelnemers verwachten.",
+    "tags": [
+      "Medische verenigingen",
+      "Wetenschappelijke genootschappen",
+      "Internationale organisaties",
+      "Universiteiten en instituten"
+    ],
+    "images": [
+      {
+        "image": "/src/assets/images/milaan-kloostertuin.jpg",
+        "alt": "Congresdeelnemers lunchen in de kloostertuin van de Universiteit van Milaan"
       },
       {
         "image": "/src/assets/images/registratiebalie.jpg",
@@ -279,9 +285,9 @@
     ]
   },
   "contact": {
-    "heading": "Laten we het hebben over",
-    "accent": "jouw congres",
-    "lead": "Een congres op de planning? Of gewoon benieuwd wat we voor je kunnen betekenen? Vertel ons je idee. We denken graag met je mee.",
+    "heading": "Een congres",
+    "accent": "op de planning?",
+    "lead": "Of gewoon benieuwd wat we kunnen betekenen? Deel je idee, dan nemen we snel contact op.",
     "direct": "Liever direct contact?"
   }
 }

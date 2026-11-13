@@ -1,0 +1,82 @@
+---
+/**
+ * Algemene voorwaarden. De tekst staat in src/content/legal/algemene-voorwaarden.md
+ * (bewerkbaar in Pages CMS). De voorwaarden zijn alleen in het Nederlands vastgesteld;
+ * de Engelse pagina verwijst daarnaar.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Eyebrow from './Eyebrow.astro';
+import { alternateFor, routes, type Lang } from '../i18n/routes';
+import { Content, frontmatter } from '../content/legal/algemene-voorwaarden.md';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const copy = {
+  nl: {
+    title: frontmatter.title,
+    description: 'Algemene voorwaarden van JCC Congress Consultancy & Events.',
+    download: 'Download als pdf',
+  },
+  en: {
+    title: 'Terms and conditions',
+    description: 'General terms and conditions of JCC Congress Consultancy & Events.',
+    note: 'Our general terms and conditions are only available in Dutch. The Dutch text is legally binding.',
+    read: 'Read the terms and conditions (Dutch)',
+    download: 'Download as PDF (Dutch)',
+  },
+}[lang];
+---
+
+<BaseLayout lang={lang} title={copy.title} description={copy.description} alternate={alternateFor('terms')}>
+  <section class="bg-surface">
+    <div class="container wrap">
+      <Eyebrow large>JCC Congress Consultancy &amp; Events</Eyebrow>
+      <h1 class="h1-page">{copy.title}</h1>
+      <p class="meta">{frontmatter.address}<br />{frontmatter.version}</p>
+      <a class="btn btn--outline btn--sm" href={frontmatter.pdf} download>{copy.download}</a>
+    </div>
+  </section>
+  <section class="bg-white">
+    <div class="container content">
+      {
+        lang === 'nl' ? (
+          <div class="legal">
+            <Content />
+          </div>
+        ) : (
+          <div class="legal">
+            <p>{copy.note}</p>
+            <p><a href={routes.terms.nl} lang="nl" hreflang="nl">{copy.read}</a></p>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .wrap { padding-top: 80px; padding-bottom: 56px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .meta { color: var(--color-text-secondary); font-size: 15px; line-height: 1.6; }
+  .content { padding-top: 56px; padding-bottom: 104px; max-width: 820px; margin-left: auto; margin-right: auto; }
+  .legal { font-size: 16px; line-height: 1.7; color: var(--color-text-body); }
+  .legal :global(h2) {
+    margin: 56px 0 8px; padding: 14px 20px; border-radius: var(--radius-sm);
+    background: var(--color-primary); color: #fff; font-size: 22px;
+  }
+  .legal :global(h2:first-of-type) { margin-top: 32px; }
+  .legal :global(h3) { margin: 32px 0 8px; font-size: 18px; color: var(--color-primary); }
+  .legal :global(p) { margin: 0 0 12px; }
+  .legal :global(ol) { margin: 0 0 12px; padding-left: 1.4em; display: flex; flex-direction: column; gap: 6px; }
+  .legal :global(ol ol) { list-style-type: lower-alpha; margin-top: 6px; }
+  .legal :global(strong) { color: var(--color-text); }
+  .legal :global(table) { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+  .legal :global(th) { background: var(--color-primary); color: #fff; text-align: left; padding: 10px 12px; }
+  .legal :global(td) { padding: 10px 12px; border-bottom: 1px solid var(--color-border); }
+  @media (max-width: 640px) {
+    .wrap { padding-top: 56px; padding-bottom: 40px; }
+    .content { padding-top: 40px; padding-bottom: 72px; }
+    .legal :global(h2) { font-size: 19px; }
+  }
+</style>

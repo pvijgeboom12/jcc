@@ -5,6 +5,7 @@ export const routes = {
   home: { nl: '/', en: '/en/' },
   congresses: { nl: '/congressen/', en: '/en/congresses/' },
   privacy: { nl: '/privacyverklaring/', en: '/en/privacy/' },
+  terms: { nl: '/algemene-voorwaarden/', en: '/en/terms-and-conditions/' },
 } as const;
 
 export type RouteKey = keyof typeof routes;

@@ -50,17 +50,16 @@ accreditation:
   title: NVMKA accreditation
   value: 5 points
   note: Applied for with the NVMKA
-feesFooter: 'Group registration or an invoice in your institution''s name? Email <a href="mailto:agoijarts@jcc-congressen.nl">agoijarts@jcc-congressen.nl</a>.'
+feesFooter: 'Group registration or an invoice in your institution''s name? Email <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.'
 
-practicalImage: /src/assets/images/collegezaal-cursus.jpg
-practicalImageAlt: Participants in a lecture room during a scientific course
+# TODO: foto van de Mauritskazerne (aan te leveren). De zaalfoto van het slaapcongres is weggehaald.
 practical:
   - { title: Venue & route, text: "Mauritskazerne, Frisopark 2, 6711 WZ Ede, the Netherlands. A 2-minute walk from Ede-Wageningen station." }
   - { title: Accreditation, text: "5 NVMKA accreditation points." }
   - { title: Language, text: "Sessions are in Dutch." }
   - { title: Who it is for, text: "OMF surgeons, dermatologists, ENT surgeons, plastic surgeons and others interested." }
 
-contactEmail: agoijarts@jcc-congressen.nl
+contactEmail: info@jcc-congress.com
 ---
 
 Facial surgery starts with looking, analysing and handling tissue with care. Anatomy, tissue layers, scarring, shape, volume and symmetry always determine the result, whether you repair a defect, correct a post-traumatic asymmetry or treat an aesthetic request.

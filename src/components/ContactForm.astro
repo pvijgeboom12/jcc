@@ -50,13 +50,13 @@ const endpoint = site.formEndpoint;
   </div>
   <div class="cform__field">
     <label for="c-org">{c.org} <span class="cform__opt">{c.optional}</span></label>
-    <input id="c-org" name="organisatie" type="text" autocomplete="organization" aria-describedby="c-org-hint" />
-    <p class="cform__hint" id="c-org-hint">{c.orgHint}</p>
+    <input id="c-org" name="organisatie" type="text" autocomplete="organization" aria-describedby={c.orgHint ? 'c-org-hint' : undefined} />
+    {c.orgHint && <p class="cform__hint" id="c-org-hint">{c.orgHint}</p>}
   </div>
   <div class="cform__field">
     <label for="c-msg">{c.message} <span class="cform__req">{c.required}</span></label>
-    <textarea id="c-msg" name="bericht" rows="5" required aria-describedby="c-msg-hint c-msg-err"></textarea>
-    <p class="cform__hint" id="c-msg-hint">{c.messageHint}</p>
+    <textarea id="c-msg" name="bericht" rows="5" required aria-describedby={c.messageHint ? 'c-msg-hint c-msg-err' : 'c-msg-err'}></textarea>
+    {c.messageHint && <p class="cform__hint" id="c-msg-hint">{c.messageHint}</p>}
     <p class="cform__err" id="c-msg-err" hidden></p>
   </div>
   <button type="submit" class="btn btn--primary cform__submit">

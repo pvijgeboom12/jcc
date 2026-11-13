@@ -22,7 +22,8 @@ const h = home[lang].hero;
 
 // Foto's, volgorde en teksten komen uit src/content/home/<taal>.json (Pages CMS)
 const slides = h.slides.map((sl) => ({ ...sl, ...pic(sl, '50% 50%') }));
-const caption = (s: (typeof slides)[number]) => `${s.congress} · ${s.label}`;
+// Geen zichtbaar bijschrift meer (verzoek Annick, 13 nov). Voor schermlezers melden we de alt-tekst van de foto.
+const caption = (s: (typeof slides)[number]) => s.alt;
 ---
 
 <script is:inline>
@@ -76,8 +77,7 @@ const caption = (s: (typeof slides)[number]) => `${s.congress} · ${s.label}`;
     <div class="hero2__scrim" aria-hidden="true"></div>
 
     <div class="hero2__bar">
-      <p class="hero2__caption" data-caption aria-live="off">
-        <span class="hero2__dot" aria-hidden="true"></span>
+      <p class="sr-only" data-caption-box aria-live="off">
         <span data-caption-text>{caption(slides[0])}</span>
       </p>
       <div class="hero2__controls">
@@ -117,7 +117,7 @@ const caption = (s: (typeof slides)[number]) => `${s.congress} · ${s.label}`;
     const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
     const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
     const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
-    const captionBox = root.querySelector<HTMLElement>('[data-caption]')!;
+    const captionBox = root.querySelector<HTMLElement>('[data-caption-box]')!;
     const captionText = root.querySelector<HTMLElement>('[data-caption-text]')!;
     const count = root.querySelector<HTMLElement>('[data-count]')!;
     const INTERVAL = 7000;
@@ -215,7 +215,7 @@ const caption = (s: (typeof slides)[number]) => `${s.congress} · ${s.label}`;
   /* Onderbalk met congresnaam en bediening */
   .hero2__bar {
     position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;
+    display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 12px;
     padding: 16px var(--gutter);
   }
   .hero2__caption {

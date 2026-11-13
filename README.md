@@ -54,7 +54,7 @@ Een congres verdwijnt van de homepage zodra de laatste dag voorbij is.
 | `accreditation` | nee | Extra kaart bij de tarieven: `title`, `value`, `note` |
 | `practical` | nee | Kaarten met praktische info: `title` + `text` |
 | `practicalImage` / `practicalImageAlt` | nee | Beeld naast de praktische info, als `/src/assets/images/<bestand>` |
-| `contactEmail` | nee | Standaard `info@jcc-congressen.nl` |
+| `contactEmail` | nee | Standaard `info@jcc-congress.com` |
 | `contactHeading` | nee | Tekst in de contactstrook, standaard "Vragen over …?" |
 
 De tekst onder de frontmatter is de inleiding bij het programma.
