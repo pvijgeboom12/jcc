@@ -112,7 +112,7 @@ practical:
       interested.
 practicalImage: /src/assets/images/15bf5mauritskazerne-in-ede-hier-staat-voedsel-centraal-1-2.jpg
 practicalImageAlt: Participants in a lecture room during a scientific course
-contactEmail: agoijarts@jcc-congressen.nl
+contactEmail: info@jcc-congress.com
 ---
 Facial surgery starts with looking, analysing and handling tissue with care. Anatomy, tissue layers, scarring, shape, volume and symmetry always determine the result, whether you repair a defect, correct a post-traumatic asymmetry or treat an aesthetic request.
 
