@@ -14,7 +14,7 @@ intro: "The annual WEAC training day focuses on reconstructive facial surgery:
   the basic principles for oncological and traumatic defects, and what they
   bring to the aesthetic patient."
 startDate: 2027-01-16
-endDate: 2026-11-13
+endDate: 2027-01-16
 time: 08.30–16.15
 location: Mauritskazerne, Ede
 venue: Mauritskazerne
@@ -93,12 +93,12 @@ fees:
   - category: Resident (AIOS)
     price: 175
     note: Including lunch, coffee and drinks
+feesFooter: Group registration or an invoice in your institution's name? Email
+  <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.
 accreditation:
   title: NVMKA accreditation
   value: 5 points
   note: Applied for with the NVMKA
-feesFooter: 'Group registration or an invoice in your institution''s name? Email <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.'
-
 practical:
   - title: Venue & route
     text: Mauritskazerne, Frisopark 2, 6711 WZ Ede, the Netherlands. A 2-minute walk
