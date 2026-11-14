@@ -112,7 +112,7 @@ practical:
       interested.
 practicalImage: /src/assets/images/15bf5mauritskazerne-in-ede-hier-staat-voedsel-centraal-1-2.jpg
 practicalImageAlt: The Mauritskazerne in Ede, a historic brick building on a large square
-contactEmail: info@jcc-congress.com
+contactEmail: weac@jcc-congress.com
 ---
 Facial surgery starts with looking, analysing and handling tissue with care. Anatomy, tissue layers, scarring, shape, volume and symmetry always determine the result, whether you repair a defect, correct a post-traumatic asymmetry or treat an aesthetic request.
 
