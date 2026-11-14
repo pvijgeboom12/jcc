@@ -95,12 +95,12 @@ fees:
   - category: AIOS
     price: 175
     note: Inclusief lunch, koffie en borrel
+feesFooter: Groepsregistratie of een factuur op naam van je instelling? Mail <a
+  href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.
 accreditation:
   title: NVMKA-accreditatie
   value: 5 punten
   note: Voor de NVMKA aangevraagd
-feesFooter: 'Groepsregistratie of een factuur op naam van je instelling? Mail <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.'
-
 practical:
   - title: Locatie & route
     text: Mauritskazerne, Frisopark 2, 6711 WZ Ede. Op 2 minuten lopen van station
@@ -114,7 +114,7 @@ practical:
       geïnteresseerden.
 practicalImage: /src/assets/images/15bf5mauritskazerne-in-ede-hier-staat-voedsel-centraal-1-1.jpg
 practicalImageAlt: De Mauritskazerne in Ede, een historisch bakstenen gebouw aan een groot plein
-contactEmail: info@jcc-congress.com
+contactEmail: weac@jcc-congress.com
 ---
 Aangezichtschirurgie begint met kijken, analyseren en zorgvuldig omgaan met weefsel. Anatomie, weefsellagen, littekenvorming, vorm, volume en symmetrie bepalen steeds het resultaat, of je nu een defect herstelt, een posttraumatische asymmetrie corrigeert of een esthetische wens behandelt.
 
