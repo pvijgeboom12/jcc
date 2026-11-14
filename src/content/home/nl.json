@@ -59,9 +59,16 @@
     ],
     "promise": "Rust in de organisatie, ruimte voor ontmoeting.",
     "trustLabel": "Wij organiseren onder meer voor",
+    "clients": [
+      "Slaapgeneeskunde Vereniging Nederland (SVNL)",
+      "Nederlandse Slaap Waak Organisatie (NSWO)",
+      "Society for Light, Rhythms, and Circadian Health (SLRCH)",
+      "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)"
+    ],
     "images": [
       {
-        "image": "/src/assets/images/v2/slaap-spreker.jpg",
+        "image": "/src/assets/images/registratiebalie.jpg",
+        "imageMobile": "/src/assets/images/registratiebalie.jpg",
         "alt": "Een spreker presenteert tijdens SLAAP2025",
         "position": "55% 40%"
       },
@@ -69,12 +76,6 @@
         "image": "/src/assets/images/v2/slaap-applaus-m.jpg",
         "alt": "Het publiek applaudisseert in een volle zaal tijdens SLAAP2025"
       }
-    ],
-    "clients": [
-      "Slaapgeneeskunde Vereniging Nederland (SVNL)",
-      "Nederlandse Slaap Waak Organisatie (NSWO)",
-      "Society for Light, Rhythms, and Circadian Health (SLRCH)",
-      "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)"
     ]
   },
   "annick": {
