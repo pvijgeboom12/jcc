@@ -15,7 +15,7 @@ intro: "De jaarlijkse scholingsdag van de WEAC staat in het teken van
   traumatische defecten, en wat je daarvan meeneemt naar de esthetische
   patiënt."
 startDate: 2027-01-16
-endDate: 2026-11-13
+endDate: 2027-01-16
 time: 08.30–16.15
 location: Mauritskazerne, Ede
 venue: Mauritskazerne
