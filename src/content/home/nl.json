@@ -67,14 +67,15 @@
     ],
     "images": [
       {
-        "image": "/src/assets/images/registratiebalie.jpg",
-        "imageMobile": "/src/assets/images/registratiebalie.jpg",
+        "image": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
+        "imageMobile": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
         "alt": "Een spreker presenteert tijdens SLAAP2025",
         "position": "55% 40%"
       },
       {
-        "image": "/src/assets/images/v2/slaap-applaus-m.jpg",
-        "alt": "Het publiek applaudisseert in een volle zaal tijdens SLAAP2025"
+        "image": "/src/assets/images/collegezaal-cursus.jpg",
+        "imageMobile": "/src/assets/images/collegezaal-cursus.jpg",
+        "alt": "Amphizaal tijdens ISMC2025"
       }
     ]
   },
