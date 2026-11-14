@@ -9,8 +9,8 @@
     "secondary": "Bekijk de agenda",
     "slides": [
       {
-        "image": "/src/assets/images/v2/slaap-plenair.jpg",
-        "imageMobile": "/src/assets/images/v2/slaap-plenair-m.jpg",
+        "image": "/src/assets/images/keynote-podium.jpg",
+        "imageMobile": "/src/assets/images/keynote-podium.jpg",
         "congress": "SLAAP2025",
         "label": "Plenaire sessie",
         "alt": "Een volle congreszaal met gekleurd licht luistert naar een presentatie",
