@@ -209,8 +209,8 @@
     ],
     "images": [
       {
-        "image": "/src/assets/images/v2/slaap-gang.jpg",
-        "imageMobile": "/src/assets/images/v2/slaap-gang-m.jpg",
+        "image": "/src/assets/images/v2/slaapcongress-dag1-6.jpg",
+        "imageMobile": "/src/assets/images/v2/slaapcongress-dag1-6.jpg",
         "alt": "Drie deelnemers lopen lachend door de gang tijdens SLAAP2025",
         "position": "40% 50%"
       },
@@ -250,7 +250,8 @@
         "position": "35% 50%"
       },
       {
-        "image": "/src/assets/images/v2/slaap-band-m.jpg",
+        "image": "/src/assets/images/igorfotografie-4.jpg",
+        "imageMobile": "/src/assets/images/igorfotografie-4.jpg",
         "alt": "De zangeres van de liveband zingt op het podium"
       },
       {
