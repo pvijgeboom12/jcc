@@ -94,7 +94,7 @@ fees:
     price: 175
     note: Including lunch, coffee and drinks
 feesFooter: Group registration or an invoice in your institution's name? Email
-  <a href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.
+  <a href="mailto:info@jcc-congress.com">weac@jcc-congress.com</a>.
 accreditation:
   title: NVMKA accreditation
   value: 5 points
