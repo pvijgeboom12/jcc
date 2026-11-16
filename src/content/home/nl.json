@@ -75,7 +75,7 @@
     "more": "Wat we regelen",
     "steps": [
       {
-        "title": "Voorbereiding",
+        "title": "De basis",
         "core": "Concept, budget, locatie, hotels en sponsors.",
         "items": [
           {
@@ -97,7 +97,7 @@
         ]
       },
       {
-        "title": "Programma",
+        "title": "Inhoud & programma",
         "core": "Sprekers, abstracts en accreditatie, in samenwerking met het bestuur.",
         "items": [
           {
@@ -115,7 +115,7 @@
         ]
       },
       {
-        "title": "Communicatie en inschrijving",
+        "title": "Registratie & communicatie",
         "core": "Website, nieuwsbrieven, registratie en de congresapp.",
         "items": [
           {
@@ -133,7 +133,7 @@
         ]
       },
       {
-        "title": "Uitvoering en afronding",
+        "title": "Op locatie & afronding",
         "core": "We zijn er van opbouw tot afbouw. Na afloop volgen een helder eindrapport en de financiële afrekening.",
         "items": [
           {
