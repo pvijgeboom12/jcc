@@ -190,7 +190,8 @@
     ]
   },
   "band": {
-    "intro": "Geen congres is hetzelfde. Gelukkig maar.",
+    "headingBefore": "Geen congres is hetzelfde",
+    "accent": " Gelukkig maar",
     "text": "Van een kleinschalig symposium tot een internationaal wetenschappelijk congres. Iedere bijeenkomst vraagt om een eigen aanpak.\n\nJCC denkt mee, schakelt snel en brengt de juiste mensen en middelen samen. Met persoonlijke aandacht, een scherp oog voor detail en een aanpak die past bij jouw organisatie."
   },
   "social": {
@@ -254,9 +255,9 @@
     ]
   },
   "contact": {
-    "heading": "Congres",
-    "accent": "op de planning?",
-    "lead": "Of gewoon benieuwd wat we kunnen betekenen? Deel je idee, dan nemen we snel contact op.",
+    "heading": "Plannen ",
+    "accent": "voor een congres?",
+    "lead": "Een idee, concreet plan of gewoon eens sparren over de mogelijkheden? Ik denk graag met je mee.",
     "direct": "Liever direct contact?"
   }
 }
