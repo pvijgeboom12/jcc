@@ -190,17 +190,14 @@
     ]
   },
   "band": {
-    "headingBefore": "Maatwerk,",
-    "headingWith": "uitgevoerd met",
-    "accent": "flair",
     "intro": "Geen congres is hetzelfde. Gelukkig maar.",
-    "text": "Een klein symposium of een groot internationaal congres: elk evenement vraagt om een eigen aanpak. We denken mee, houden de lijnen kort en zorgen dat alles goed geregeld is. Met oog voor inhoud én sfeer."
+    "text": "Van een kleinschalig symposium tot een internationaal wetenschappelijk congres. Iedere bijeenkomst vraagt om een eigen aanpak.\n\nJCC denkt mee, schakelt snel en brengt de juiste mensen en middelen samen. Met persoonlijke aandacht, een scherp oog voor detail en een aanpak die past bij jouw organisatie."
   },
   "social": {
     "eyebrow": "Sociaal programma",
     "title": "Geen agendapunt,",
     "accent": "wel het hoogtepunt",
-    "text": "De mooiste gesprekken ontstaan niet altijd in de congreszaal. Daarom organiseren we ook het programma eromheen. Van een ontspannen borrel tot een feest waar nog lang over wordt nagepraat.",
+    "text": "De waardevolste ontmoetingen vinden niet altijd plaats in de congreszaal. Een goed sociaal programma geeft ruimte aan gesprekken, verbinding en ontspanning.\n\nVan een bijzonder congresdiner tot een gezellige borrel of feestavond: ook buiten het wetenschappelijke programma zorgen we voor momenten die bijblijven.",
     "points": [
       "Congresdiner op een bijzondere plek",
       "Borrel en netwerkmomenten",
