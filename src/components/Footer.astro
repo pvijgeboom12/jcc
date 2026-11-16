@@ -28,14 +28,15 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
-  .site-footer { background: var(--color-bg); border-top: 1px solid var(--color-border); color: var(--color-text-secondary); }
+  .site-footer { background: #151515; color: #b9b2b6; }
+  .site-footer :global(.logo__mark path[fill="#151515"]) { fill: #fff; }
   .site-footer__inner {
-    padding-top: 32px; padding-bottom: 32px;
+    padding-top: 40px; padding-bottom: 40px;
     display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
     font-size: 14px;
   }
   .site-footer__brand { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
   .site-footer__links { display: flex; flex-wrap: wrap; gap: 24px; }
-  .site-footer__links a { color: var(--color-text); }
-  .site-footer__links a:hover { color: var(--color-primary); }
+  .site-footer__links a { color: #fff; }
+  .site-footer__links a:hover { color: var(--color-primary-tint); }
 </style>
