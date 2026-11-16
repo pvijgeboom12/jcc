@@ -42,6 +42,9 @@ const ui = {
       "sentTitle": "Bijna klaar",
       "sentMailto": "Je mailprogramma opent nu met je bericht. Klik daar op verzenden. Opent er niets? Mail dan naar",
       "sentEndpoint": "Dank je wel. We hebben je bericht ontvangen en nemen contact met je op.",
+      "sentTitleEndpoint": "Bericht verstuurd",
+      "sending": "Bezig met versturen…",
+      "sendError": "Het versturen is niet gelukt. Probeer het nog eens of mail ons op",
       "privacy": "We gebruiken je gegevens alleen om op je bericht te reageren.",
       "privacyLink": "Lees onze privacyverklaring"
     }
@@ -77,6 +80,9 @@ const ui = {
       "sentTitle": "Almost done",
       "sentMailto": "Your email program is opening with your message. Click send there. Nothing opens? Email us at",
       "sentEndpoint": "Thank you. We’ve received your message and will get back to you.",
+      "sentTitleEndpoint": "Message sent",
+      "sending": "Sending…",
+      "sendError": "Sending didn’t work. Please try again or email us at",
       "privacy": "We only use your details to reply to your message.",
       "privacyLink": "Read our privacy statement"
     }

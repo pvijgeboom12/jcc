@@ -23,5 +23,5 @@ export const site = {
    * Vul hier later een endpoint in (bijv. een Cloudflare Pages Function)
    * om berichten direct te laten versturen.
    */
-  formEndpoint: '',
+  formEndpoint: 'https://script.google.com/macros/s/AKfycbxHPX9CGkNyJsLtyRHjXKPcUZv14lb6T3La4QI1jpUmKJrlv1bhc673GKokjzfTWksbnw/exec',
 };
