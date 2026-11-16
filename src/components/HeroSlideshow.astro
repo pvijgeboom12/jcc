@@ -80,6 +80,7 @@ const caption = (s: (typeof slides)[number]) => s.alt;
       <p class="sr-only" data-caption-box aria-live="off">
         <span data-caption-text>{caption(slides[0])}</span>
       </p>
+      {slides.length > 1 && (
       <div class="hero2__controls">
         <button type="button" class="hero2__btn" data-prev aria-label={h.prev}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
@@ -93,6 +94,7 @@ const caption = (s: (typeof slides)[number]) => s.alt;
         </button>
         <span class="hero2__count" aria-hidden="true"><span data-count>1</span> / {slides.length}</span>
       </div>
+      )}
     </div>
   </div>
 
@@ -112,7 +114,8 @@ const caption = (s: (typeof slides)[number]) => s.alt;
 
 <script>
   const root = document.querySelector<HTMLElement>('[data-hero-root]');
-  if (root) {
+  // Bij één foto zijn er geen knoppen en geen wisseling
+  if (root && root.querySelectorAll('.hero2__slide').length > 1) {
     const slides = [...root.querySelectorAll<HTMLElement>('.hero2__slide')];
     const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
     const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
