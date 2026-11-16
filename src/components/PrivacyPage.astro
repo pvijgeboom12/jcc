@@ -1,53 +1,59 @@
 ---
+/**
+ * Privacyverklaring / Privacy statement. De teksten staan in
+ * src/content/legal/privacyverklaring.md (NL) en src/content/legal/privacy-statement.md (EN),
+ * bewerkbaar in Pages CMS.
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from './Eyebrow.astro';
 import { alternateFor, type Lang } from '../i18n/routes';
+import * as nl from '../content/legal/privacyverklaring.md';
+import * as en from '../content/legal/privacy-statement.md';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
-const copy = {
-  nl: {
-    title: 'Privacyverklaring',
-    description: 'Privacyverklaring van JCC Congress Consultancy & Events.',
-    todo: 'TODO: de tekst van de privacyverklaring wordt aangeleverd door JCC.',
-    note: 'Deze pagina wordt binnenkort aangevuld.',
-  },
-  en: {
-    title: 'Privacy statement',
-    description: 'Privacy statement of JCC Congress Consultancy & Events.',
-    todo: 'TODO: the privacy statement text will be supplied by JCC.',
-    note: 'This page will be completed shortly.',
-  },
-}[lang];
+const doc = lang === 'nl' ? nl : en;
+const { Content, frontmatter } = doc;
+const description =
+  lang === 'nl'
+    ? 'Privacyverklaring van JCC Congress Consultancy & Events.'
+    : 'Privacy statement of JCC Congress Consultancy & Events.';
 ---
 
-<!-- TODO PRIVACYVERKLARING: tekst aanleveren door JCC (Annick). Vervang het blok hieronder. -->
-<BaseLayout lang={lang} title={copy.title} description={copy.description} alternate={alternateFor('privacy')} noindex>
+<BaseLayout lang={lang} title={frontmatter.title} description={description} alternate={alternateFor('privacy')}>
   <section class="bg-surface">
     <div class="container wrap">
-      <Eyebrow large>JCC</Eyebrow>
-      <h1 class="h1-page">{copy.title}</h1>
+      <Eyebrow large>JCC Congress Consultancy &amp; Events</Eyebrow>
+      <h1 class="h1-page">{frontmatter.title}</h1>
+      <p class="meta">{frontmatter.address}<br />{frontmatter.version}</p>
     </div>
   </section>
   <section class="bg-white">
     <div class="container content">
-      <div class="todo" role="note">
-        <strong>{copy.todo}</strong>
-        <p>{copy.note}</p>
+      <div class="legal">
+        <Content />
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .wrap { padding-top: 80px; padding-bottom: 64px; }
-  .content { padding-top: 64px; padding-bottom: 104px; max-width: 800px; margin-left: auto; margin-right: auto; }
-  .todo {
-    border: 2px dashed var(--color-primary); border-radius: var(--radius-md); padding: 28px;
-    background: var(--color-surface); display: flex; flex-direction: column; gap: 8px;
+  .wrap { padding-top: 80px; padding-bottom: 56px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .meta { color: var(--color-text-secondary); font-size: 15px; line-height: 1.6; }
+  .content { padding-top: 56px; padding-bottom: 104px; max-width: 820px; margin-left: auto; margin-right: auto; }
+  .legal { font-size: 16px; line-height: 1.7; color: var(--color-text-body); }
+  .legal :global(h2) { margin: 40px 0 12px; font-size: 22px; color: var(--color-primary); }
+  .legal :global(h2:first-of-type) { margin-top: 0; }
+  .legal :global(p) { margin: 0 0 12px; }
+  .legal :global(ul) { margin: 0 0 12px; padding-left: 1.4em; display: flex; flex-direction: column; gap: 6px; }
+  .legal :global(table) { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 15px; }
+  .legal :global(th) { background: var(--color-primary); color: #fff; text-align: left; padding: 10px 12px; }
+  .legal :global(td) { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  .legal :global(a) { color: var(--color-primary); }
+  @media (max-width: 640px) {
+    .legal :global(h2) { font-size: 19px; }
+    .legal :global(table) { display: block; overflow-x: auto; }
   }
-  .todo strong { color: var(--color-primary); }
-  .todo p { color: var(--color-text-secondary); }
 </style>
