@@ -13,7 +13,7 @@
         "imageMobile": "/src/assets/images/keynote-podium.jpg",
         "congress": "SLAAP2025",
         "label": "Plenary session",
-        "alt": "A full congress hall with coloured lighting listening to a presentation",
+        "alt": "A full congress hall listening to a keynote speaker on a large screen",
         "position": "42% 55%"
       }
     ]
@@ -39,12 +39,12 @@
         "image": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
         "imageMobile": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
         "position": "55% 40%",
-        "alt": "A speaker presenting at SLAAP2025"
+        "alt": "Congress participants applauding during a session"
       },
       {
         "image": "/src/assets/images/collegezaal-cursus.jpg",
         "imageMobile": "/src/assets/images/collegezaal-cursus.jpg",
-        "alt": "The lecture theatre during ISMC2025"
+        "alt": "A lecture room during ISMC2025, with participants listening to a presentation"
       }
     ]
   },
@@ -181,7 +181,7 @@
       {
         "image": "/src/assets/images/expositie-netwerken.jpg",
         "position": "40% 50%",
-        "alt": "Three participants walking and laughing in the corridor at SLAAP2025"
+        "alt": "Participants networking in the exhibition area"
       },
       {
         "image": "/src/assets/images/v2/slaap-posters-m.jpg",
@@ -220,12 +220,12 @@
       {
         "image": "/src/assets/images/igorfotografie-4.jpg",
         "imageMobile": "/src/assets/images/igorfotografie-4.jpg",
-        "alt": "The singer of the live band performing on stage"
+        "alt": "A camera filming the live band on stage"
       },
       {
         "image": "/src/assets/images/slaapcongress-dag1-162.jpg",
         "imageMobile": "/src/assets/images/slaapcongress-dag1-162.jpg",
-        "alt": "Participants raising a glass during drinks"
+        "alt": "Champagne being poured during drinks"
       },
       {
         "image": "/src/assets/images/milaan-diner.jpg",

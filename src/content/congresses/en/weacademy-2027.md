@@ -110,7 +110,7 @@ practical:
   - title: Who it is for
     text: OMF surgeons, dermatologists, ENT surgeons, plastic surgeons and others
       interested.
-practicalImage: /src/assets/images/15bf5mauritskazerne-in-ede-hier-staat-voedsel-centraal-1-2.jpg
+practicalImage: /src/assets/images/15bf5mauritskazerne-in-ede-hier-staat-voedsel-centraal-1-1.jpg
 practicalImageAlt: The Mauritskazerne in Ede, a historic brick building on a large square
 contactEmail: weac@jcc-congress.com
 ---
