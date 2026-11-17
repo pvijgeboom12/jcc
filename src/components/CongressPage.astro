@@ -40,8 +40,14 @@ const secondary = d.programme?.url
     ? { href: '#programme', label: s.programme }
     : null;
 // Registratieknop per categorie: eigen URL > algemene registratie-URL > geen knop
-const feeUrl = (url?: string) => url ?? d.registrationUrl;
-const mainRegister = hasRegistration ? '#register' : d.registrationUrl;
+const closed = d.registrationClosed;
+const feeUrl = (url?: string) => (closed ? undefined : url ?? d.registrationUrl);
+const mainRegister = closed ? undefined : hasRegistration ? '#register' : d.registrationUrl;
+// Melding zolang de inschrijving dicht is; e-mailadressen worden een mailto-link
+const esc = (x: string) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const noticeHtml = closed && d.registrationNotice
+  ? esc(d.registrationNotice).replace(/[\w.+-]+@[\w-]+(\.[\w-]+)+/g, (m) => `<a href="mailto:${m}">${m}</a>`)
+  : undefined;
 
 // Structured data: Event + BreadcrumbList (alleen met gegevens die op de pagina staan)
 const pageUrl = new URL(alternateForCongress(d.slug)[lang], site.url).href;
@@ -68,7 +74,7 @@ const schema = [
     // JCC organiseert namens de vereniging: beide als organisator
     organizer: [{ '@id': `${site.url}/#organization` }, { '@type': 'Organization', name: d.organisation }],
     ...(heroImgUrl ? { image: [heroImgUrl] } : {}),
-    ...(priced.length
+    ...(priced.length && !closed
       ? {
           offers: priced.map((f) => ({
             '@type': 'Offer',
@@ -121,6 +127,7 @@ const schema = [
           </h1>
           {d.tagline && <p class="c-hero__tagline">{d.tagline}</p>}
           <p class="lead c-hero__intro">{d.intro}</p>
+          {noticeHtml && <p class="reg-notice" set:html={noticeHtml} />}
           {
             (mainRegister || secondary) && (
               <div class="btn-row c-hero__buttons">
@@ -226,6 +233,7 @@ const schema = [
               </div>
             )}
           </div>
+          {noticeHtml && <p class="reg-notice reg-notice--fees" set:html={noticeHtml} />}
           {d.feesFooter && <p class="fees__footer" set:html={d.feesFooter} />}
         </div>
       </section>
@@ -274,6 +282,13 @@ const schema = [
 
   /* Hero */
   .c-hero { padding-top: 40px; padding-bottom: 88px; }
+  .reg-notice {
+    margin-top: 28px; padding: 16px 20px; max-width: 620px;
+    border-left: 4px solid var(--color-primary); border-radius: var(--radius-sm);
+    background: #fff; color: var(--color-text); font-size: 16px; line-height: 1.6;
+  }
+  .reg-notice :global(a) { color: var(--color-primary); font-weight: 600; }
+  .reg-notice--fees { margin-top: 24px; }
   .crumbs { font-size: 14px; color: #5f5b61; /* donkerder dan secondary: contrast 4.5:1 op de roze achtergrond */ margin-bottom: 40px; }
   .crumbs a { color: inherit; }
   .c-hero__grid { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }

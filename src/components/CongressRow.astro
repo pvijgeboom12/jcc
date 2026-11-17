@@ -31,7 +31,7 @@ const registerHref = d.registrationUrl ?? `${href}#register`;
     past ? null : open ? (
       <div class="row__actions">
         <a href={href} class="btn btn--outline btn--sm">{s.moreInfo}</a>
-        <a href={registerHref} class="btn btn--primary btn--sm">{s.register}</a>
+        {!d.registrationClosed && <a href={registerHref} class="btn btn--primary btn--sm">{s.register}</a>}
       </div>
     ) : (
       <div class="row__status">

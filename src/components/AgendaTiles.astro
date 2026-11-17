@@ -38,12 +38,13 @@ const upcoming = (await getUpcoming(lang)).slice(0, max);
             const linkable = isLinkable(c);
             const href = linkable ? congressPath(lang, d.slug) : routes.congresses[lang];
             const tile = d.tile ?? { title: d.title };
-            const open = d.status === 'registratie-open';
+            const open = d.status === 'registratie-open' && !d.registrationClosed;
+            const soon = d.status === 'registratie-open' && d.registrationClosed;
             return (
               <li class:list={['tile', { 'tile--featured': featured }]}>
                 <div class="tile__top">
                   {featured && <span class="tile__badge">{s.next}</span>}
-                  <span class:list={['tile__status', { 'tile__status--open': open }]}>{open ? s.open : s.std}</span>
+                  <span class:list={['tile__status', { 'tile__status--open': open }]}>{open ? s.open : soon ? s.soon : s.std}</span>
                 </div>
                 <p class="tile__date">
                   <span class="tile__day">{dayRange(d.startDate, d.endDate, lang)}</span>

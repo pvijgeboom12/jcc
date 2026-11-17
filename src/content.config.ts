@@ -40,6 +40,9 @@ const congresses = defineCollection({
 
       status: z.enum(['registratie-open', 'save-the-date', 'afgelopen']),
       draft: z.boolean().default(false),
+      // Tijdelijk dicht: geen inschrijfknoppen, wel de melding hieronder
+      registrationClosed: z.boolean().default(false),
+      registrationNotice: z.string().optional(),
 
       programme: z
         .object({

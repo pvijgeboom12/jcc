@@ -43,6 +43,15 @@ content:
             - { value: registratie-open, label: Registratie open }
             - { value: save-the-date, label: Save the date }
             - { value: afgelopen, label: Afgelopen }
+      - name: registrationClosed
+        label: Inschrijving (nog) dicht
+        description: Aan = geen inschrijfknoppen; op de homepage staat "Inschrijving opent binnenkort". Uitzetten zodra de inschrijving opent.
+        type: boolean
+        default: false
+      - name: registrationNotice
+        label: Melding zolang de inschrijving dicht is
+        description: Staat op de plek van de inschrijfknop. Een e-mailadres wordt vanzelf een link.
+        type: text
       - name: draft
         label: Concept (nog niet tonen)
         description: Aan = de pagina bestaat wel, maar staat niet in menu's, overzicht en Google.
