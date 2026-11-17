@@ -1,7 +1,7 @@
 ---
 title: WEACADEMY
 slug: weacademy-2027
-status: registratie-open
+status: save-the-date
 draft: false
 registrationClosed: true
 registrationNotice: "De inschrijving opent binnenkort. Wil je bericht ontvangen zodra je je kunt inschrijven? Mail naar weac@jcc-congress.com."
