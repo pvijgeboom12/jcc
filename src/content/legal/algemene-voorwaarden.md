@@ -101,7 +101,7 @@ Alle prijzen zijn exclusief btw en andere heffingen van overheidswege, en exclus
 1. JCC verwerkt persoonsgegevens volgens de Algemene verordening gegevensbescherming (AVG).
 2. Verwerkt JCC persoonsgegevens van deelnemers, sprekers of sponsors namens een opdrachtgever, dan is JCC verwerker en de opdrachtgever verwerkingsverantwoordelijke. Partijen sluiten daarvoor een verwerkersovereenkomst. JCC mag daarbij registratieplatforms en andere dienstverleners als subverwerker inzetten. De verwerkersovereenkomst regelt ook de afspraken over subverwerkers, beveiliging, datalekken en het verwijderen van gegevens.
 3. JCC gebruikt deze gegevens alleen voor de uitvoering van de opdracht. JCC gebruikt ze niet voor eigen doeleinden en verstrekt ze niet aan derden, tenzij de opdrachtgever daar schriftelijk toestemming voor geeft, de betrokkene zelf heeft ingestemd, of dit nodig is voor de uitvoering van de opdracht, bijvoorbeeld aan het registratieplatform of de congreslocatie.
-4. Meer over hoe JCC met persoonsgegevens omgaat, staat in de privacyverklaring op www.jcc-congressen.nl.
+4. Meer over hoe JCC met persoonsgegevens omgaat, staat in de privacyverklaring op www.jcc-congress.com/privacyverklaring.
 
 ### Artikel 13 Toepasselijk recht
 
