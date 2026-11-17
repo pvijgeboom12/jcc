@@ -271,6 +271,27 @@ const caption = (s: (typeof slides)[number]) => s.alt;
     .hero2__count { display: none; }
   }
 
+  /* ---------- Mobiel en tablet: tekst over de foto (wens Annick, 16 november) ---------- */
+  @media (max-width: 999px) {
+    :global(html:not([data-hero='split'])) .hero2 { display: grid; }
+    :global(html:not([data-hero='split'])) .hero2 > * { grid-area: 1 / 1; }
+    :global(html:not([data-hero='split'])) .hero2__media { height: max(560px, min(150vw, calc(100svh - 120px))); }
+    :global(html:not([data-hero='split'])) .hero2__scrim {
+      background: linear-gradient(180deg, rgba(18, 12, 16, 0.15) 0%, rgba(18, 12, 16, 0.35) 35%, rgba(18, 12, 16, 0.85) 100%);
+    }
+    :global(html:not([data-hero='split'])) .hero2__content {
+      position: relative; z-index: 1; align-self: end; padding: 0 var(--gutter) 40px; pointer-events: none;
+    }
+    :global(html:not([data-hero='split'])) .hero2__inner > * { pointer-events: auto; }
+    :global(html:not([data-hero='split'])) .hero2__inner { text-shadow: 0 1px 14px rgba(0, 0, 0, 0.4); }
+    :global(html:not([data-hero='split'])) .hero2__title { color: #fff; }
+    :global(html:not([data-hero='split'])) .hero2__accent { color: var(--color-primary-tint); }
+    :global(html:not([data-hero='split'])) .hero2__lead { color: #fff; }
+    :global(html:not([data-hero='split'])) .hero2__buttons { margin-top: 24px; }
+    :global(html:not([data-hero='split'])) .hero2__secondary { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.75); }
+    :global(html:not([data-hero='split'])) .hero2 :focus-visible { outline-color: #fff; }
+  }
+
   /* ---------- Full-bleed (standaard vanaf 1000px) ---------- */
   @media (min-width: 1000px) {
     :global(html:not([data-hero='split'])) .hero2 { display: grid; }
