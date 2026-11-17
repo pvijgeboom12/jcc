@@ -399,3 +399,25 @@ content:
       - { name: address, label: Adres en KvK, type: string }
       - { name: pdf, label: Pdf om te downloaden, description: Pad naar de pdf in public/downloads, type: string }
       - { name: body, label: Tekst, type: rich-text }
+
+  - name: privacyverklaring
+    label: Privacyverklaring (Nederlands)
+    type: file
+    path: src/content/legal/privacyverklaring.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Titel, type: string, required: true }
+      - { name: version, label: Versie, description: "Bijv. Versie 16 november 2026", type: string }
+      - { name: address, label: Adres en KvK, type: string }
+      - { name: body, label: Tekst, type: rich-text }
+
+  - name: privacy-statement
+    label: Privacy statement (Engels)
+    type: file
+    path: src/content/legal/privacy-statement.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: version, label: Version, description: "E.g. Version 16 November 2026", type: string }
+      - { name: address, label: Address and Chamber of Commerce, type: string }
+      - { name: body, label: Text, type: rich-text }

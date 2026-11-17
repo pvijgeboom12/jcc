@@ -29,9 +29,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       i18n: { defaultLocale: 'nl', locales: { nl: 'nl-NL', en: 'en-GB' } },
-      filter: (page) =>
-        !draftSlugs.some((slug) => page.includes(`/${slug}/`)) &&
-        !/\/(privacyverklaring|privacy)\/$/.test(page), // TODO: weghalen zodra de privacytekst er staat
+      filter: (page) => !draftSlugs.some((slug) => page.includes(`/${slug}/`)),
     }),
   ],
 });
