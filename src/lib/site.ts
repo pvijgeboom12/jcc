@@ -25,3 +25,33 @@ export const site = {
    */
   formEndpoint: 'https://script.google.com/macros/s/AKfycbxHPX9CGkNyJsLtyRHjXKPcUZv14lb6T3La4QI1jpUmKJrlv1bhc673GKokjzfTWksbnw/exec',
 };
+
+/**
+ * Structured data (schema.org) voor de organisatie. Staat op elke pagina, in beide talen.
+ * Adres en KvK zoals in de algemene voorwaarden (nov 2026).
+ */
+export function organizationSchema(lang: 'nl' | 'en') {
+  return {
+    '@type': 'Organization',
+    '@id': `${site.url}/#organization`,
+    name: 'JCC Congress Consultancy & Events',
+    alternateName: 'JCC',
+    url: lang === 'nl' ? `${site.url}/` : `${site.url}/en/`,
+    logo: `${site.url}/JCC_icoon_512.png`,
+    email: contact.email,
+    telephone: contact.phone.replace(/\s|\(0\)/g, ''),
+    sameAs: [contact.linkedin],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Sallandstraat 16-2',
+      postalCode: '1079 PP',
+      addressLocality: 'Amsterdam',
+      addressCountry: 'NL',
+    },
+    identifier: { '@type': 'PropertyValue', propertyID: 'KvK', value: contact.kvk },
+    description:
+      lang === 'nl'
+        ? 'Congresbureau voor medische en wetenschappelijke congressen, van eerste idee tot uitvoering.'
+        : 'Congress bureau for medical and scientific congresses, from first idea to delivery.',
+  };
+}

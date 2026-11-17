@@ -2,7 +2,7 @@
 
 Website voor [jcc-congressen.nl](https://jcc-congressen.nl). Vervangt de Wix-site.
 Statische Astro-site, tweetalig (NL op `/`, EN op `/en/`), gehost op Cloudflare.
-Huisstijl: bordeaux #8F2748, koppen in Poppins SemiBold, tekst in Inter. Fonts zijn self-hosted.
+Huisstijl: bordeaux #8F2748, koppen in Poppins SemiBold, tekst in Inter. Fonts zijn self-hosted (`src/assets/fonts/`, `src/styles/fonts.css`): alleen woff2, latin + latin-ext met unicode-range, Inter 400 en Poppins 600 worden gepreload.
 
 ## Lokaal draaien
 
@@ -108,10 +108,16 @@ De hero animeert bewust niet mee, zodat de LCP gelijk blijft.
 
 ## Analytics en cookies
 
-Cloudflare Web Analytics via de handmatige beacon, met `defer` geladen zodat het de LCP niet raakt.
+Cloudflare Web Analytics via de handmatige beacon. Het script wordt pas na het `load`-event ingevoegd, zodat het de eerste weergave niet raakt.
 Het token staat in `src/lib/site.ts` (`cfAnalyticsToken`); leeg maken zet analytics uit.
 De beacon wordt alleen in productiebuilds geladen. Hij zet geen cookies, dus er is geen cookiebanner nodig.
 Geen Google Analytics.
+
+## Structured data (SEO)
+
+`BaseLayout` zet op elke pagina een JSON-LD-blok met `Organization` (gegevens uit `src/lib/site.ts` en `site.json`).
+Congrespagina's voegen `Event` (datum, locatie, tarieven) en `BreadcrumbList` toe via de prop `schema`.
+Controleren: https://search.google.com/test/rich-results
 
 ## Redirects
 

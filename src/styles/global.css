@@ -14,7 +14,7 @@
   --color-text-secondary: #6e6a70; /* huisstijl: grijs, bijschriften */
   --color-text-lead: #2a2a2e;      /* huisstijl: inkt, lopende tekst */
   --color-text-body: #2a2a2e;      /* huisstijl: inkt, lopende tekst */
-  --color-text-muted: #8a8290;     /* pauzetijden in programma */
+  --color-text-muted: #736d78;     /* pauzetijden in programma (was #8a8290; nu contrast 4.5:1 voor WCAG AA) */
   --color-text-logo: #6e6a70;      /* "CONGRESS CONSULTANCY" in logo */
   --color-text-ink: #2a2a2e;
   --color-logo-black: #151515;

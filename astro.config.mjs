@@ -19,7 +19,8 @@ export default defineConfig({
   site: 'https://jcc-congress.com',
   output: 'static',
   trailingSlash: 'ignore',
-  build: { format: 'directory' },
+  // CSS inline in de HTML: geen render-blocking stylesheet-requests (de CSS is klein, ca. 7 KB).
+  build: { format: 'directory', inlineStylesheets: 'always' },
   i18n: {
     defaultLocale: 'nl',
     locales: ['nl', 'en'],

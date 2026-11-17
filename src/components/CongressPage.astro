@@ -3,7 +3,8 @@
  * Sjabloon voor één congrespagina. Alle inhoud komt uit de content collection.
  * Secties zonder inhoud worden automatisch overgeslagen.
  */
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
+import { site } from '../lib/site';
 import { img } from '../lib/images';
 import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -41,6 +42,54 @@ const secondary = d.programme?.url
 // Registratieknop per categorie: eigen URL > algemene registratie-URL > geen knop
 const feeUrl = (url?: string) => url ?? d.registrationUrl;
 const mainRegister = hasRegistration ? '#register' : d.registrationUrl;
+
+// Structured data: Event + BreadcrumbList (alleen met gegevens die op de pagina staan)
+const pageUrl = new URL(alternateForCongress(d.slug)[lang], site.url).href;
+const isoDate = (x: Date) => x.toISOString().slice(0, 10);
+const heroImg = d.practicalImage ? img(d.practicalImage) : undefined;
+const heroImgUrl = heroImg ? new URL((await getImage({ src: heroImg, width: 1200, format: 'jpg' })).src, site.url).href : undefined;
+const priced = d.fees.filter((f) => typeof f.price === 'number');
+const schema = [
+  {
+    '@type': 'Event',
+    name: pageName,
+    description: d.intro,
+    url: pageUrl,
+    inLanguage: lang,
+    startDate: isoDate(d.startDate),
+    endDate: isoDate(d.endDate ?? d.startDate),
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: d.venue ?? d.location,
+      address: d.address ?? d.location,
+    },
+    // JCC organiseert namens de vereniging: beide als organisator
+    organizer: [{ '@id': `${site.url}/#organization` }, { '@type': 'Organization', name: d.organisation }],
+    ...(heroImgUrl ? { image: [heroImgUrl] } : {}),
+    ...(priced.length
+      ? {
+          offers: priced.map((f) => ({
+            '@type': 'Offer',
+            name: f.category,
+            price: f.price,
+            priceCurrency: 'EUR',
+            url: f.url ?? d.registrationUrl ?? `${pageUrl}#register`,
+            availability: 'https://schema.org/InStock',
+          })),
+        }
+      : {}),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'JCC', item: new URL(lang === 'nl' ? '/' : '/en/', site.url).href },
+      { '@type': 'ListItem', position: 2, name: t(lang).nav.congresses, item: new URL(routes.congresses[lang], site.url).href },
+      { '@type': 'ListItem', position: 3, name: crumb, item: pageUrl },
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -52,6 +101,7 @@ const mainRegister = hasRegistration ? '#register' : d.registrationUrl;
   showCta={false}
   showLinkedIn={false}
   noindex={d.draft}
+  schema={schema}
 >
   <!-- HERO -->
   <section class="bg-surface clip">
@@ -223,8 +273,8 @@ const mainRegister = hasRegistration ? '#register' : d.registrationUrl;
 
   /* Hero */
   .c-hero { padding-top: 40px; padding-bottom: 88px; }
-  .crumbs { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 40px; }
-  .crumbs a { color: var(--color-text-secondary); }
+  .crumbs { font-size: 14px; color: #5f5b61; /* donkerder dan secondary: contrast 4.5:1 op de roze achtergrond */ margin-bottom: 40px; }
+  .crumbs a { color: inherit; }
   .c-hero__grid { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
   .c-hero__text { flex: 999 1 520px; min-width: 0; }
   .c-hero__text :global(.eyebrow) { margin-bottom: 16px; }
