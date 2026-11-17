@@ -9,56 +9,25 @@
     "secondary": "See the agenda",
     "slides": [
       {
-        "image": "/src/assets/images/v2/slaap-plenair.jpg",
-        "imageMobile": "/src/assets/images/v2/slaap-plenair-m.jpg",
+        "image": "/src/assets/images/keynote-podium.jpg",
+        "imageMobile": "/src/assets/images/keynote-podium.jpg",
         "congress": "SLAAP2025",
         "label": "Plenary session",
         "alt": "A full congress hall with coloured lighting listening to a presentation",
         "position": "42% 55%"
-      },
-      {
-        "image": "/src/assets/images/v2/slaap-spreker.jpg",
-        "imageMobile": "/src/assets/images/v2/slaap-spreker-m.jpg",
-        "congress": "SLAAP2025",
-        "label": "Keynote",
-        "alt": "A speaker giving a keynote from the lectern",
-        "position": "58% 40%"
-      },
-      {
-        "image": "/src/assets/images/v2/slaap-netwerken.jpg",
-        "imageMobile": "/src/assets/images/v2/slaap-netwerken-m.jpg",
-        "congress": "SLAAP2025",
-        "label": "Networking drinks",
-        "alt": "Participants talking during drinks, glasses in hand",
-        "position": "55% 40%"
-      },
-      {
-        "image": "/src/assets/images/v2/slaap-feest.jpg",
-        "imageMobile": "/src/assets/images/v2/slaap-feest-m.jpg",
-        "congress": "SLAAP2025",
-        "label": "Congress party",
-        "alt": "Guests dancing on a lit-up dance floor while a live band plays",
-        "position": "50% 50%"
-      },
-      {
-        "image": "/src/assets/images/v2/milaan-kloostertuin.jpg",
-        "imageMobile": "/src/assets/images/v2/milaan-kloostertuin-m.jpg",
-        "congress": "International congress",
-        "label": "Milan",
-        "alt": "Participants having lunch in the cloister courtyard of the University of Milan",
-        "position": "50% 45%"
       }
     ]
   },
   "about": {
     "eyebrow": "About JCC Congress Consultancy & Events",
-    "heading": "A good congress moves people forward",
+    "heading": "A good congress moves science and people forward",
     "paragraphs": [
-      "New insights, valuable conversations and connections that keep paying off long after.",
-      "At JCC we make sure everything is right. Programme, speakers, venue, registration, budget and everything in between. So you can focus on what really matters: the people and the content."
+      "New insights, shared knowledge and encounters that lead to new ideas and collaborations.",
+      "JCC takes the organisation off your hands. From the programme and speakers to the venue, registration and budget. With direct communication, personal attention and an eye for every detail.",
+      "This creates room for what really matters: the content and the people."
     ],
-    "promise": "Calm organisation, room to connect.",
-    "trustLabel": "We organise for, among others",
+    "promise": "Smooth organisation, room to connect.",
+    "trustLabel": "Among the organisations we work with",
     "clients": [
       "Slaapgeneeskunde Vereniging Nederland (SVNL)",
       "Nederlandse Slaap Waak Organisatie (NSWO)",
@@ -67,13 +36,15 @@
     ],
     "images": [
       {
-        "image": "/src/assets/images/v2/slaap-spreker.jpg",
-        "alt": "A speaker presenting at SLAAP2025",
-        "position": "55% 40%"
+        "image": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
+        "imageMobile": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
+        "position": "55% 40%",
+        "alt": "A speaker presenting at SLAAP2025"
       },
       {
-        "image": "/src/assets/images/v2/slaap-applaus-m.jpg",
-        "alt": "The audience applauding in a full hall at SLAAP2025"
+        "image": "/src/assets/images/collegezaal-cursus.jpg",
+        "imageMobile": "/src/assets/images/collegezaal-cursus.jpg",
+        "alt": "The lecture theatre during ISMC2025"
       }
     ]
   },
@@ -82,10 +53,11 @@
     "heading": "Bringing people",
     "accent": "together",
     "paragraphs": [
-      "I’m Annick Goijarts and I’ve been working in the congress industry for more than twenty years. For years I worked at the Amsterdam Convention Board, part of I amsterdam. Then I looked for a very different view: as a KLM flight attendant, I flew all over the world.",
-      "But I never let go of congresses. Even between my intercontinental flights, I kept organising them. And there were more and more!",
-      "At some point it simply no longer fitted alongside my work in the air. Time for a choice. I chose congresses: today I focus entirely on JCC.",
-      "And that’s exactly what makes me happy: bringing people together, arranging everything down to the last detail and making sure a congress doesn’t just run smoothly, but really makes an impact."
+      "I’m Annick Goijarts, owner of JCC Congress Consultancy & Events. I’ve been working in the congress and events industry for over twenty years.",
+      "For many years, I worked at the Amsterdam Convention Bureau, where I gained experience with a wide range of national and international congresses. My work at KLM also took me to special places around the world.",
+      "The common thread? Bringing people together, organising and making sure everything runs smoothly.",
+      "Together with a network of experienced professionals and trusted partners, I organise medical and scientific congresses in the Netherlands and abroad.",
+      "Personally involved, direct communication and always with an eye for the content."
     ],
     "closing": "Nice to meet you!",
     "signature": "Annick",
@@ -100,7 +72,7 @@
   "services": {
     "eyebrow": "What we do",
     "heading": "From first idea to final applause",
-    "lead": "We take care of everything that’s needed, from planning beforehand to evaluation afterwards.",
+    "lead": "We organise your congress from start to finish. From the initial plans and preparation to on-site delivery and final follow-up.",
     "more": "What we take care of",
     "steps": [
       {
@@ -127,11 +99,11 @@
       },
       {
         "title": "Programme",
-        "core": "Speakers, abstracts and accreditation, in collaboration with the board.",
+        "core": "From abstracts and speakers to chairs and accreditation. Together with the board, we create a strong programme that is both scientifically valuable and well organised.",
         "items": [
           {
             "title": "Abstracts",
-            "text": "An abstract is a short summary of research. We handle guidelines, submissions and presenters"
+            "text": "From opening submissions to reviewing and feedback. We coordinate the entire abstract process and ensure a smooth experience for authors, reviewers and the scientific committee."
           },
           {
             "title": "Speakers and chairs",
@@ -163,7 +135,7 @@
       },
       {
         "title": "Delivery and wrap-up",
-        "core": "We’re there from set-up to wrap-up. Afterwards you receive a clear final report and the financial settlement.",
+        "core": "We’re there from set-up to breakdown. After the congress, you receive a clear final report and the final financial settlement.",
         "items": [
           {
             "title": "On site",
@@ -183,10 +155,10 @@
   },
   "community": {
     "eyebrow": "Community",
-    "heading": "The congress ends",
-    "accent": "The community doesn’t",
-    "lead": "A congress brings people together. But why should that connection stop when it’s over? JCC helps associations and organisations keep the conversation going. With newsletters, social media and support for smaller meetings.",
-    "closing": "That way, one congress becomes the start of something more.",
+    "heading": "The congress ends.",
+    "accent": "The connection doesn’t.",
+    "lead": "JCC supports associations throughout the year, also between congresses. From communication and webinars to smaller meetings and support for boards and committees.",
+    "closing": "That way, connections continue and a congress becomes more than an annual event.",
     "items": [
       {
         "title": "Year-round contact",
@@ -202,15 +174,14 @@
       },
       {
         "title": "Association support",
-        "text": "Support for boards and committees, with one fixed point of contact"
+        "text": "Help for boards and committees, with one dedicated point of contact"
       }
     ],
     "images": [
       {
-        "image": "/src/assets/images/v2/slaap-gang.jpg",
-        "imageMobile": "/src/assets/images/v2/slaap-gang-m.jpg",
-        "alt": "Three participants walking and laughing in the corridor at SLAAP2025",
-        "position": "40% 50%"
+        "image": "/src/assets/images/expositie-netwerken.jpg",
+        "position": "40% 50%",
+        "alt": "Three participants walking and laughing in the corridor at SLAAP2025"
       },
       {
         "image": "/src/assets/images/v2/slaap-posters-m.jpg",
@@ -223,19 +194,18 @@
     "headingWith": "delivered with",
     "accent": "flair",
     "intro": "No two congresses are the same. Luckily.",
-    "text": "A small symposium or a large international congress: every event needs its own approach. We think along, keep the lines short and make sure everything is well arranged. With an eye for both content and atmosphere."
+    "text": "From a small symposium to a large international scientific congress, every event calls for its own approach.\n\nJCC works alongside you, responds quickly and brings the right people and resources together. With personal attention, an eye for detail and an approach that fits your organisation."
   },
   "social": {
     "eyebrow": "Social programme",
     "title": "Not on the agenda,",
     "accent": "but the highlight",
-    "text": "The best conversations don’t always happen in the congress hall. That’s why we also organise the programme around it. From relaxed drinks to a party people talk about for a long time.",
+    "text": "The most valuable encounters don’t always take place in the congress hall. A well-designed social programme creates space for conversations, connection and relaxation.\n\nFrom a special congress dinner to relaxed drinks or an evening party, we create memorable moments beyond the scientific programme.",
     "points": [
       "Congress dinner at a special venue",
       "Drinks and networking moments",
       "Live music and a party"
     ],
-    "caption": "Social programme at SLAAP2025",
     "images": [
       {
         "image": "/src/assets/images/v2/slaap-feest.jpg",
@@ -244,21 +214,23 @@
       },
       {
         "image": "/src/assets/images/v2/slaap-diner.jpg",
-        "alt": "Tables set for the congress dinner, with large light-up letters reading SLAAP",
-        "position": "35% 50%"
+        "position": "35% 50%",
+        "alt": "Tables set for the congress dinner, with large light-up letters reading SLAAP"
       },
       {
-        "image": "/src/assets/images/v2/slaap-band-m.jpg",
+        "image": "/src/assets/images/igorfotografie-4.jpg",
+        "imageMobile": "/src/assets/images/igorfotografie-4.jpg",
         "alt": "The singer of the live band performing on stage"
       },
       {
-        "image": "/src/assets/images/v2/slaap-borrel-m.jpg",
+        "image": "/src/assets/images/slaapcongress-dag1-162.jpg",
+        "imageMobile": "/src/assets/images/slaapcongress-dag1-162.jpg",
         "alt": "Participants raising a glass during drinks"
       },
       {
         "image": "/src/assets/images/milaan-diner.jpg",
-        "alt": "Congress dinner in a historic hall in Milan, seen from the balcony",
-        "position": "center 60%"
+        "position": "center 60%",
+        "alt": "Congress dinner in a historic hall in Milan, seen from the balcony"
       }
     ]
   },
@@ -266,7 +238,7 @@
     "eyebrow": "Who we work for",
     "heading": "Content and organisation,",
     "accent": "hand in hand",
-    "lead": "JCC knows the world of scientific meetings. We know what it takes, and what speakers and participants expect.",
+    "lead": "JCC works with medical and scientific associations, international organisations and research institutions.\n\nWe understand the dynamics of boards, scientific committees, speakers, sponsors and participants. And we know how important it is for content and organisation to work seamlessly together.",
     "tags": [
       "Medical associations",
       "Scientific societies",

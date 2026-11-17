@@ -151,7 +151,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
     </svg>
     <div class="container relative band__inner" data-reveal-stagger>
       <h2 id="band-heading" class="band__heading">
-        <span class="band__line">{h.band.headingBefore}</span>
+        <span class="band__line">{h.band.headingBefore}</span>{" "}
         <span class="band__line">{h.band.headingWith} <Swash variant="white">{h.band.accent}</Swash></span>
       </h2>
       <p class="band__text"><strong class="band__intro">{h.band.intro}</strong> {h.band.text}</p>
@@ -328,6 +328,7 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
   .band__heading { color: #fff; font-weight: 600; letter-spacing: -0.03em; font-size: clamp(40px, 5.6vw, 80px); line-height: 1.02; }
   .band__line { display: block; }
   .band__text { font-size: 20px; line-height: 1.6; color: var(--color-primary-tint-2); max-width: 46ch; }
+  .services__lead, .community__lead, .band__text, .social__lead, .expertise__lead { white-space: pre-line; }
   .band__intro { display: block; margin-bottom: 10px; font-family: var(--font-heading); font-weight: 600; font-size: clamp(22px, 2vw, 26px); line-height: 1.3; color: #fff; }
 
   /* Annick */
