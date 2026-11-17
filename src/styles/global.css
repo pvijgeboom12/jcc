@@ -111,7 +111,11 @@ a:hover { color: var(--color-primary-hover); }
 /* ---------- Layout ---------- */
 .container { max-width: var(--container); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
 .section { padding-top: var(--section-y); padding-bottom: var(--section-y); }
-.bg-surface { background: var(--color-surface); }
+.bg-surface {
+  background: var(--color-surface);
+  /* Grijs iets donkerder op de roze achtergrond: 4.7:1 i.p.v. 4.4:1 (WCAG AA). Wit blijft huisstijlgrijs. */
+  --color-text-secondary: #69656b;
+}
 .bg-white { background: var(--color-bg); }
 .split { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
 .relative { position: relative; }
