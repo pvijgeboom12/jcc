@@ -3,8 +3,6 @@ title: WEACADEMY
 slug: weacademy-2027
 status: registratie-open
 draft: false
-registrationClosed: true
-registrationNotice: "Registration opens soon. Would you like to be notified as soon as registration opens? Email weac@jcc-congress.com."
 organisation: Working Group Aesthetic Facial Surgery · NVMKA
 heading:
   text: WEACADEMY
