@@ -96,7 +96,7 @@ fees:
     price: 175
     note: Inclusief lunch, koffie en borrel
 feesFooter: Groepsregistratie of een factuur op naam van je instelling? Mail <a
-  href="mailto:info@jcc-congress.com">info@jcc-congress.com</a>.
+  href="mailto:info@jcc-congress.com">weac@jcc-congress.com</a>.
 accreditation:
   title: NVMKA-accreditatie
   value: 5 punten
