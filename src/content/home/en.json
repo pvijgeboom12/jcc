@@ -38,8 +38,8 @@
       {
         "image": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
         "imageMobile": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
-        "position": "55% 40%",
-        "alt": "Congress participants applauding during a session"
+        "alt": "Congress participants applauding during a session",
+        "position": "55% 40%"
       },
       {
         "image": "/src/assets/images/collegezaal-cursus.jpg",
@@ -180,8 +180,8 @@
     "images": [
       {
         "image": "/src/assets/images/expositie-netwerken.jpg",
-        "position": "40% 50%",
-        "alt": "Participants networking in the exhibition area"
+        "alt": "Participants networking in the exhibition area",
+        "position": "40% 50%"
       },
       {
         "image": "/src/assets/images/v2/slaap-posters-m.jpg",
@@ -214,8 +214,8 @@
       },
       {
         "image": "/src/assets/images/v2/slaap-diner.jpg",
-        "position": "35% 50%",
-        "alt": "Tables set for the congress dinner, with large light-up letters reading SLAAP"
+        "alt": "Tables set for the congress dinner, with large light-up letters reading SLAAP",
+        "position": "35% 50%"
       },
       {
         "image": "/src/assets/images/igorfotografie-4.jpg",
@@ -229,8 +229,8 @@
       },
       {
         "image": "/src/assets/images/milaan-diner.jpg",
-        "position": "center 60%",
-        "alt": "Congress dinner in a historic hall in Milan, seen from the balcony"
+        "alt": "Congress dinner in a historic hall in Milan, seen from the balcony",
+        "position": "center 60%"
       }
     ]
   },
@@ -257,9 +257,9 @@
     ]
   },
   "contact": {
-    "heading": "A congress",
-    "accent": "in the pipeline?",
-    "lead": "Or just curious what we can do? Share your idea and we’ll get back to you soon.",
-    "direct": "Prefer direct contact?"
+    "heading": "Planning ",
+    "accent": "a congress?",
+    "lead": "Whether you have a concrete idea or are just exploring the possibilities, we'd love to hear from you. Let's talk about what we can make happen together.",
+    "direct": "Prefer to get in touch directly?"
   }
 }
