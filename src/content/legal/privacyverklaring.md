@@ -1,16 +1,16 @@
 ---
 title: Privacyverklaring
-version: Versie 16 november 2026
+version: Versie 17 november 2026
 address: Sallandstraat 16-2, 1079 PP Amsterdam · KvK 62440756
 ---
 
 ## Artikel 1 Wie zijn wij?
 
-JCC Congress Consultancy is een fullservice congres- en evenementenbureau, gevestigd aan de Sallandstraat 16-2, 1079 PP Amsterdam (KvK-nummer 62440756). In deze privacyverklaring leggen wij uit hoe wij met persoonsgegevens omgaan. U bereikt ons via +31 (0)6 1667 1881 of info@jcc-congress.com.
+JCC Congress Consultancy & Events is een fullservice congres- en evenementenbureau, gevestigd aan de Sallandstraat 16-2, 1079 PP Amsterdam (KvK-nummer 62440756). In deze privacyverklaring leggen wij uit hoe wij met persoonsgegevens omgaan. U bereikt ons via +31 (0)6 1667 1881 of info@jcc-congress.com.
 
 ## Artikel 2 Onze rol
 
-JCC Congress Consultancy is verwerkingsverantwoordelijke voor gegevens die wij voor onze eigen bedrijfsvoering verwerken. Denk aan onze website, klantrelaties, leveranciers en eigen evenementen.
+JCC Congress Consultancy & Events is verwerkingsverantwoordelijke voor gegevens die wij voor onze eigen bedrijfsvoering verwerken. Denk aan onze website, klantrelaties, leveranciers en eigen evenementen.
 
 Voor congressen, ledenadministraties en financiële administraties die wij namens een vereniging, stichting of andere opdrachtgever uitvoeren, zijn wij meestal verwerker. De opdrachtgever is dan verantwoordelijk en bepaalt waarvoor de gegevens worden gebruikt. Dat geldt zowel als de opdrachtgever het registratiesysteem zelf afneemt als wanneer wij het namens de opdrachtgever inkopen. Dit vindt u ook in de informatie bij het betreffende congres. Een verzoek over uw gegevens kunt u in dat geval aan de opdrachtgever of aan ons richten; wij sturen het zo nodig door.
 
@@ -56,6 +56,7 @@ Verschilt per congres. Welke gegevens wij vragen, hangt af van het congres. Bij 
 | Klant- en leveranciersrelaties onderhouden                                              | Uitvoering van een overeenkomst of gerechtvaardigd belang                                                                                         |
 | Ledenadministratie uitvoeren namens een vereniging                                      | Op instructie van de opdrachtgever                                                                                                                |
 | Facturatie en fiscale administratie                                                     | Wettelijke verplichting                                                                                                                           |
+| Vragen beantwoorden die u via het contactformulier of per e-mail stuurt | Gerechtvaardigd belang |
 | Website beveiligen en laten functioneren                                                | Gerechtvaardigd belang                                                                                                                            |
 | Websitebezoek meten met cookieloze statistieken                                         | Gerechtvaardigd belang                                                                                                                            |
 | Promotionele foto's en video's                                                          | Gerechtvaardigd belang; bezwaar kan altijd (zie artikel 11)                                                                                       |
@@ -75,8 +76,9 @@ Wij bewaren gegevens niet langer dan nodig. Tenzij een opdrachtgever of de wet i
 | Abstracts en programma's                         | Zolang het congresarchief bestaat; verwijdering op verzoek waar mogelijk                    |
 | Facturen en financiële administratie             | 7 jaar (wettelijke termijn)                                                                 |
 | Gegevens voor uitnodigingen                      | Tot afmelding, uiterlijk 5 jaar na het laatste contact                                      |
+| Berichten via het contactformulier en e-mail | 2 jaar na het laatste contact; wordt het een opdracht, dan geldt de termijn voor klantgegevens |
 | Klant- en leveranciersgegevens                   | 2 jaar na het einde van de samenwerking                                                     |
-| Bezoekstatistieken van de website                | Alleen als totalen, niet herleidbaar tot personen; \[bewaartermijn Cloudflare controleren\] |
+| Bezoekstatistieken van de website                | Alleen als totalen, niet herleidbaar tot personen. Hierin worden geen persoonsgegevens bewaard |
 | Foto's en video's                                | Maximaal 5 jaar, tenzij gebruikt in archiefmateriaal                                        |
 | Kopie identiteitsbewijs (zie artikel 10)         | Direct na controle verwijderd                                                               |
 | Gegevens van (potentiële) sponsors en exposanten | 2 jaar na het laatste contact                                                               |
@@ -105,7 +107,7 @@ Verwerkers. Deze partijen verwerken gegevens in onze opdracht. Wij sluiten met h
 | Registratie-, abstract- en app-platforms | Registratie, abstractbeheer en congres-apps; welk platform per congres wordt gebruikt, staat in de registratie-informatie |
 | Boekhoudsoftware                         | Financiële administratie, voor onszelf en voor opdrachtgevers waarvoor wij dit uitvoeren                                  |
 | Cloudflare                               | Hosting en beveiliging van de website, cookieloze bezoekstatistieken                                                      |
-| Google Workspace                         | E-mail en opslag van documenten                                                                                           |
+| Google Workspace                         | E-mail, het contactformulier en opslag van documenten                                                                                           |
 | Overige IT-dienstverleners               | Technisch beheer van website en systemen                                                                                  |
 | Badgeleveranciers                        | Drukken van badges                                                                                                        |
 

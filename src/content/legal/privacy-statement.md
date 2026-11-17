@@ -1,16 +1,16 @@
 ---
 title: Privacy statement
-version: Version 16 November 2026
+version: Version 17 November 2026
 address: Sallandstraat 16-2, 1079 PP Amsterdam, the Netherlands · Chamber of Commerce 62440756
 ---
 
 ## Article 1 Who we are
 
-JCC Congress Consultancy is a full-service congress and event agency located at Sallandstraat 16-2, 1079 PP Amsterdam, the Netherlands (Chamber of Commerce no. 62440756). This statement explains how we handle personal data. You can reach us at +31 (0)6 1667 1881 or info@jcc-congress.com.
+JCC Congress Consultancy & Events is a full-service congress and event agency located at Sallandstraat 16-2, 1079 PP Amsterdam, the Netherlands (Chamber of Commerce no. 62440756). This statement explains how we handle personal data. You can reach us at +31 (0)6 1667 1881 or info@jcc-congress.com.
 
 ## Article 2 Our role
 
-JCC Congress Consultancy is the data controller for data we process for our own business. This includes our website, client relationships, suppliers and our own events.
+JCC Congress Consultancy & Events is the data controller for data we process for our own business. This includes our website, client relationships, suppliers and our own events.
 
 For congresses, membership administration and financial administration that we carry out on behalf of an association, foundation or other client, we usually act as a data processor. The client is then the controller and decides how the data is used. This applies both when the client contracts the registration system directly and when we purchase it on the client's behalf. This is also stated in the information for the congress concerned. In that case you can send a request about your data to the client or to us; we will forward it where necessary.
 
@@ -56,6 +56,7 @@ Varies by congress. The data we ask for depends on the congress. For a medical c
 | Maintaining client and supplier relationships                                          | Performance of a contract or legitimate interest                                                                                                   |
 | Membership administration on behalf of an association                                  | On the client's instructions                                                                                                                       |
 | Invoicing and tax administration                                                       | Legal obligation                                                                                                                                   |
+| Answering questions you send via the contact form or by email | Legitimate interest |
 | Securing and operating the website                                                     | Legitimate interest                                                                                                                                |
 | Measuring website visits with cookieless statistics                                    | Legitimate interest                                                                                                                                |
 | Promotional photos and videos                                                          | Legitimate interest; you can object at any time (see Article 11)                                                                                   |
@@ -75,8 +76,9 @@ We keep personal data no longer than necessary. Unless a client or the law requi
 | Abstracts and programmes                    | For as long as the congress archive exists; deleted on request where possible       |
 | Invoices and financial records              | 7 years (statutory period)                                                          |
 | Data for invitations                        | Until you unsubscribe, and no later than 5 years after last contact                 |
+| Messages via the contact form and email | 2 years after last contact; if it leads to an assignment, the period for client data applies |
 | Client and supplier data                    | 2 years after the end of the relationship                                           |
-| Website visit statistics                    | Only as totals, not traceable to individuals; \[check Cloudflare retention period\] |
+| Website visit statistics                    | Only as totals, not traceable to individuals. No personal data is stored in them |
 | Photos and videos                           | Up to 5 years, unless used in archive material                                      |
 | Copy of ID document (see Article 10)        | Deleted immediately after verification                                              |
 | Data of (potential) sponsors and exhibitors | 2 years after last contact                                                          |
@@ -105,7 +107,7 @@ Processors. These parties process data on our behalf. We enter into a data proce
 | Registration, abstract and app platforms | Registration, abstract management and congress apps; the platform used for each congress is stated in its registration information |
 | Accounting software                      | Financial administration, for ourselves and for clients for whom we carry this out                                                 |
 | Cloudflare                               | Website hosting and security, cookieless visit statistics                                                                          |
-| Google Workspace                         | Email and document storage                                                                                                         |
+| Google Workspace                         | Email, the contact form and document storage                                                                                                         |
 | Other IT service providers               | Technical management of website and systems                                                                                        |
 | Badge suppliers                          | Printing badges                                                                                                                    |
 
