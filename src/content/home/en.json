@@ -2,51 +2,51 @@
   "metaTitle": "JCC Congress Consultancy & Events",
   "metaDescription": "JCC organises scientific and medical congresses, from first idea to final evaluation. In the Netherlands and abroad.",
   "hero": {
-    "title": "Strong congresses",
-    "accent": "Memorable encounters",
-    "lead": "From first idea to a congress people remember.",
+    "title": "Give science",
+    "accent": "the stage",
+    "lead": " Strong content deserves strong organisation",
     "primary": "Discuss your congress",
     "secondary": "See the agenda",
     "slides": [
       {
         "image": "/src/assets/images/v2/slaap-plenair.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-plenair-m.jpg",
-        "position": "42% 55%",
         "congress": "SLAAP2025",
         "label": "Plenary session",
-        "alt": "A full congress hall with coloured lighting listening to a presentation"
+        "alt": "A full congress hall with coloured lighting listening to a presentation",
+        "position": "42% 55%"
       },
       {
         "image": "/src/assets/images/v2/slaap-spreker.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-spreker-m.jpg",
-        "position": "58% 40%",
         "congress": "SLAAP2025",
         "label": "Keynote",
-        "alt": "A speaker giving a keynote from the lectern"
+        "alt": "A speaker giving a keynote from the lectern",
+        "position": "58% 40%"
       },
       {
         "image": "/src/assets/images/v2/slaap-netwerken.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-netwerken-m.jpg",
-        "position": "55% 40%",
         "congress": "SLAAP2025",
         "label": "Networking drinks",
-        "alt": "Participants talking during drinks, glasses in hand"
+        "alt": "Participants talking during drinks, glasses in hand",
+        "position": "55% 40%"
       },
       {
         "image": "/src/assets/images/v2/slaap-feest.jpg",
         "imageMobile": "/src/assets/images/v2/slaap-feest-m.jpg",
-        "position": "50% 50%",
         "congress": "SLAAP2025",
         "label": "Congress party",
-        "alt": "Guests dancing on a lit-up dance floor while a live band plays"
+        "alt": "Guests dancing on a lit-up dance floor while a live band plays",
+        "position": "50% 50%"
       },
       {
         "image": "/src/assets/images/v2/milaan-kloostertuin.jpg",
         "imageMobile": "/src/assets/images/v2/milaan-kloostertuin-m.jpg",
-        "position": "50% 45%",
         "congress": "International congress",
         "label": "Milan",
-        "alt": "Participants having lunch in the cloister courtyard of the University of Milan"
+        "alt": "Participants having lunch in the cloister courtyard of the University of Milan",
+        "position": "50% 45%"
       }
     ]
   },
@@ -59,6 +59,12 @@
     ],
     "promise": "Calm organisation, room to connect.",
     "trustLabel": "We organise for, among others",
+    "clients": [
+      "Slaapgeneeskunde Vereniging Nederland (SVNL)",
+      "Nederlandse Slaap Waak Organisatie (NSWO)",
+      "Society for Light, Rhythms, and Circadian Health (SLRCH)",
+      "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)"
+    ],
     "images": [
       {
         "image": "/src/assets/images/v2/slaap-spreker.jpg",
@@ -69,12 +75,6 @@
         "image": "/src/assets/images/v2/slaap-applaus-m.jpg",
         "alt": "The audience applauding in a full hall at SLAAP2025"
       }
-    ],
-    "clients": [
-      "Slaapgeneeskunde Vereniging Nederland (SVNL)",
-      "Nederlandse Slaap Waak Organisatie (NSWO)",
-      "Society for Light, Rhythms, and Circadian Health (SLRCH)",
-      "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)"
     ]
   },
   "annick": {
