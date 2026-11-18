@@ -4,7 +4,6 @@ version: Versie november 2026 · vervangt de versie van januari 2025
 address: Sallandstraat 16-2, 1079 PP Amsterdam · KvK 62440756
 pdf: /downloads/JCC-algemene-voorwaarden-november-2026.pdf
 ---
-
 Deze voorwaarden bestaan uit twee delen. Deel A geldt voor alle overeenkomsten van JCC. Deel B geldt daarnaast voor opdrachtgevers die JCC een event laten organiseren.
 
 ## A. Algemene bepalingen
@@ -62,9 +61,9 @@ Alle prijzen zijn exclusief btw en andere heffingen van overheidswege, en exclus
 ### Artikel 8 Opschorting en ontbinding
 
 1. JCC mag de overeenkomst geheel of gedeeltelijk schriftelijk ontbinden of opschorten, zonder rechterlijke tussenkomst en zonder schadevergoeding verschuldigd te zijn, en onverminderd haar recht op nakoming of schadevergoeding, als:
-   1. de contractspartij tekortschiet en dat niet binnen 14 dagen na een schriftelijke ingebrekestelling herstelt;
-   2. JCC na het sluiten van de overeenkomst goede grond heeft om te vrezen dat de contractspartij haar verplichtingen niet zal nakomen;
-   3. de contractspartij surseance van betaling aanvraagt of krijgt, haar faillissement wordt aangevraagd of uitgesproken, of beslag wordt gelegd op een aanmerkelijk deel van haar vermogen.
+  1. de contractspartij tekortschiet en dat niet binnen 14 dagen na een schriftelijke ingebrekestelling herstelt;
+  2. JCC na het sluiten van de overeenkomst goede grond heeft om te vrezen dat de contractspartij haar verplichtingen niet zal nakomen;
+  3. de contractspartij surseance van betaling aanvraagt of krijgt, haar faillissement wordt aangevraagd of uitgesproken, of beslag wordt gelegd op een aanmerkelijk deel van haar vermogen.
 2. Ontbindt of schort JCC op grond van dit artikel op, dan zijn alle vorderingen van JCC direct opeisbaar.
 3. Komt de contractspartij haar verplichtingen niet (tijdig) na, dan vergoedt zij alle redelijke gerechtelijke en buitengerechtelijke kosten van JCC.
 
@@ -89,9 +88,9 @@ Alle prijzen zijn exclusief btw en andere heffingen van overheidswege, en exclus
 1. JCC is alleen aansprakelijk voor schade die het gevolg is van een toerekenbare tekortkoming in de nakoming van de overeenkomst, voor zover haar verzekeraar die schade dekt en tot het bedrag dat de verzekeraar uitkeert, vermeerderd met het eigen risico van JCC.
 2. Keert de verzekeraar niet uit of is de schade niet gedekt, dan is de aansprakelijkheid van JCC beperkt tot het honorarium dat JCC voor de opdracht heeft gefactureerd in de zes maanden voorafgaand aan de gebeurtenis die de schade veroorzaakte. Een reeks verbonden gebeurtenissen geldt als één gebeurtenis.
 3. JCC is alleen aansprakelijk voor directe schade. Daaronder valt uitsluitend:
-   1. redelijke kosten om de oorzaak en omvang van de schade vast te stellen;
-   2. redelijke kosten om de gebrekkige prestatie van JCC alsnog aan de overeenkomst te laten voldoen, voor zover die aan JCC zijn toe te rekenen;
-   3. redelijke kosten ter voorkoming of beperking van schade, voor zover de contractspartij aantoont dat die tot beperking van directe schade hebben geleid.
+  1. redelijke kosten om de oorzaak en omvang van de schade vast te stellen;
+  2. redelijke kosten om de gebrekkige prestatie van JCC alsnog aan de overeenkomst te laten voldoen, voor zover die aan JCC zijn toe te rekenen;
+  3. redelijke kosten ter voorkoming of beperking van schade, voor zover de contractspartij aantoont dat die tot beperking van directe schade hebben geleid.
 4. JCC is nooit aansprakelijk voor indirecte schade, zoals gevolgschade, gederfde winst, gemiste besparingen en schade door bedrijfsstagnatie.
 5. De beperkingen in dit artikel gelden niet bij opzet of bewuste roekeloosheid van JCC.
 6. Vorderingen tot schadevergoeding tegen JCC vervallen als zij niet binnen een jaar na het event, of na het einde van de overeenkomst als dat later is, schriftelijk bij JCC zijn ingediend.
@@ -101,7 +100,7 @@ Alle prijzen zijn exclusief btw en andere heffingen van overheidswege, en exclus
 1. JCC verwerkt persoonsgegevens volgens de Algemene verordening gegevensbescherming (AVG).
 2. Verwerkt JCC persoonsgegevens van deelnemers, sprekers of sponsors namens een opdrachtgever, dan is JCC verwerker en de opdrachtgever verwerkingsverantwoordelijke. Partijen sluiten daarvoor een verwerkersovereenkomst. JCC mag daarbij registratieplatforms en andere dienstverleners als subverwerker inzetten. De verwerkersovereenkomst regelt ook de afspraken over subverwerkers, beveiliging, datalekken en het verwijderen van gegevens.
 3. JCC gebruikt deze gegevens alleen voor de uitvoering van de opdracht. JCC gebruikt ze niet voor eigen doeleinden en verstrekt ze niet aan derden, tenzij de opdrachtgever daar schriftelijk toestemming voor geeft, de betrokkene zelf heeft ingestemd, of dit nodig is voor de uitvoering van de opdracht, bijvoorbeeld aan het registratieplatform of de congreslocatie.
-4. Meer over hoe JCC met persoonsgegevens omgaat, staat in de privacyverklaring op www.jcc-congressen.nl.
+4. Meer over hoe JCC met persoonsgegevens omgaat, staat in de privacyverklaring op [www.jcc-congressen.nl](http://www.jcc-congress.com).
 
 ### Artikel 13 Toepasselijk recht
 
@@ -150,14 +149,14 @@ Deel B geldt naast deel A als JCC met een opdrachtgever een overeenkomst aangaat
 
 1. De opdrachtgever annuleert het event schriftelijk. Voor de annuleringskosten telt de datum waarop JCC de annulering ontvangt.
 2. Tenzij in de offerte of overeenkomst anders is afgesproken, betaalt de opdrachtgever bij annulering een deel van de geraamde vergoeding voor de werkzaamheden van JCC:
-
-   | Annulering ontvangen | Deel van de geraamde vergoeding |
-   | --- | --- |
-   | Meer dan 6 maanden voor het event | 25% |
-   | Tussen 6 en 3 maanden voor het event | 50% |
-   | Tussen 3 en 1 maand voor het event | 75% |
-   | Minder dan 1 maand voor het event | 100% |
-
+  
+| Annulering ontvangen | Deel van de geraamde vergoeding |
+  | ------------------------------------ | ------------------------------- |
+| Meer dan 6 maanden voor het event | 25% |
+| Tussen 6 en 3 maanden voor het event | 50% |
+| Tussen 3 en 1 maand voor het event | 75% |
+| Minder dan 1 maand voor het event | 100% |
+  
 3. De opdrachtgever betaalt altijd minimaal de vergoeding voor de werkzaamheden die JCC tot dan heeft verricht.
 4. Daarnaast vergoedt de opdrachtgever de kosten van derden die al zijn gemaakt of niet meer kunnen worden geannuleerd.
 5. Bij een meerjarenovereenkomst gelden de annuleringsafspraken in die overeenkomst. Is daarin niets afgesproken, dan geldt dit artikel per event.
@@ -206,3 +205,4 @@ De opdrachtgever sluit zelf de verzekeringen af die voor het event nodig zijn, z
 
 1. JCC gebruikt de naam en het logo van de opdrachtgever en beelden van het event alleen als referentie, bijvoorbeeld op haar website, als de opdrachtgever daar vooraf toestemming voor geeft.
 2. Beelden waarop personen herkenbaar zijn, gebruikt JCC alleen als daarvoor toestemming is gegeven.
+
