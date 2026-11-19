@@ -6,6 +6,7 @@ import HeroSlideshow from './HeroSlideshow.astro';
 import AgendaTiles from './AgendaTiles.astro';
 import ContactForm from './ContactForm.astro';
 import ArtPicture from './ArtPicture.astro';
+import LogoMarquee, { type Partner } from './LogoMarquee.astro';
 import { home } from '../i18n/home';
 import { alternateFor, type Lang } from '../i18n/routes';
 import { site } from '../lib/site';
@@ -20,9 +21,11 @@ const { lang } = Astro.props;
 const h = home[lang];
 
 // Bewijs uit eigen data: organisaties van congressen op de agenda (geen verzonnen klanten)
-// Klantenlijst uit het CMS; valt terug op de organisaties van de komende congressen
-const clients: string[] = (h.about as { clients?: string[] }).clients ?? [];
-const orgs = clients.length ? clients : [...new Set((await getUpcoming(lang)).map((c) => c.data.organisation))];
+// Opdrachtgevers met logo en link uit het CMS; zonder logo's vallen we terug op
+// de organisaties van de komende congressen (als tekstlabels)
+const partners: Partner[] = ((h.about as { partners?: Partner[] }).partners ?? []).filter((p) => p.logo && p.url);
+const orgs = partners.length ? [] : [...new Set((await getUpcoming(lang)).map((c) => c.data.organisation))];
+const newTab = lang === 'nl' ? 'opent in een nieuw tabblad' : 'opens in a new tab';
 const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
 ---
 
@@ -47,6 +50,11 @@ const privacyHref = lang === 'nl' ? '/privacyverklaring/' : '/en/privacy/';
         <ArtPicture {...pic(h.about.images[1])} class="img about__img about__img--b" parallax={45} sizes="(min-width: 1000px) 300px, 45vw" desktopWidths={[400, 640, 900]} />
       </div>
     </div>
+    {partners.length > 0 && (
+      <div class="container">
+        <LogoMarquee partners={partners} label={h.about.trustLabel} newTab={newTab} />
+      </div>
+    )}
     {
       orgs.length > 0 && (
         <div class="container trust">
