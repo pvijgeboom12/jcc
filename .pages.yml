@@ -245,7 +245,15 @@ content:
           - { name: paragraphs, label: Alinea's, type: text, list: true }
           - { name: promise, label: Belofte (dikgedrukte zin), type: string }
           - { name: trustLabel, label: Tekst boven de verenigingen, type: string }
-          - { name: clients, label: Verenigingen en organisaties, description: Eén naam per regel. Leeg = de organisaties van de komende congressen., type: string, list: true }
+          - name: partners
+            label: Opdrachtgevers (bewegende logobalk)
+            description: Logo + link naar de site. Leeg = de namen van de organisaties van de komende congressen.
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Naam (ook voor schermlezers), type: string, required: true }
+              - { name: url, label: Website, type: string, required: true }
+              - { name: logo, label: Logo (liefst PNG met transparante achtergrond), type: image, required: true }
           - name: images
             label: Foto's (2)
             type: object

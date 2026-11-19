@@ -28,11 +28,27 @@
     ],
     "promise": "Smooth organisation, room to connect.",
     "trustLabel": "Among the organisations we work with",
-    "clients": [
-      "Slaapgeneeskunde Vereniging Nederland (SVNL)",
-      "Nederlandse Slaap Waak Organisatie (NSWO)",
-      "Society for Light, Rhythms, and Circadian Health (SLRCH)",
-      "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)"
+    "partners": [
+      {
+        "name": "Slaapgeneeskunde Vereniging Nederland (SVNL)",
+        "url": "https://www.slaapgeneeskundevereniging.nl/",
+        "logo": "/src/assets/images/opdrachtgevers/svnl.png"
+      },
+      {
+        "name": "Nederlandse Slaap Waak Organisatie (NSWO)",
+        "url": "https://www.nswo.nl/",
+        "logo": "/src/assets/images/opdrachtgevers/nswo.png"
+      },
+      {
+        "name": "Society for Light, Rhythms, and Circadian Health (SLRCH)",
+        "url": "https://slrch.org/",
+        "logo": "/src/assets/images/opdrachtgevers/slrch.png"
+      },
+      {
+        "name": "Nederlandse Vereniging voor Mondziekten, Kaak- en Aangezichtschirurgie (NVMKA)",
+        "url": "https://www.nvmka.nl/",
+        "logo": "/src/assets/images/opdrachtgevers/nvmka.png"
+      }
     ],
     "images": [
       {
