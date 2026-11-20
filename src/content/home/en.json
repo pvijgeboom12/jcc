@@ -79,7 +79,8 @@
     "role": "Annick Goijarts · JCC Congress Consultancy & Events",
     "cta": "Get to know Annick",
     "image": {
-      "image": "/src/assets/images/professioneel-portret-met-natuurlijke-glimlach-1-2.png",
+      "image": "/src/assets/images/professioneel-portret-met-blauwe-lanyard.png",
+      "imageMobile": "/src/assets/images/professioneel-portret-met-blauwe-lanyard.png",
       "alt": "Portrait of Annick Goijarts, smiling, in a black jacket",
       "position": "50% 25%"
     }
