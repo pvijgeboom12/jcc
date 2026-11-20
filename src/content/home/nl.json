@@ -13,7 +13,7 @@
         "imageMobile": "/src/assets/images/keynote-podium.jpg",
         "congress": "SLAAP2025",
         "label": "Plenaire sessie",
-        "alt": "Een volle congreszaal met gekleurd licht luistert naar een presentatie",
+        "alt": "Een volle congreszaal luistert naar een spreker, met een groot scherm op het podium",
         "position": "42% 55%"
       }
     ]
@@ -54,13 +54,13 @@
       {
         "image": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
         "imageMobile": "/src/assets/images/v2/slaapcongress-dag1-28.jpg",
-        "alt": "Een spreker presenteert tijdens SLAAP2025",
+        "alt": "Congresdeelnemers applaudisseren tijdens een sessie",
         "position": "55% 40%"
       },
       {
         "image": "/src/assets/images/collegezaal-cursus.jpg",
         "imageMobile": "/src/assets/images/collegezaal-cursus.jpg",
-        "alt": "Amphizaal tijdens ISMC2025"
+        "alt": "Een collegezaal tijdens ISMC2025, waar deelnemers naar een presentatie luisteren"
       }
     ]
   },
@@ -195,7 +195,7 @@
     "images": [
       {
         "image": "/src/assets/images/expositie-netwerken.jpg",
-        "alt": "Drie deelnemers lopen lachend door de gang tijdens SLAAP2025",
+        "alt": "Deelnemers netwerken in de expositieruimte",
         "position": "40% 50%"
       },
       {
@@ -233,12 +233,12 @@
       {
         "image": "/src/assets/images/igorfotografie-4.jpg",
         "imageMobile": "/src/assets/images/igorfotografie-4.jpg",
-        "alt": "De zangeres van de liveband zingt op het podium"
+        "alt": "Een camera filmt de liveband op het podium"
       },
       {
         "image": "/src/assets/images/slaapcongress-dag1-162.jpg",
         "imageMobile": "/src/assets/images/slaapcongress-dag1-162.jpg",
-        "alt": "Deelnemers proosten tijdens de borrel"
+        "alt": "Er wordt champagne ingeschonken tijdens de borrel"
       },
       {
         "image": "/src/assets/images/milaan-diner.jpg",
