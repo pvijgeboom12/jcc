@@ -21,6 +21,7 @@ time: 08.30–16.15
 location: Mauritskazerne, Ede
 venue: Mauritskazerne
 address: Frisopark 2, Ede
+registrationUrl: https://www.nowonlinetickets.nl/Shop/EventDetails/B6757E9C740D30F8C174320AE05DF78C
 programme:
   heading: Face Forward
   note: "Namens de WEAC: Frank Bierenbroodspot, Susanne Bolouri, Atilla Gül, Johan
