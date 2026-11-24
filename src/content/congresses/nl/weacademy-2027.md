@@ -3,7 +3,7 @@ title: WEACADEMY
 slug: weacademy-2027
 status: registratie-open
 registrationClosed: true
-draft: true
+draft: false
 organisation: Werkgroep Esthetische Aangezichtschirurgie · NVMKA
 heading:
   text: WEACADEMY
