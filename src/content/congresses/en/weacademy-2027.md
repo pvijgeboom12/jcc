@@ -2,9 +2,10 @@
 title: WEACADEMY
 slug: weacademy-2027
 status: registratie-open
-draft: false
 registrationClosed: true
-registrationNotice: "Registration opens soon. Would you like to be notified as soon as registration opens? Email weac@jcc-congress.com."
+registrationNotice: Registration opens soon. Would you like to be notified as
+  soon as registration opens? Email weac@jcc-congress.com.
+draft: false
 organisation: Working Group Aesthetic Facial Surgery · NVMKA
 heading:
   text: WEACADEMY
@@ -21,6 +22,7 @@ time: 08.30–16.15
 location: Mauritskazerne, Ede
 venue: Mauritskazerne
 address: Frisopark 2, Ede
+registrationUrl: https://www.nowonlinetickets.nl/Shop/EventDetails/B6757E9C740D30F8C174320AE05DF78C
 programme:
   heading: Face Forward
   note: "On behalf of the WEAC: Frank Bierenbroodspot, Susanne Bolouri, Atilla
