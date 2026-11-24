@@ -2,9 +2,8 @@
 title: WEACADEMY
 slug: weacademy-2027
 status: registratie-open
-draft: false
 registrationClosed: true
-registrationNotice: "De inschrijving opent binnenkort. Wil je bericht ontvangen zodra je je kunt inschrijven? Mail naar weac@jcc-congress.com."
+draft: false
 organisation: Werkgroep Esthetische Aangezichtschirurgie · NVMKA
 heading:
   text: WEACADEMY
