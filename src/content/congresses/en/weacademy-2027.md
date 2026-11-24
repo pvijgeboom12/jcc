@@ -2,7 +2,7 @@
 title: WEACADEMY
 slug: weacademy-2027
 status: registratie-open
-registrationClosed: true
+registrationClosed: false
 draft: false
 organisation: Working Group Aesthetic Facial Surgery · NVMKA
 heading:

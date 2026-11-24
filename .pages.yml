@@ -44,8 +44,8 @@ content:
             - { value: save-the-date, label: Save the date }
             - { value: afgelopen, label: Afgelopen }
       - name: registrationClosed
-        label: Inschrijving (nog) dicht
-        description: Aan = geen inschrijfknoppen; op de homepage staat "Inschrijving opent binnenkort". Uitzetten zodra de inschrijving opent.
+        label: Inschrijfknop verbergen (inschrijving nog dicht)
+        description: "LET OP: staat dit aan, dan is er GEEN inschrijfknop, ook niet als de status op Registratie open staat. Inschrijving openen = status op Registratie open, inschrijflink invullen én dit vinkje uit. Doe dit in de NL- én de EN-versie."
         type: boolean
         default: false
       - name: registrationNotice
